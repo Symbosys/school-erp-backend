@@ -57,9 +57,12 @@ export const createParent = asyncHandler(async (req: Request, res: Response) => 
  */
 export const getParentsBySchool = asyncHandler(async (req: Request, res: Response) => {
   const { schoolId } = req.params;
-  const { search } = req.query;
+  const { page = 1, limit = 10, search } = req.query;
 
   const where: any = { schoolId };
+
+  const skip = (Number(page) - 1) * Number(limit);
+
   if (search) {
     where.OR = [
       { firstName: { contains: search as string } },
@@ -69,17 +72,31 @@ export const getParentsBySchool = asyncHandler(async (req: Request, res: Respons
     ];
   }
 
-  const parents = await prisma.parent.findMany({
-    where,
-    orderBy: { firstName: 'asc' },
-    include: {
-      _count: {
-        select: { students: true }
+  const [parents, totalParents] = await Promise.all([
+    prisma.parent.findMany({
+      where,
+      orderBy: { firstName: 'asc' },
+      skip,
+      take: Number(limit),
+      include: {
+        _count: {
+          select: { students: true }
+        }
       }
+    }),
+    prisma.parent.count({ where })
+  ]);
+
+  return SuccessResponse(res, "Parents retrieved successfully", {
+    parents,
+    pagination: {
+      total: totalParents,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalParents / Number(limit)),
+      limit: Number(limit),
+      count: parents.length
     }
   });
-
-  return SuccessResponse(res, "Parents retrieved successfully", parents);
 });
 
 /**

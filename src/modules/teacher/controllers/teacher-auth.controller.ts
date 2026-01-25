@@ -94,6 +94,7 @@ export const teacherLogin = asyncHandler(async (req: Request, res: Response) => 
   return SuccessResponse(res, "Login successful", { 
     teacher: teacherData,
     token,
+    role: "teacher",
     attendance: {
       date: attendance.date,
       checkInTime: attendance.checkInTime,

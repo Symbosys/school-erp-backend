@@ -13,6 +13,7 @@ import errorMiddleware from "./middlewares/error.middleware";
  * Route Imports - School Module
  */
 import schoolRoutes from "./modules/school/routes/school.routes";
+import dashboardRoutes from "./modules/school/routes/dashboard.routes";
 import schoolAuthRoutes from "./modules/school/routes/auth.routes";
 import academicYearRoutes from "./modules/school/routes/academicYear.routes";
 import classRoutes from "./modules/school/routes/class.routes";
@@ -128,6 +129,12 @@ app.get("/", (_, res) => {
     version: "1.0.0",
   });
 });
+
+/**
+ * Dashboard Routes
+*/
+// app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 /**
  * API Routes - Auth

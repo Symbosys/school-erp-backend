@@ -59,7 +59,8 @@ export const parentLogin = asyncHandler(async (req: Request, res: Response) => {
 
   return SuccessResponse(res, "Login successful", { 
     parent: parentData,
-    token 
+    token,
+    role: "parent"
   });
 });
 

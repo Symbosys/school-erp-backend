@@ -62,7 +62,8 @@ export const studentLogin = asyncHandler(async (req: Request, res: Response) => 
 
   return SuccessResponse(res, "Login successful", { 
     student: studentData,
-    token 
+    token,
+    role: "student"
   });
 });
 

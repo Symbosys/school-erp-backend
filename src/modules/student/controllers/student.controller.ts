@@ -147,9 +147,11 @@ export const onboardStudent = asyncHandler(async (req: Request, res: Response) =
  */
 export const getStudentsBySchool = asyncHandler(async (req: Request, res: Response) => {
   const { schoolId } = req.params;
-  const { isActive, status, search, classId, sectionId, academicYearId } = req.query;
+  const { page = 1, limit = 10, isActive, status, search, classId, sectionId, academicYearId } = req.query;
 
   const where: any = { schoolId };
+
+  const skip = (Number(page) - 1) * Number(limit);
 
   if (isActive !== undefined) {
     where.isActive = isActive === "true";
@@ -183,9 +185,12 @@ export const getStudentsBySchool = asyncHandler(async (req: Request, res: Respon
     };
   }
 
-  const students = await prisma.student.findMany({
+  const [students, totalStudents] = await Promise.all([
+    prisma.student.findMany({
     where,
     orderBy: { firstName: "asc" },
+    skip,
+    take: Number(limit),
     include: {
       enrollments: {
         orderBy: { enrollmentDate: "desc" },
@@ -198,9 +203,20 @@ export const getStudentsBySchool = asyncHandler(async (req: Request, res: Respon
         }
       }
     }
-  });
+  }),
+    prisma.student.count({ where })
+  ]);
 
-  return SuccessResponse(res, "Students retrieved successfully", students);
+  return SuccessResponse(res, "Students retrieved successfully", {
+    students,
+    pagination: {
+      total: totalStudents,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalStudents / Number(limit)),
+      limit: Number(limit),
+      count: students.length
+    }
+  });
 });
 
 /**
