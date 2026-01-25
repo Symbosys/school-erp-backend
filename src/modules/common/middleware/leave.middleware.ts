@@ -18,15 +18,16 @@ export const protectLeaveRoutes = async (
 ) => {
   try {
     const authHeader = req.headers.authorization;
+    let token = "";
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      // Check for cookie as well?
-      // const token = req.cookies.token;
-      // if (!token) ...
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.substring(7);
+    } else if (req.cookies && (req.cookies.school_token || req.cookies.token)) {
+      token = req.cookies.school_token || req.cookies.token;
+    } else {
       throw new ErrorResponse("Not authenticated", statusCode.Unauthorized);
     }
 
-    const token = authHeader.substring(7); // Remove 'Bearer ' prefix
     const decoded = verifyToken(token);
 
     if (decoded instanceof Error) {
