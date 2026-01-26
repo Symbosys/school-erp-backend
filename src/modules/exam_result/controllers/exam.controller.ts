@@ -156,6 +156,53 @@ export const updateExam = asyncHandler(async (req: Request, res: Response) => {
   if (validatedData.startDate) updateData.startDate = new Date(validatedData.startDate);
   if (validatedData.endDate) updateData.endDate = new Date(validatedData.endDate);
 
+  // If subjects are provided, handle synchronization
+  if (validatedData.subjects) {
+    // 1. Delete subjects not in the new list
+    const subjectIds = validatedData.subjects.map(s => s.subjectId);
+
+    // Check if we can delete removed subjects (optional safety check, or let DB constraints handle it)
+    await prisma.examSubject.deleteMany({
+      where: {
+        examId: id as string,
+        subjectId: { notIn: subjectIds }
+      }
+    });
+
+    // 2. Upsert subjects
+    for (const subject of validatedData.subjects) {
+      await prisma.examSubject.upsert({
+        where: {
+          examId_subjectId: {
+            examId: id as string,
+            subjectId: subject.subjectId
+          }
+        },
+        create: {
+          examId: id as string,
+          subjectId: subject.subjectId,
+          examDate: subject.examDate ? new Date(subject.examDate) : null,
+          startTime: subject.startTime,
+          endTime: subject.endTime,
+          maxMarks: subject.maxMarks ?? 100,
+          passingMarks: subject.passingMarks ?? 33,
+          isOptional: subject.isOptional ?? false
+        },
+        update: {
+          examDate: subject.examDate ? new Date(subject.examDate) : null,
+          startTime: subject.startTime,
+          endTime: subject.endTime,
+          maxMarks: subject.maxMarks ?? 100,
+          passingMarks: subject.passingMarks ?? 33,
+          isOptional: subject.isOptional ?? false
+        }
+      });
+    }
+  }
+
+  // Remove subjects from updateData to avoid Prisma error (since it's not a direct field)
+  delete updateData.subjects;
+
   const exam = await prisma.exam.update({
     where: { id: id as string },
     data: updateData,
@@ -207,6 +254,20 @@ export const addExamSubject = asyncHandler(async (req: Request, res: Response) =
 
   const subject = await prisma.subject.findUnique({ where: { id: validatedData.subjectId } });
   if (!subject) throw new ErrorResponse("Subject not found", statusCode.Not_Found);
+
+  // Check unique constraint
+  const existingSubject = await prisma.examSubject.findUnique({
+    where: {
+      examId_subjectId: {
+        examId: validatedData.examId,
+        subjectId: validatedData.subjectId
+      }
+    }
+  });
+
+  if (existingSubject) {
+    throw new ErrorResponse("This subject is already added to the exam", statusCode.Conflict);
+  }
 
   const examSubject = await prisma.examSubject.create({
     data: {

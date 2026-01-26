@@ -12,14 +12,14 @@ import {
 /**
  * Helper: Generate monthly fee details for a student fee
  */
-const generateMonthlyDetails = async (
+export const generateMonthlyDetails = async (
   studentFeeId: string,
   feeStructure: any,
   academicYear: any
 ) => {
   const startDate = new Date(academicYear.startDate);
   const endDate = new Date(academicYear.endDate);
-  
+
   // Calculate monthly items total
   let monthlyTotal = 0;
   for (const item of feeStructure.items) {
@@ -30,7 +30,7 @@ const generateMonthlyDetails = async (
 
   const details = [];
   let currentDate = new Date(startDate);
-  
+
   while (currentDate <= endDate) {
     const month = currentDate.getMonth() + 1; // 1-12
     const year = currentDate.getFullYear();
@@ -311,11 +311,11 @@ export const getFeesByStudent = asyncHandler(async (req: Request, res: Response)
   const { status, academicYearId } = req.query;
 
   const where: any = { studentId: studentId as string };
-  
+
   if (status && status !== "ALL") {
     where.status = status as string;
   }
-  
+
   if (academicYearId) {
     where.academicYearId = academicYearId as string;
   }
@@ -328,7 +328,7 @@ export const getFeesByStudent = asyncHandler(async (req: Request, res: Response)
       details: {
         orderBy: [{ year: "asc" }, { month: "asc" }],
         include: {
-            payments: { orderBy: { paymentDate: "desc" } }
+          payments: { orderBy: { paymentDate: "desc" } }
         }
       }
     },

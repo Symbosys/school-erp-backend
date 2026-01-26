@@ -53,6 +53,7 @@ export const updateExamSchema = z.object({
   passingPercentage: z.number().min(0).max(100).optional(),
   description: z.string().optional(),
   isActive: z.boolean().optional(),
+  subjects: z.array(examSubjectItemSchema).optional(),
 });
 
 /**

@@ -56,6 +56,8 @@ export const generateResults = asyncHandler(async (req: Request, res: Response) 
     let totalMarks = 0;
     let maxMarks = 0;
     let subjectCount = 0;
+    let hasFailedSubject = false;
+    let hasAbsent = false;
 
     for (const subject of exam.examSubjects) {
       const mark = subject.studentMarks.find(m => m.studentId === studentId);
@@ -63,6 +65,16 @@ export const generateResults = asyncHandler(async (req: Request, res: Response) 
         totalMarks += Number(mark.marksObtained);
         maxMarks += subject.maxMarks;
         subjectCount++;
+
+        // Check if student is absent
+        if (mark.isAbsent) {
+          hasAbsent = true;
+        }
+
+        // Check if student failed this subject (marks < passing marks)
+        if (Number(mark.marksObtained) < Number(subject.passingMarks)) {
+          hasFailedSubject = true;
+        }
       }
     }
 
@@ -70,7 +82,12 @@ export const generateResults = asyncHandler(async (req: Request, res: Response) 
 
     const percentage = (totalMarks / maxMarks) * 100;
     const passingPercentage = Number(exam.passingPercentage);
-    const status = percentage >= passingPercentage ? "PASS" : "FAIL";
+
+    // Student fails if: failed any subject OR absent OR overall percentage below passing
+    let status: "PASS" | "FAIL" = "PASS";
+    if (hasAbsent || hasFailedSubject || percentage < passingPercentage) {
+      status = "FAIL";
+    }
 
     // Get grade
     const gradeInfo = await getGradeFromPercentage(exam.schoolId, percentage);

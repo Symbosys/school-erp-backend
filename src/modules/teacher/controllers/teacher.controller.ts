@@ -8,6 +8,7 @@ import {
   onboardTeacherSchema,
   updateTeacherSchema,
 } from "../validation/teacher.validation";
+import bcrypt from "bcryptjs";
 
 /**
  * @route   POST /api/teacher/onboard
@@ -252,6 +253,11 @@ export const updateTeacher = asyncHandler(async (req: Request, res: Response) =>
   if (validatedData.status) updateData.status = validatedData.status;
   if (validatedData.isActive !== undefined) updateData.isActive = validatedData.isActive;
   if (profilePictureData) updateData.profilePicture = profilePictureData;
+  if(validatedData.password) {
+    // hash password
+    const hashedPassword = await bcrypt.hash(validatedData.password, 10);
+    updateData.password = hashedPassword;
+  }
 
   const updatedTeacher = await prisma.teacher.update({
     where: { id: id as string },

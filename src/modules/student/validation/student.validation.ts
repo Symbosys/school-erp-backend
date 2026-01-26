@@ -25,7 +25,7 @@ export const onboardStudentSchema = z.object({
   medicalInfo: z.string().optional(),
   status: z.enum(["ACTIVE", "INACTIVE", "TRANSFERRED", "GRADUATED", "DROPPED_OUT"]).optional(),
   isActive: z.boolean().optional(),
-  
+
   // Optional initial enrollment details
   // Optional initial enrollment details
   enrollment: z.preprocess((val) => {
@@ -45,6 +45,40 @@ export const onboardStudentSchema = z.object({
     }).optional(),
     rollNumber: z.string().max(50, "Roll number is too long").optional(),
   }).optional()),
+
+  // Optional parent details (Link existing or Create new)
+  parent: z.preprocess((val) => {
+    if (typeof val === 'string') {
+      try {
+        return JSON.parse(val);
+      } catch (e) {
+        return val;
+      }
+    }
+    return val;
+  }, z.object({
+    mode: z.enum(["EXISTING", "NEW"]),
+    relationship: z.string().min(1, "Relationship is required"),
+    isPrimary: z.boolean().default(false),
+
+    // Existing
+    existingParentId: z.string().uuid().optional(),
+
+    // New
+    firstName: z.string().min(1, "Parent First Name is required").max(100).optional(),
+    lastName: z.string().min(1, "Parent Last Name is required").max(100).optional(),
+    email: z.string().email("Invalid parent email").max(255).optional(),
+    phone: z.string().min(1, "Parent Phone is required").max(20).optional(),
+    occupation: z.string().max(100).optional(),
+    address: z.string().optional(),
+    city: z.string().max(100).optional(),
+    state: z.string().max(100).optional(),
+    pincode: z.string().max(10).optional(),
+  }).refine((data) => {
+    if (data.mode === "EXISTING" && !data.existingParentId) return false;
+    if (data.mode === "NEW" && (!data.firstName || !data.lastName || !data.email || !data.phone)) return false;
+    return true;
+  }, { message: "Missing required parent fields for selected mode" }).optional()),
 });
 
 /**
