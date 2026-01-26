@@ -30,6 +30,7 @@ export const onboardSchoolSchema = z.object({
 export const updateSchoolSchema = z.object({
   name: z.string().min(1, "School name is required").max(255, "School name is too long").optional(),
   email: z.string().email("Invalid email format").max(255, "Email is too long").optional(),
+  password: z.string().min(8, "Password must be at least 8 characters long").optional(),
   phone: z.string().max(20, "Phone number is too long").optional(),
   address: z.string().optional(),
   city: z.string().max(100, "City name is too long").optional(),

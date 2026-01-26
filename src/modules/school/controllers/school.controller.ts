@@ -10,6 +10,7 @@ import {
   updateSubscriptionSchema,
   toggleStatusSchema,
 } from "../validation/school.validation";
+import bcrypt from "bcryptjs";
 
 /**
  * @route   POST /api/school/onboard
@@ -258,6 +259,12 @@ export const updateSchool = asyncHandler(async (req: Request, res: Response) => 
   if (validatedData.maxStudents !== undefined) updateData.maxStudents = validatedData.maxStudents;
   if (validatedData.maxTeachers !== undefined) updateData.maxTeachers = validatedData.maxTeachers;
   if (logoData) updateData.logoUrl = logoData;
+
+  if(validatedData.password){
+    // hash password
+    const hashedPassword = await bcrypt.hash(validatedData.password, 10);
+    updateData.password = hashedPassword;
+  }
 
   // Update school
   const updatedSchool = await prisma.school.update({

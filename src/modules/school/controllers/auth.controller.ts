@@ -51,7 +51,7 @@ export const schoolLogin = asyncHandler(async (req: Request, res: Response) => {
     throw new ErrorResponse("Invalid email or password", statusCode.Unauthorized);
   }
 
-  const token = generateToken({ schoolId: school.id, email: school.email });
+  const token = generateToken({ id: school.id, email: school.email });
 
   const { password: _, ...schoolData } = school;
 
@@ -95,7 +95,7 @@ export const setPassword = asyncHandler(async (req: Request, res: Response) => {
  * @access  Private
  */
 export const getSchoolProfile = asyncHandler(async (req: Request, res: Response) => {
-  const schoolId = (req as any).school?.schoolId;
+  const schoolId = (req as any).school?.id;
 
   if (!schoolId) {
     throw new ErrorResponse("Not authenticated", statusCode.Unauthorized);
