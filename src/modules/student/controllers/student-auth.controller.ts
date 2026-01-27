@@ -13,24 +13,25 @@ import { generateToken } from "../../../utils/jwt.util";
  * @access  Public
  */
 export const studentLogin = asyncHandler(async (req: Request, res: Response) => {
+  console.log(req.body);
   const validatedData = studentLoginSchema.parse(req.body);
 
   const student = await prisma.student.findFirst({
     where: { 
       email: validatedData.email,
-      isActive: true
+      isActive: true,
     },
-    select: {
-      id: true,
-      schoolId: true,
-      admissionNumber: true,
-      firstName: true,
-      lastName: true,
-      email: true,
-      phone: true,
-      profilePicture: true,
-      password: true,
-      status: true,
+    include: {
+      enrollments: {
+        include: {
+          academicYear: true,
+          section: {
+            include: {
+              class: true,
+            }
+          },
+        }
+      }
     }
   });
 

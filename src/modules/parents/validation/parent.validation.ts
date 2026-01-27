@@ -24,6 +24,7 @@ export const updateParentSchema = z.object({
   firstName: z.string().max(100).optional(),
   lastName: z.string().max(100).optional(),
   email: z.string().email().max(255).optional(),
+  password: z.string().optional(),
   phone: z.string().max(20).optional(),
   occupation: z.string().max(100).optional(),
   address: z.string().optional(),

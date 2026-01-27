@@ -104,6 +104,11 @@ export const getExamsBySchool = asyncHandler(async (req: Request, res: Response)
     include: {
       class: true,
       academicYear: true,
+      examSubjects: {
+        include: {
+          subject: true
+        }
+      },
       _count: { select: { examSubjects: true, studentResults: true } }
     },
     orderBy: [{ startDate: "desc" }]

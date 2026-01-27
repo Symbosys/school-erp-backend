@@ -73,6 +73,8 @@ export const createNotice = asyncHandler(async (req: Request, res: Response) => 
 export const getNoticesBySchool = asyncHandler(async (req: Request, res: Response) => {
   const { schoolId } = req.params;
   const { 
+    page = 1,
+    limit = 10,
     type, 
     priority, 
     forStudents, 
@@ -100,7 +102,18 @@ export const getNoticesBySchool = asyncHandler(async (req: Request, res: Respons
     orderBy: { createdAt: "desc" }
   });
 
-  return SuccessResponse(res, "Notices retrieved successfully", notices);
+  const totalNotice = await prisma.notice.count({where})
+
+  return SuccessResponse(res, "Notices retrieved successfully", {
+    notices,
+    pagination: {
+      total: totalNotice,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalNotice / Number(limit)),
+      limit: Number(limit),
+      count: notices.length,
+    }
+  });
 });
 
 /**

@@ -8,6 +8,7 @@ import {
   createParentSchema,
   updateParentSchema,
 } from "../validation/parent.validation";
+import bcrypt from "bcryptjs";
 
 /**
  * @route   POST /api/parents
@@ -151,11 +152,18 @@ export const updateParent = asyncHandler(async (req: Request, res: Response) => 
     }
   }
 
+  let password = existingParent.password;
+  if(validatedData.password) {
+    // hash password
+    password = await bcrypt.hash(validatedData.password, 10);
+  }
+
   const parent = await prisma.parent.update({
     where: { id: id as string },
     data: {
       ...validatedData,
-      profilePicture: profilePictureUrl
+      profilePicture: profilePictureUrl,
+      password
     }
   });
 

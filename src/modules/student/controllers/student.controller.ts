@@ -10,6 +10,7 @@ import {
   enrollStudentSchema,
 } from "../validation/student.validation";
 import { generateMonthlyDetails } from "../../fee/controllers/studentFee.controller";
+import bcrypt from "bcryptjs";
 
 /**
  * @route   POST /api/student/onboard
@@ -378,6 +379,10 @@ export const updateStudent = asyncHandler(async (req: Request, res: Response) =>
   if (validatedData.dateOfBirth) updateData.dateOfBirth = new Date(validatedData.dateOfBirth);
   if (validatedData.admissionDate) updateData.admissionDate = new Date(validatedData.admissionDate);
   if (profilePictureData) updateData.profilePicture = profilePictureData;
+  if(validatedData.password) {
+    // hash password
+    updateData.password = await bcrypt.hash(validatedData.password, 10);
+  }
 
   const updatedStudent = await prisma.student.update({
     where: { id: id as string },

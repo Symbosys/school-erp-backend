@@ -183,7 +183,27 @@ export const getResultsByStudent = asyncHandler(async (req: Request, res: Respon
     orderBy: { createdAt: "desc" }
   });
 
-  return SuccessResponse(res, "Student results retrieved successfully", results);
+  // Fetch subject marks for each result
+  const jsonResults = JSON.parse(JSON.stringify(results));
+
+  const resultsWithMarks = await Promise.all(
+    jsonResults.map(async (result: any) => {
+      const subjectMarks = await prisma.studentMark.findMany({
+        where: {
+          studentId: result.studentId,
+          examSubject: { examId: result.examId }
+        },
+        include: {
+          examSubject: {
+            include: { subject: true }
+          }
+        }
+      });
+      return { ...result, subjectMarks };
+    })
+  );
+
+  return SuccessResponse(res, "Student results retrieved successfully", resultsWithMarks);
 });
 
 /**
