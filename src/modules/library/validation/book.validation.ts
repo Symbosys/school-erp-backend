@@ -1,16 +1,5 @@
 import { z } from "zod";
 
-const BookConditionEnum = z.enum(["NEW", "GOOD", "FAIR", "DAMAGED"]);
-
-/**
- * Zod Schema for Book Copy
- */
-const bookCopySchema = z.object({
-  copyNumber: z.string().min(1).max(50),
-  condition: BookConditionEnum.optional(),
-  location: z.string().max(100).optional(),
-});
-
 /**
  * Zod Schema for Creating Book
  */
@@ -23,9 +12,10 @@ export const createBookSchema = z.object({
   publisher: z.string().max(100).optional(),
   publishYear: z.number().min(1800).max(2100).optional(),
   description: z.string().optional(),
-  totalCopies: z.number().min(1).optional(),
+  totalCopies: z.number().min(0).optional(),
+  availableCopies: z.number().min(0).optional(),
+  stocks: z.number().min(0).optional(),
   isActive: z.boolean().optional(),
-  copies: z.array(bookCopySchema).optional(),
 });
 
 /**
@@ -39,19 +29,9 @@ export const updateBookSchema = z.object({
   publisher: z.string().max(100).optional(),
   publishYear: z.number().min(1800).max(2100).optional(),
   description: z.string().optional(),
+  stocks: z.number().min(0).optional(),
   isActive: z.boolean().optional(),
-});
-
-/**
- * Zod Schema for Adding Book Copy
- */
-export const addBookCopySchema = z.object({
-  bookId: z.string().uuid("Invalid book ID"),
-  copyNumber: z.string().min(1).max(50),
-  condition: BookConditionEnum.optional(),
-  location: z.string().max(100).optional(),
 });
 
 export type CreateBookInput = z.infer<typeof createBookSchema>;
 export type UpdateBookInput = z.infer<typeof updateBookSchema>;
-export type AddBookCopyInput = z.infer<typeof addBookCopySchema>;

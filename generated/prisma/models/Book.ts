@@ -30,12 +30,14 @@ export type BookAvgAggregateOutputType = {
   publishYear: number | null
   totalCopies: number | null
   availableCopies: number | null
+  stocks: number | null
 }
 
 export type BookSumAggregateOutputType = {
   publishYear: number | null
   totalCopies: number | null
   availableCopies: number | null
+  stocks: number | null
 }
 
 export type BookMinAggregateOutputType = {
@@ -50,6 +52,7 @@ export type BookMinAggregateOutputType = {
   description: string | null
   totalCopies: number | null
   availableCopies: number | null
+  stocks: number | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -67,6 +70,7 @@ export type BookMaxAggregateOutputType = {
   description: string | null
   totalCopies: number | null
   availableCopies: number | null
+  stocks: number | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -85,6 +89,7 @@ export type BookCountAggregateOutputType = {
   coverImage: number
   totalCopies: number
   availableCopies: number
+  stocks: number
   isActive: number
   createdAt: number
   updatedAt: number
@@ -96,12 +101,14 @@ export type BookAvgAggregateInputType = {
   publishYear?: true
   totalCopies?: true
   availableCopies?: true
+  stocks?: true
 }
 
 export type BookSumAggregateInputType = {
   publishYear?: true
   totalCopies?: true
   availableCopies?: true
+  stocks?: true
 }
 
 export type BookMinAggregateInputType = {
@@ -116,6 +123,7 @@ export type BookMinAggregateInputType = {
   description?: true
   totalCopies?: true
   availableCopies?: true
+  stocks?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -133,6 +141,7 @@ export type BookMaxAggregateInputType = {
   description?: true
   totalCopies?: true
   availableCopies?: true
+  stocks?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -151,6 +160,7 @@ export type BookCountAggregateInputType = {
   coverImage?: true
   totalCopies?: true
   availableCopies?: true
+  stocks?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -256,6 +266,7 @@ export type BookGroupByOutputType = {
   coverImage: runtime.JsonValue | null
   totalCopies: number
   availableCopies: number
+  stocks: number | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -297,12 +308,14 @@ export type BookWhereInput = {
   coverImage?: Prisma.JsonNullableFilter<"Book">
   totalCopies?: Prisma.IntFilter<"Book"> | number
   availableCopies?: Prisma.IntFilter<"Book"> | number
+  stocks?: Prisma.IntNullableFilter<"Book"> | number | null
   isActive?: Prisma.BoolFilter<"Book"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Book"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Book"> | Date | string
   school?: Prisma.XOR<Prisma.SchoolScalarRelationFilter, Prisma.SchoolWhereInput>
   category?: Prisma.XOR<Prisma.BookCategoryScalarRelationFilter, Prisma.BookCategoryWhereInput>
-  copies?: Prisma.BookCopyListRelationFilter
+  fines?: Prisma.LibraryFineListRelationFilter
+  borrowedBooks?: Prisma.BookBorrowedListRelationFilter
 }
 
 export type BookOrderByWithRelationInput = {
@@ -318,12 +331,14 @@ export type BookOrderByWithRelationInput = {
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   school?: Prisma.SchoolOrderByWithRelationInput
   category?: Prisma.BookCategoryOrderByWithRelationInput
-  copies?: Prisma.BookCopyOrderByRelationAggregateInput
+  fines?: Prisma.LibraryFineOrderByRelationAggregateInput
+  borrowedBooks?: Prisma.BookBorrowedOrderByRelationAggregateInput
   _relevance?: Prisma.BookOrderByRelevanceInput
 }
 
@@ -343,12 +358,14 @@ export type BookWhereUniqueInput = Prisma.AtLeast<{
   coverImage?: Prisma.JsonNullableFilter<"Book">
   totalCopies?: Prisma.IntFilter<"Book"> | number
   availableCopies?: Prisma.IntFilter<"Book"> | number
+  stocks?: Prisma.IntNullableFilter<"Book"> | number | null
   isActive?: Prisma.BoolFilter<"Book"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Book"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Book"> | Date | string
   school?: Prisma.XOR<Prisma.SchoolScalarRelationFilter, Prisma.SchoolWhereInput>
   category?: Prisma.XOR<Prisma.BookCategoryScalarRelationFilter, Prisma.BookCategoryWhereInput>
-  copies?: Prisma.BookCopyListRelationFilter
+  fines?: Prisma.LibraryFineListRelationFilter
+  borrowedBooks?: Prisma.BookBorrowedListRelationFilter
 }, "id">
 
 export type BookOrderByWithAggregationInput = {
@@ -364,6 +381,7 @@ export type BookOrderByWithAggregationInput = {
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -390,6 +408,7 @@ export type BookScalarWhereWithAggregatesInput = {
   coverImage?: Prisma.JsonNullableWithAggregatesFilter<"Book">
   totalCopies?: Prisma.IntWithAggregatesFilter<"Book"> | number
   availableCopies?: Prisma.IntWithAggregatesFilter<"Book"> | number
+  stocks?: Prisma.IntNullableWithAggregatesFilter<"Book"> | number | null
   isActive?: Prisma.BoolWithAggregatesFilter<"Book"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Book"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Book"> | Date | string
@@ -406,12 +425,14 @@ export type BookCreateInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   school: Prisma.SchoolCreateNestedOneWithoutBooksInput
   category: Prisma.BookCategoryCreateNestedOneWithoutBooksInput
-  copies?: Prisma.BookCopyCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedCreateNestedManyWithoutBookInput
 }
 
 export type BookUncheckedCreateInput = {
@@ -427,10 +448,12 @@ export type BookUncheckedCreateInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  copies?: Prisma.BookCopyUncheckedCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutBookInput
 }
 
 export type BookUpdateInput = {
@@ -444,12 +467,14 @@ export type BookUpdateInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   school?: Prisma.SchoolUpdateOneRequiredWithoutBooksNestedInput
   category?: Prisma.BookCategoryUpdateOneRequiredWithoutBooksNestedInput
-  copies?: Prisma.BookCopyUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUpdateManyWithoutBookNestedInput
 }
 
 export type BookUncheckedUpdateInput = {
@@ -465,10 +490,12 @@ export type BookUncheckedUpdateInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  copies?: Prisma.BookCopyUncheckedUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUncheckedUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedUpdateManyWithoutBookNestedInput
 }
 
 export type BookCreateManyInput = {
@@ -484,6 +511,7 @@ export type BookCreateManyInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -500,6 +528,7 @@ export type BookUpdateManyMutationInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -518,6 +547,7 @@ export type BookUncheckedUpdateManyInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -552,6 +582,7 @@ export type BookCountOrderByAggregateInput = {
   coverImage?: Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -561,6 +592,7 @@ export type BookAvgOrderByAggregateInput = {
   publishYear?: Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrder
 }
 
 export type BookMaxOrderByAggregateInput = {
@@ -575,6 +607,7 @@ export type BookMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -592,6 +625,7 @@ export type BookMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -601,11 +635,17 @@ export type BookSumOrderByAggregateInput = {
   publishYear?: Prisma.SortOrder
   totalCopies?: Prisma.SortOrder
   availableCopies?: Prisma.SortOrder
+  stocks?: Prisma.SortOrder
 }
 
 export type BookScalarRelationFilter = {
   is?: Prisma.BookWhereInput
   isNot?: Prisma.BookWhereInput
+}
+
+export type BookNullableScalarRelationFilter = {
+  is?: Prisma.BookWhereInput | null
+  isNot?: Prisma.BookWhereInput | null
 }
 
 export type BookCreateNestedManyWithoutSchoolInput = {
@@ -692,18 +732,34 @@ export type BookUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.BookScalarWhereInput | Prisma.BookScalarWhereInput[]
 }
 
-export type BookCreateNestedOneWithoutCopiesInput = {
-  create?: Prisma.XOR<Prisma.BookCreateWithoutCopiesInput, Prisma.BookUncheckedCreateWithoutCopiesInput>
-  connectOrCreate?: Prisma.BookCreateOrConnectWithoutCopiesInput
+export type BookCreateNestedOneWithoutBorrowedBooksInput = {
+  create?: Prisma.XOR<Prisma.BookCreateWithoutBorrowedBooksInput, Prisma.BookUncheckedCreateWithoutBorrowedBooksInput>
+  connectOrCreate?: Prisma.BookCreateOrConnectWithoutBorrowedBooksInput
   connect?: Prisma.BookWhereUniqueInput
 }
 
-export type BookUpdateOneRequiredWithoutCopiesNestedInput = {
-  create?: Prisma.XOR<Prisma.BookCreateWithoutCopiesInput, Prisma.BookUncheckedCreateWithoutCopiesInput>
-  connectOrCreate?: Prisma.BookCreateOrConnectWithoutCopiesInput
-  upsert?: Prisma.BookUpsertWithoutCopiesInput
+export type BookUpdateOneRequiredWithoutBorrowedBooksNestedInput = {
+  create?: Prisma.XOR<Prisma.BookCreateWithoutBorrowedBooksInput, Prisma.BookUncheckedCreateWithoutBorrowedBooksInput>
+  connectOrCreate?: Prisma.BookCreateOrConnectWithoutBorrowedBooksInput
+  upsert?: Prisma.BookUpsertWithoutBorrowedBooksInput
   connect?: Prisma.BookWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BookUpdateToOneWithWhereWithoutCopiesInput, Prisma.BookUpdateWithoutCopiesInput>, Prisma.BookUncheckedUpdateWithoutCopiesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookUpdateToOneWithWhereWithoutBorrowedBooksInput, Prisma.BookUpdateWithoutBorrowedBooksInput>, Prisma.BookUncheckedUpdateWithoutBorrowedBooksInput>
+}
+
+export type BookCreateNestedOneWithoutFinesInput = {
+  create?: Prisma.XOR<Prisma.BookCreateWithoutFinesInput, Prisma.BookUncheckedCreateWithoutFinesInput>
+  connectOrCreate?: Prisma.BookCreateOrConnectWithoutFinesInput
+  connect?: Prisma.BookWhereUniqueInput
+}
+
+export type BookUpdateOneWithoutFinesNestedInput = {
+  create?: Prisma.XOR<Prisma.BookCreateWithoutFinesInput, Prisma.BookUncheckedCreateWithoutFinesInput>
+  connectOrCreate?: Prisma.BookCreateOrConnectWithoutFinesInput
+  upsert?: Prisma.BookUpsertWithoutFinesInput
+  disconnect?: Prisma.BookWhereInput | boolean
+  delete?: Prisma.BookWhereInput | boolean
+  connect?: Prisma.BookWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookUpdateToOneWithWhereWithoutFinesInput, Prisma.BookUpdateWithoutFinesInput>, Prisma.BookUncheckedUpdateWithoutFinesInput>
 }
 
 export type BookCreateWithoutSchoolInput = {
@@ -717,11 +773,13 @@ export type BookCreateWithoutSchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   category: Prisma.BookCategoryCreateNestedOneWithoutBooksInput
-  copies?: Prisma.BookCopyCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedCreateNestedManyWithoutBookInput
 }
 
 export type BookUncheckedCreateWithoutSchoolInput = {
@@ -736,10 +794,12 @@ export type BookUncheckedCreateWithoutSchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  copies?: Prisma.BookCopyUncheckedCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutBookInput
 }
 
 export type BookCreateOrConnectWithoutSchoolInput = {
@@ -784,6 +844,7 @@ export type BookScalarWhereInput = {
   coverImage?: Prisma.JsonNullableFilter<"Book">
   totalCopies?: Prisma.IntFilter<"Book"> | number
   availableCopies?: Prisma.IntFilter<"Book"> | number
+  stocks?: Prisma.IntNullableFilter<"Book"> | number | null
   isActive?: Prisma.BoolFilter<"Book"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Book"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Book"> | Date | string
@@ -800,11 +861,13 @@ export type BookCreateWithoutCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   school: Prisma.SchoolCreateNestedOneWithoutBooksInput
-  copies?: Prisma.BookCopyCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedCreateNestedManyWithoutBookInput
 }
 
 export type BookUncheckedCreateWithoutCategoryInput = {
@@ -819,10 +882,12 @@ export type BookUncheckedCreateWithoutCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  copies?: Prisma.BookCopyUncheckedCreateNestedManyWithoutBookInput
+  fines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutBookInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutBookInput
 }
 
 export type BookCreateOrConnectWithoutCategoryInput = {
@@ -851,7 +916,7 @@ export type BookUpdateManyWithWhereWithoutCategoryInput = {
   data: Prisma.XOR<Prisma.BookUpdateManyMutationInput, Prisma.BookUncheckedUpdateManyWithoutCategoryInput>
 }
 
-export type BookCreateWithoutCopiesInput = {
+export type BookCreateWithoutBorrowedBooksInput = {
   id?: string
   title: string
   author: string
@@ -862,14 +927,16 @@ export type BookCreateWithoutCopiesInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   school: Prisma.SchoolCreateNestedOneWithoutBooksInput
   category: Prisma.BookCategoryCreateNestedOneWithoutBooksInput
+  fines?: Prisma.LibraryFineCreateNestedManyWithoutBookInput
 }
 
-export type BookUncheckedCreateWithoutCopiesInput = {
+export type BookUncheckedCreateWithoutBorrowedBooksInput = {
   id?: string
   schoolId: string
   categoryId: string
@@ -882,28 +949,30 @@ export type BookUncheckedCreateWithoutCopiesInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  fines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutBookInput
 }
 
-export type BookCreateOrConnectWithoutCopiesInput = {
+export type BookCreateOrConnectWithoutBorrowedBooksInput = {
   where: Prisma.BookWhereUniqueInput
-  create: Prisma.XOR<Prisma.BookCreateWithoutCopiesInput, Prisma.BookUncheckedCreateWithoutCopiesInput>
+  create: Prisma.XOR<Prisma.BookCreateWithoutBorrowedBooksInput, Prisma.BookUncheckedCreateWithoutBorrowedBooksInput>
 }
 
-export type BookUpsertWithoutCopiesInput = {
-  update: Prisma.XOR<Prisma.BookUpdateWithoutCopiesInput, Prisma.BookUncheckedUpdateWithoutCopiesInput>
-  create: Prisma.XOR<Prisma.BookCreateWithoutCopiesInput, Prisma.BookUncheckedCreateWithoutCopiesInput>
+export type BookUpsertWithoutBorrowedBooksInput = {
+  update: Prisma.XOR<Prisma.BookUpdateWithoutBorrowedBooksInput, Prisma.BookUncheckedUpdateWithoutBorrowedBooksInput>
+  create: Prisma.XOR<Prisma.BookCreateWithoutBorrowedBooksInput, Prisma.BookUncheckedCreateWithoutBorrowedBooksInput>
   where?: Prisma.BookWhereInput
 }
 
-export type BookUpdateToOneWithWhereWithoutCopiesInput = {
+export type BookUpdateToOneWithWhereWithoutBorrowedBooksInput = {
   where?: Prisma.BookWhereInput
-  data: Prisma.XOR<Prisma.BookUpdateWithoutCopiesInput, Prisma.BookUncheckedUpdateWithoutCopiesInput>
+  data: Prisma.XOR<Prisma.BookUpdateWithoutBorrowedBooksInput, Prisma.BookUncheckedUpdateWithoutBorrowedBooksInput>
 }
 
-export type BookUpdateWithoutCopiesInput = {
+export type BookUpdateWithoutBorrowedBooksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   author?: Prisma.StringFieldUpdateOperationsInput | string
@@ -914,14 +983,16 @@ export type BookUpdateWithoutCopiesInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   school?: Prisma.SchoolUpdateOneRequiredWithoutBooksNestedInput
   category?: Prisma.BookCategoryUpdateOneRequiredWithoutBooksNestedInput
+  fines?: Prisma.LibraryFineUpdateManyWithoutBookNestedInput
 }
 
-export type BookUncheckedUpdateWithoutCopiesInput = {
+export type BookUncheckedUpdateWithoutBorrowedBooksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -934,9 +1005,107 @@ export type BookUncheckedUpdateWithoutCopiesInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fines?: Prisma.LibraryFineUncheckedUpdateManyWithoutBookNestedInput
+}
+
+export type BookCreateWithoutFinesInput = {
+  id?: string
+  title: string
+  author: string
+  isbn?: string | null
+  publisher?: string | null
+  publishYear?: number | null
+  description?: string | null
+  coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  totalCopies?: number
+  availableCopies?: number
+  stocks?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  school: Prisma.SchoolCreateNestedOneWithoutBooksInput
+  category: Prisma.BookCategoryCreateNestedOneWithoutBooksInput
+  borrowedBooks?: Prisma.BookBorrowedCreateNestedManyWithoutBookInput
+}
+
+export type BookUncheckedCreateWithoutFinesInput = {
+  id?: string
+  schoolId: string
+  categoryId: string
+  title: string
+  author: string
+  isbn?: string | null
+  publisher?: string | null
+  publishYear?: number | null
+  description?: string | null
+  coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  totalCopies?: number
+  availableCopies?: number
+  stocks?: number | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  borrowedBooks?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutBookInput
+}
+
+export type BookCreateOrConnectWithoutFinesInput = {
+  where: Prisma.BookWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookCreateWithoutFinesInput, Prisma.BookUncheckedCreateWithoutFinesInput>
+}
+
+export type BookUpsertWithoutFinesInput = {
+  update: Prisma.XOR<Prisma.BookUpdateWithoutFinesInput, Prisma.BookUncheckedUpdateWithoutFinesInput>
+  create: Prisma.XOR<Prisma.BookCreateWithoutFinesInput, Prisma.BookUncheckedCreateWithoutFinesInput>
+  where?: Prisma.BookWhereInput
+}
+
+export type BookUpdateToOneWithWhereWithoutFinesInput = {
+  where?: Prisma.BookWhereInput
+  data: Prisma.XOR<Prisma.BookUpdateWithoutFinesInput, Prisma.BookUncheckedUpdateWithoutFinesInput>
+}
+
+export type BookUpdateWithoutFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
+  isbn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  school?: Prisma.SchoolUpdateOneRequiredWithoutBooksNestedInput
+  category?: Prisma.BookCategoryUpdateOneRequiredWithoutBooksNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUpdateManyWithoutBookNestedInput
+}
+
+export type BookUncheckedUpdateWithoutFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  author?: Prisma.StringFieldUpdateOperationsInput | string
+  isbn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publisher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publishYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  borrowedBooks?: Prisma.BookBorrowedUncheckedUpdateManyWithoutBookNestedInput
 }
 
 export type BookCreateManySchoolInput = {
@@ -951,6 +1120,7 @@ export type BookCreateManySchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -967,11 +1137,13 @@ export type BookUpdateWithoutSchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.BookCategoryUpdateOneRequiredWithoutBooksNestedInput
-  copies?: Prisma.BookCopyUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUpdateManyWithoutBookNestedInput
 }
 
 export type BookUncheckedUpdateWithoutSchoolInput = {
@@ -986,10 +1158,12 @@ export type BookUncheckedUpdateWithoutSchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  copies?: Prisma.BookCopyUncheckedUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUncheckedUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedUpdateManyWithoutBookNestedInput
 }
 
 export type BookUncheckedUpdateManyWithoutSchoolInput = {
@@ -1004,6 +1178,7 @@ export type BookUncheckedUpdateManyWithoutSchoolInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1021,6 +1196,7 @@ export type BookCreateManyCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: number
   availableCopies?: number
+  stocks?: number | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1037,11 +1213,13 @@ export type BookUpdateWithoutCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   school?: Prisma.SchoolUpdateOneRequiredWithoutBooksNestedInput
-  copies?: Prisma.BookCopyUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUpdateManyWithoutBookNestedInput
 }
 
 export type BookUncheckedUpdateWithoutCategoryInput = {
@@ -1056,10 +1234,12 @@ export type BookUncheckedUpdateWithoutCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  copies?: Prisma.BookCopyUncheckedUpdateManyWithoutBookNestedInput
+  fines?: Prisma.LibraryFineUncheckedUpdateManyWithoutBookNestedInput
+  borrowedBooks?: Prisma.BookBorrowedUncheckedUpdateManyWithoutBookNestedInput
 }
 
 export type BookUncheckedUpdateManyWithoutCategoryInput = {
@@ -1074,6 +1254,7 @@ export type BookUncheckedUpdateManyWithoutCategoryInput = {
   coverImage?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   totalCopies?: Prisma.IntFieldUpdateOperationsInput | number
   availableCopies?: Prisma.IntFieldUpdateOperationsInput | number
+  stocks?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1085,11 +1266,13 @@ export type BookUncheckedUpdateManyWithoutCategoryInput = {
  */
 
 export type BookCountOutputType = {
-  copies: number
+  fines: number
+  borrowedBooks: number
 }
 
 export type BookCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  copies?: boolean | BookCountOutputTypeCountCopiesArgs
+  fines?: boolean | BookCountOutputTypeCountFinesArgs
+  borrowedBooks?: boolean | BookCountOutputTypeCountBorrowedBooksArgs
 }
 
 /**
@@ -1105,8 +1288,15 @@ export type BookCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * BookCountOutputType without action
  */
-export type BookCountOutputTypeCountCopiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BookCopyWhereInput
+export type BookCountOutputTypeCountFinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LibraryFineWhereInput
+}
+
+/**
+ * BookCountOutputType without action
+ */
+export type BookCountOutputTypeCountBorrowedBooksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookBorrowedWhereInput
 }
 
 
@@ -1123,12 +1313,14 @@ export type BookSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   coverImage?: boolean
   totalCopies?: boolean
   availableCopies?: boolean
+  stocks?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   school?: boolean | Prisma.SchoolDefaultArgs<ExtArgs>
   category?: boolean | Prisma.BookCategoryDefaultArgs<ExtArgs>
-  copies?: boolean | Prisma.Book$copiesArgs<ExtArgs>
+  fines?: boolean | Prisma.Book$finesArgs<ExtArgs>
+  borrowedBooks?: boolean | Prisma.Book$borrowedBooksArgs<ExtArgs>
   _count?: boolean | Prisma.BookCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["book"]>
 
@@ -1147,16 +1339,18 @@ export type BookSelectScalar = {
   coverImage?: boolean
   totalCopies?: boolean
   availableCopies?: boolean
+  stocks?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "categoryId" | "title" | "author" | "isbn" | "publisher" | "publishYear" | "description" | "coverImage" | "totalCopies" | "availableCopies" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
+export type BookOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "categoryId" | "title" | "author" | "isbn" | "publisher" | "publishYear" | "description" | "coverImage" | "totalCopies" | "availableCopies" | "stocks" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["book"]>
 export type BookInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   school?: boolean | Prisma.SchoolDefaultArgs<ExtArgs>
   category?: boolean | Prisma.BookCategoryDefaultArgs<ExtArgs>
-  copies?: boolean | Prisma.Book$copiesArgs<ExtArgs>
+  fines?: boolean | Prisma.Book$finesArgs<ExtArgs>
+  borrowedBooks?: boolean | Prisma.Book$borrowedBooksArgs<ExtArgs>
   _count?: boolean | Prisma.BookCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1165,7 +1359,8 @@ export type $BookPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     school: Prisma.$SchoolPayload<ExtArgs>
     category: Prisma.$BookCategoryPayload<ExtArgs>
-    copies: Prisma.$BookCopyPayload<ExtArgs>[]
+    fines: Prisma.$LibraryFinePayload<ExtArgs>[]
+    borrowedBooks: Prisma.$BookBorrowedPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1180,6 +1375,7 @@ export type $BookPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     coverImage: runtime.JsonValue | null
     totalCopies: number
     availableCopies: number
+    stocks: number | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1525,7 +1721,8 @@ export interface Prisma__BookClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   school<T extends Prisma.SchoolDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SchoolDefaultArgs<ExtArgs>>): Prisma.Prisma__SchoolClient<runtime.Types.Result.GetResult<Prisma.$SchoolPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.BookCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BookCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__BookCategoryClient<runtime.Types.Result.GetResult<Prisma.$BookCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  copies<T extends Prisma.Book$copiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Book$copiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookCopyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  fines<T extends Prisma.Book$finesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Book$finesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LibraryFinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  borrowedBooks<T extends Prisma.Book$borrowedBooksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Book$borrowedBooksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookBorrowedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1567,6 +1764,7 @@ export interface BookFieldRefs {
   readonly coverImage: Prisma.FieldRef<"Book", 'Json'>
   readonly totalCopies: Prisma.FieldRef<"Book", 'Int'>
   readonly availableCopies: Prisma.FieldRef<"Book", 'Int'>
+  readonly stocks: Prisma.FieldRef<"Book", 'Int'>
   readonly isActive: Prisma.FieldRef<"Book", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Book", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Book", 'DateTime'>
@@ -1913,27 +2111,51 @@ export type BookDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Book.copies
+ * Book.fines
  */
-export type Book$copiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Book$finesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the BookCopy
+   * Select specific fields to fetch from the LibraryFine
    */
-  select?: Prisma.BookCopySelect<ExtArgs> | null
+  select?: Prisma.LibraryFineSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the BookCopy
+   * Omit specific fields from the LibraryFine
    */
-  omit?: Prisma.BookCopyOmit<ExtArgs> | null
+  omit?: Prisma.LibraryFineOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.BookCopyInclude<ExtArgs> | null
-  where?: Prisma.BookCopyWhereInput
-  orderBy?: Prisma.BookCopyOrderByWithRelationInput | Prisma.BookCopyOrderByWithRelationInput[]
-  cursor?: Prisma.BookCopyWhereUniqueInput
+  include?: Prisma.LibraryFineInclude<ExtArgs> | null
+  where?: Prisma.LibraryFineWhereInput
+  orderBy?: Prisma.LibraryFineOrderByWithRelationInput | Prisma.LibraryFineOrderByWithRelationInput[]
+  cursor?: Prisma.LibraryFineWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.BookCopyScalarFieldEnum | Prisma.BookCopyScalarFieldEnum[]
+  distinct?: Prisma.LibraryFineScalarFieldEnum | Prisma.LibraryFineScalarFieldEnum[]
+}
+
+/**
+ * Book.borrowedBooks
+ */
+export type Book$borrowedBooksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BookBorrowed
+   */
+  select?: Prisma.BookBorrowedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BookBorrowed
+   */
+  omit?: Prisma.BookBorrowedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookBorrowedInclude<ExtArgs> | null
+  where?: Prisma.BookBorrowedWhereInput
+  orderBy?: Prisma.BookBorrowedOrderByWithRelationInput | Prisma.BookBorrowedOrderByWithRelationInput[]
+  cursor?: Prisma.BookBorrowedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookBorrowedScalarFieldEnum | Prisma.BookBorrowedScalarFieldEnum[]
 }
 
 /**

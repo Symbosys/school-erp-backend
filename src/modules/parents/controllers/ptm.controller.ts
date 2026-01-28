@@ -10,7 +10,7 @@ import { statusCode } from "../../../types/types";
  * @access  Private (Parent)
  */
 export const getMyPTMs = asyncHandler(async (req: Request, res: Response) => {
-  const parentId = (req as any).parent?.id;
+  const parentId = (req as any).parent?.userId;
   const schoolId = (req as any).parent?.schoolId;
 
   if (!parentId) {
@@ -51,10 +51,10 @@ export const getMyPTMs = asyncHandler(async (req: Request, res: Response) => {
 
   studentLinks.forEach((link: any) => {
     if (link.student && link.student.enrollments) {
-        link.student.enrollments.forEach((enrollment: any) => {
-          if (enrollment.section?.classId) classIds.add(enrollment.section.classId);
-          if (enrollment.sectionId) sectionIds.add(enrollment.sectionId);
-        });
+      link.student.enrollments.forEach((enrollment: any) => {
+        if (enrollment.section?.classId) classIds.add(enrollment.section.classId);
+        if (enrollment.sectionId) sectionIds.add(enrollment.sectionId);
+      });
     }
   });
 
@@ -72,7 +72,7 @@ export const getMyPTMs = asyncHandler(async (req: Request, res: Response) => {
       targets: {
         some: {
           OR: [
-             // Match Class
+            // Match Class
             { classId: { in: Array.from(classIds) } },
             // Match Section
             { sectionId: { in: Array.from(sectionIds) } },
@@ -83,7 +83,7 @@ export const getMyPTMs = asyncHandler(async (req: Request, res: Response) => {
       }
     },
     include: {
-        targets: true // Optional: if we want to show who it was for?
+      targets: true // Optional: if we want to show who it was for?
     },
     orderBy: {
       meetingDate: 'desc'

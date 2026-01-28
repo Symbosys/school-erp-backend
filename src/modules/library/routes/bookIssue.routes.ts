@@ -2,30 +2,32 @@ import { Router } from "express";
 import {
   issueBook,
   returnBook,
-  getIssuesBySchool,
-  getIssuesByStudent,
-  getIssuesByTeacher,
-  getOverdueBooks,
+  getBorrowRecordsBySchool,
+  getBorrowHistoryByStudent,
+  getBorrowHistoryByTeacher,
   createFine,
   payFine,
-  getUnpaidFines,
+  getUnpaidFinesBySchool,
+  getFinesByStudent,
+  getFinesByTeacher,
 } from "../controllers/bookIssue.controller";
 
 const router = Router();
 
-// Issue/Return
+// Borrow/Return
 router.post("/issue", issueBook);
 router.post("/return", returnBook);
 
-// Issue queries
-router.get("/school/:schoolId", getIssuesBySchool);
-router.get("/student/:studentId", getIssuesByStudent);
-router.get("/teacher/:teacherId", getIssuesByTeacher);
-router.get("/overdue/:schoolId", getOverdueBooks);
+// Borrow History Queries
+router.get("/school/:schoolId", getBorrowRecordsBySchool);
+router.get("/student/:studentId", getBorrowHistoryByStudent);
+router.get("/teacher/:teacherId", getBorrowHistoryByTeacher);
 
 // Fines
 router.post("/fine", createFine);
 router.post("/fine/pay", payFine);
-router.get("/fine/unpaid/:schoolId", getUnpaidFines);
+router.get("/fine/unpaid/:schoolId", getUnpaidFinesBySchool);
+router.get("/fine/student/:studentId", getFinesByStudent);
+router.get("/fine/teacher/:teacherId", getFinesByTeacher);
 
 export default router;

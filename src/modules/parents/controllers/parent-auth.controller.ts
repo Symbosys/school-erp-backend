@@ -48,8 +48,8 @@ export const parentLogin = asyncHandler(async (req: Request, res: Response) => {
     throw new ErrorResponse("Invalid email or password", statusCode.Unauthorized);
   }
 
-  const token = generateToken({ 
-    userId: parent.id, 
+  const token = generateToken({
+    userId: parent.id,
     userType: "parent",
     email: parent.email,
     schoolId: parent.schoolId
@@ -57,7 +57,7 @@ export const parentLogin = asyncHandler(async (req: Request, res: Response) => {
 
   const { password: _, ...parentData } = parent;
 
-  return SuccessResponse(res, "Login successful", { 
+  return SuccessResponse(res, "Login successful", {
     parent: parentData,
     token,
     role: "parent"
@@ -115,6 +115,20 @@ export const getParentProfile = asyncHandler(async (req: Request, res: Response)
               email: true,
               profilePicture: true,
               status: true,
+              enrollments: {
+                where: {
+                  isPromoted: false, // Assuming active enrollment
+                },
+                take: 1,
+                include: {
+                  academicYear: true,
+                  section: {
+                    include: {
+                      class: true
+                    }
+                  }
+                }
+              }
             }
           }
         }

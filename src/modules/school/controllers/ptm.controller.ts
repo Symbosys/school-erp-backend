@@ -11,7 +11,7 @@ import { createPTMSchema, updatePTMSchema } from "../validation/ptm.validation";
  * @access  Private (School Admin)
  */
 export const createPTM = asyncHandler(async (req: Request, res: Response) => {
-  const schoolId = (req as any).school?.schoolId;
+  const schoolId = (req as any).school?.id;
   const createdBy = (req as any).school?.id; // Admin ID
 
   const validatedData = createPTMSchema.parse(req.body);
@@ -49,19 +49,19 @@ export const createPTM = asyncHandler(async (req: Request, res: Response) => {
       // But implementation plan discussed `studentId`. 
       // Checking Schema: `parentId String?`. 
       // So we must find Parents of these students.
-      
+
       const parents = await tx.studentParent.findMany({
         where: { studentId: { in: validatedData.studentIds } },
         select: { parentId: true }
       });
-      
+
       // Unique parents
       const uniqueParentIds = [...new Set(parents.map(p => p.parentId))];
-      
+
       await tx.pTMTarget.createMany({
         data: uniqueParentIds.map(pid => ({
-            ptmId: ptm.id,
-            parentId: pid
+          ptmId: ptm.id,
+          parentId: pid
         }))
       });
     }
@@ -83,7 +83,7 @@ export const getAllPTMs = asyncHandler(async (req: Request, res: Response) => {
   const ptms = await prisma.parentTeacherMeeting.findMany({
     where: { schoolId: schoolId as string },
     include: {
-      _count: { select: { targets: true } } 
+      _count: { select: { targets: true } }
     },
     orderBy: { meetingDate: 'desc' }
   });
@@ -125,16 +125,16 @@ export const updatePTM = asyncHandler(async (req: Request, res: Response) => {
   // If targetType is changing, we might need to wipe old targets.
   // For simplicity, strict updates on basic fields. Complex target changes usually require re-creating or specific logic.
   // Here we allow basic updates.
-  
+
   const ptm = await prisma.parentTeacherMeeting.update({
     where: { id: id as string },
     data: {
-        title: validatedData.title,
-        description: validatedData.description,
-        meetingDate: validatedData.meetingDate ? new Date(validatedData.meetingDate) : undefined,
-        startTime: validatedData.startTime,
-        endTime: validatedData.endTime,
-        location: validatedData.location,
+      title: validatedData.title,
+      description: validatedData.description,
+      meetingDate: validatedData.meetingDate ? new Date(validatedData.meetingDate) : undefined,
+      startTime: validatedData.startTime,
+      endTime: validatedData.endTime,
+      location: validatedData.location,
     }
   });
 

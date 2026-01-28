@@ -330,7 +330,8 @@ export type StudentWhereInput = {
   feeDiscounts?: Prisma.FeeDiscountListRelationFilter
   studentMarks?: Prisma.StudentMarkListRelationFilter
   studentResults?: Prisma.StudentResultListRelationFilter
-  bookIssues?: Prisma.BookIssueListRelationFilter
+  libraryFines?: Prisma.LibraryFineListRelationFilter
+  booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
   homeworkSubmissions?: Prisma.HomeworkSubmissionListRelationFilter
 }
@@ -367,7 +368,8 @@ export type StudentOrderByWithRelationInput = {
   feeDiscounts?: Prisma.FeeDiscountOrderByRelationAggregateInput
   studentMarks?: Prisma.StudentMarkOrderByRelationAggregateInput
   studentResults?: Prisma.StudentResultOrderByRelationAggregateInput
-  bookIssues?: Prisma.BookIssueOrderByRelationAggregateInput
+  libraryFines?: Prisma.LibraryFineOrderByRelationAggregateInput
+  booksBorrowed?: Prisma.BookBorrowedOrderByRelationAggregateInput
   leaveRequests?: Prisma.LeaveRequestOrderByRelationAggregateInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionOrderByRelationAggregateInput
   _relevance?: Prisma.StudentOrderByRelevanceInput
@@ -409,7 +411,8 @@ export type StudentWhereUniqueInput = Prisma.AtLeast<{
   feeDiscounts?: Prisma.FeeDiscountListRelationFilter
   studentMarks?: Prisma.StudentMarkListRelationFilter
   studentResults?: Prisma.StudentResultListRelationFilter
-  bookIssues?: Prisma.BookIssueListRelationFilter
+  libraryFines?: Prisma.LibraryFineListRelationFilter
+  booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
   homeworkSubmissions?: Prisma.HomeworkSubmissionListRelationFilter
 }, "id" | "schoolId_admissionNumber">
@@ -503,7 +506,8 @@ export type StudentCreateInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -539,7 +543,8 @@ export type StudentUncheckedCreateInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -575,7 +580,8 @@ export type StudentUpdateInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -611,7 +617,8 @@ export type StudentUncheckedUpdateInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -944,20 +951,36 @@ export type StudentUpdateOneRequiredWithoutStudentResultsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StudentUpdateToOneWithWhereWithoutStudentResultsInput, Prisma.StudentUpdateWithoutStudentResultsInput>, Prisma.StudentUncheckedUpdateWithoutStudentResultsInput>
 }
 
-export type StudentCreateNestedOneWithoutBookIssuesInput = {
-  create?: Prisma.XOR<Prisma.StudentCreateWithoutBookIssuesInput, Prisma.StudentUncheckedCreateWithoutBookIssuesInput>
-  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutBookIssuesInput
+export type StudentCreateNestedOneWithoutBooksBorrowedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutBooksBorrowedInput, Prisma.StudentUncheckedCreateWithoutBooksBorrowedInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutBooksBorrowedInput
   connect?: Prisma.StudentWhereUniqueInput
 }
 
-export type StudentUpdateOneWithoutBookIssuesNestedInput = {
-  create?: Prisma.XOR<Prisma.StudentCreateWithoutBookIssuesInput, Prisma.StudentUncheckedCreateWithoutBookIssuesInput>
-  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutBookIssuesInput
-  upsert?: Prisma.StudentUpsertWithoutBookIssuesInput
+export type StudentUpdateOneWithoutBooksBorrowedNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutBooksBorrowedInput, Prisma.StudentUncheckedCreateWithoutBooksBorrowedInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutBooksBorrowedInput
+  upsert?: Prisma.StudentUpsertWithoutBooksBorrowedInput
   disconnect?: Prisma.StudentWhereInput | boolean
   delete?: Prisma.StudentWhereInput | boolean
   connect?: Prisma.StudentWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.StudentUpdateToOneWithWhereWithoutBookIssuesInput, Prisma.StudentUpdateWithoutBookIssuesInput>, Prisma.StudentUncheckedUpdateWithoutBookIssuesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StudentUpdateToOneWithWhereWithoutBooksBorrowedInput, Prisma.StudentUpdateWithoutBooksBorrowedInput>, Prisma.StudentUncheckedUpdateWithoutBooksBorrowedInput>
+}
+
+export type StudentCreateNestedOneWithoutLibraryFinesInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutLibraryFinesInput, Prisma.StudentUncheckedCreateWithoutLibraryFinesInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutLibraryFinesInput
+  connect?: Prisma.StudentWhereUniqueInput
+}
+
+export type StudentUpdateOneWithoutLibraryFinesNestedInput = {
+  create?: Prisma.XOR<Prisma.StudentCreateWithoutLibraryFinesInput, Prisma.StudentUncheckedCreateWithoutLibraryFinesInput>
+  connectOrCreate?: Prisma.StudentCreateOrConnectWithoutLibraryFinesInput
+  upsert?: Prisma.StudentUpsertWithoutLibraryFinesInput
+  disconnect?: Prisma.StudentWhereInput | boolean
+  delete?: Prisma.StudentWhereInput | boolean
+  connect?: Prisma.StudentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StudentUpdateToOneWithWhereWithoutLibraryFinesInput, Prisma.StudentUpdateWithoutLibraryFinesInput>, Prisma.StudentUncheckedUpdateWithoutLibraryFinesInput>
 }
 
 export type StudentCreateNestedOneWithoutLeaveRequestsInput = {
@@ -1020,7 +1043,8 @@ export type StudentCreateWithoutSchoolInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1055,7 +1079,8 @@ export type StudentUncheckedCreateWithoutSchoolInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1145,7 +1170,8 @@ export type StudentCreateWithoutEnrollmentsInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1180,7 +1206,8 @@ export type StudentUncheckedCreateWithoutEnrollmentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1231,7 +1258,8 @@ export type StudentUpdateWithoutEnrollmentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -1266,7 +1294,8 @@ export type StudentUncheckedUpdateWithoutEnrollmentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -1301,7 +1330,8 @@ export type StudentCreateWithoutParentsInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1336,7 +1366,8 @@ export type StudentUncheckedCreateWithoutParentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1387,7 +1418,8 @@ export type StudentUpdateWithoutParentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -1422,7 +1454,8 @@ export type StudentUncheckedUpdateWithoutParentsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -1457,7 +1490,8 @@ export type StudentCreateWithoutAttendancesInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1492,7 +1526,8 @@ export type StudentUncheckedCreateWithoutAttendancesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1543,7 +1578,8 @@ export type StudentUpdateWithoutAttendancesInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -1578,7 +1614,8 @@ export type StudentUncheckedUpdateWithoutAttendancesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -1613,7 +1650,8 @@ export type StudentCreateWithoutStudentFeesInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1648,7 +1686,8 @@ export type StudentUncheckedCreateWithoutStudentFeesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1699,7 +1738,8 @@ export type StudentUpdateWithoutStudentFeesInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -1734,7 +1774,8 @@ export type StudentUncheckedUpdateWithoutStudentFeesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -1769,7 +1810,8 @@ export type StudentCreateWithoutFeeDiscountsInput = {
   studentFees?: Prisma.StudentFeeCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1804,7 +1846,8 @@ export type StudentUncheckedCreateWithoutFeeDiscountsInput = {
   studentFees?: Prisma.StudentFeeUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -1855,7 +1898,8 @@ export type StudentUpdateWithoutFeeDiscountsInput = {
   studentFees?: Prisma.StudentFeeUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -1890,7 +1934,8 @@ export type StudentUncheckedUpdateWithoutFeeDiscountsInput = {
   studentFees?: Prisma.StudentFeeUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -1925,7 +1970,8 @@ export type StudentCreateWithoutStudentMarksInput = {
   studentFees?: Prisma.StudentFeeCreateNestedManyWithoutStudentInput
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -1960,7 +2006,8 @@ export type StudentUncheckedCreateWithoutStudentMarksInput = {
   studentFees?: Prisma.StudentFeeUncheckedCreateNestedManyWithoutStudentInput
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -2011,7 +2058,8 @@ export type StudentUpdateWithoutStudentMarksInput = {
   studentFees?: Prisma.StudentFeeUpdateManyWithoutStudentNestedInput
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -2046,7 +2094,8 @@ export type StudentUncheckedUpdateWithoutStudentMarksInput = {
   studentFees?: Prisma.StudentFeeUncheckedUpdateManyWithoutStudentNestedInput
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -2081,7 +2130,8 @@ export type StudentCreateWithoutStudentResultsInput = {
   studentFees?: Prisma.StudentFeeCreateNestedManyWithoutStudentInput
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
@@ -2116,7 +2166,8 @@ export type StudentUncheckedCreateWithoutStudentResultsInput = {
   studentFees?: Prisma.StudentFeeUncheckedCreateNestedManyWithoutStudentInput
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
@@ -2167,7 +2218,8 @@ export type StudentUpdateWithoutStudentResultsInput = {
   studentFees?: Prisma.StudentFeeUpdateManyWithoutStudentNestedInput
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -2202,12 +2254,13 @@ export type StudentUncheckedUpdateWithoutStudentResultsInput = {
   studentFees?: Prisma.StudentFeeUncheckedUpdateManyWithoutStudentNestedInput
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
-export type StudentCreateWithoutBookIssuesInput = {
+export type StudentCreateWithoutBooksBorrowedInput = {
   id?: string
   admissionNumber?: string | null
   firstName: string
@@ -2238,11 +2291,12 @@ export type StudentCreateWithoutBookIssuesInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
 
-export type StudentUncheckedCreateWithoutBookIssuesInput = {
+export type StudentUncheckedCreateWithoutBooksBorrowedInput = {
   id?: string
   schoolId: string
   admissionNumber?: string | null
@@ -2273,27 +2327,28 @@ export type StudentUncheckedCreateWithoutBookIssuesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
-export type StudentCreateOrConnectWithoutBookIssuesInput = {
+export type StudentCreateOrConnectWithoutBooksBorrowedInput = {
   where: Prisma.StudentWhereUniqueInput
-  create: Prisma.XOR<Prisma.StudentCreateWithoutBookIssuesInput, Prisma.StudentUncheckedCreateWithoutBookIssuesInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutBooksBorrowedInput, Prisma.StudentUncheckedCreateWithoutBooksBorrowedInput>
 }
 
-export type StudentUpsertWithoutBookIssuesInput = {
-  update: Prisma.XOR<Prisma.StudentUpdateWithoutBookIssuesInput, Prisma.StudentUncheckedUpdateWithoutBookIssuesInput>
-  create: Prisma.XOR<Prisma.StudentCreateWithoutBookIssuesInput, Prisma.StudentUncheckedCreateWithoutBookIssuesInput>
+export type StudentUpsertWithoutBooksBorrowedInput = {
+  update: Prisma.XOR<Prisma.StudentUpdateWithoutBooksBorrowedInput, Prisma.StudentUncheckedUpdateWithoutBooksBorrowedInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutBooksBorrowedInput, Prisma.StudentUncheckedCreateWithoutBooksBorrowedInput>
   where?: Prisma.StudentWhereInput
 }
 
-export type StudentUpdateToOneWithWhereWithoutBookIssuesInput = {
+export type StudentUpdateToOneWithWhereWithoutBooksBorrowedInput = {
   where?: Prisma.StudentWhereInput
-  data: Prisma.XOR<Prisma.StudentUpdateWithoutBookIssuesInput, Prisma.StudentUncheckedUpdateWithoutBookIssuesInput>
+  data: Prisma.XOR<Prisma.StudentUpdateWithoutBooksBorrowedInput, Prisma.StudentUncheckedUpdateWithoutBooksBorrowedInput>
 }
 
-export type StudentUpdateWithoutBookIssuesInput = {
+export type StudentUpdateWithoutBooksBorrowedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   admissionNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2324,11 +2379,12 @@ export type StudentUpdateWithoutBookIssuesInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
 
-export type StudentUncheckedUpdateWithoutBookIssuesInput = {
+export type StudentUncheckedUpdateWithoutBooksBorrowedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
   admissionNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2359,6 +2415,167 @@ export type StudentUncheckedUpdateWithoutBookIssuesInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
+  homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
+}
+
+export type StudentCreateWithoutLibraryFinesInput = {
+  id?: string
+  admissionNumber?: string | null
+  firstName: string
+  lastName: string
+  email?: string | null
+  phone?: string | null
+  dateOfBirth: Date | string
+  gender: $Enums.Gender
+  bloodGroup?: string | null
+  address: string
+  city: string
+  state: string
+  pincode: string
+  admissionDate: Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  medicalInfo?: string | null
+  status?: $Enums.StudentStatus
+  password?: string | null
+  fcmToken?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  school: Prisma.SchoolCreateNestedOneWithoutStudentsInput
+  enrollments?: Prisma.StudentEnrollmentCreateNestedManyWithoutStudentInput
+  parents?: Prisma.StudentParentCreateNestedManyWithoutStudentInput
+  attendances?: Prisma.StudentAttendanceCreateNestedManyWithoutStudentInput
+  studentFees?: Prisma.StudentFeeCreateNestedManyWithoutStudentInput
+  feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
+  studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
+  studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
+  homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
+}
+
+export type StudentUncheckedCreateWithoutLibraryFinesInput = {
+  id?: string
+  schoolId: string
+  admissionNumber?: string | null
+  firstName: string
+  lastName: string
+  email?: string | null
+  phone?: string | null
+  dateOfBirth: Date | string
+  gender: $Enums.Gender
+  bloodGroup?: string | null
+  address: string
+  city: string
+  state: string
+  pincode: string
+  admissionDate: Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  medicalInfo?: string | null
+  status?: $Enums.StudentStatus
+  password?: string | null
+  fcmToken?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  enrollments?: Prisma.StudentEnrollmentUncheckedCreateNestedManyWithoutStudentInput
+  parents?: Prisma.StudentParentUncheckedCreateNestedManyWithoutStudentInput
+  attendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutStudentInput
+  studentFees?: Prisma.StudentFeeUncheckedCreateNestedManyWithoutStudentInput
+  feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
+  studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
+  studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
+  homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
+}
+
+export type StudentCreateOrConnectWithoutLibraryFinesInput = {
+  where: Prisma.StudentWhereUniqueInput
+  create: Prisma.XOR<Prisma.StudentCreateWithoutLibraryFinesInput, Prisma.StudentUncheckedCreateWithoutLibraryFinesInput>
+}
+
+export type StudentUpsertWithoutLibraryFinesInput = {
+  update: Prisma.XOR<Prisma.StudentUpdateWithoutLibraryFinesInput, Prisma.StudentUncheckedUpdateWithoutLibraryFinesInput>
+  create: Prisma.XOR<Prisma.StudentCreateWithoutLibraryFinesInput, Prisma.StudentUncheckedCreateWithoutLibraryFinesInput>
+  where?: Prisma.StudentWhereInput
+}
+
+export type StudentUpdateToOneWithWhereWithoutLibraryFinesInput = {
+  where?: Prisma.StudentWhereInput
+  data: Prisma.XOR<Prisma.StudentUpdateWithoutLibraryFinesInput, Prisma.StudentUncheckedUpdateWithoutLibraryFinesInput>
+}
+
+export type StudentUpdateWithoutLibraryFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  admissionNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  bloodGroup?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  pincode?: Prisma.StringFieldUpdateOperationsInput | string
+  admissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  medicalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStudentStatusFieldUpdateOperationsInput | $Enums.StudentStatus
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  school?: Prisma.SchoolUpdateOneRequiredWithoutStudentsNestedInput
+  enrollments?: Prisma.StudentEnrollmentUpdateManyWithoutStudentNestedInput
+  parents?: Prisma.StudentParentUpdateManyWithoutStudentNestedInput
+  attendances?: Prisma.StudentAttendanceUpdateManyWithoutStudentNestedInput
+  studentFees?: Prisma.StudentFeeUpdateManyWithoutStudentNestedInput
+  feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
+  studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
+  studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
+  homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
+}
+
+export type StudentUncheckedUpdateWithoutLibraryFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  admissionNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  bloodGroup?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  pincode?: Prisma.StringFieldUpdateOperationsInput | string
+  admissionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  medicalInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStudentStatusFieldUpdateOperationsInput | $Enums.StudentStatus
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enrollments?: Prisma.StudentEnrollmentUncheckedUpdateManyWithoutStudentNestedInput
+  parents?: Prisma.StudentParentUncheckedUpdateManyWithoutStudentNestedInput
+  attendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutStudentNestedInput
+  studentFees?: Prisma.StudentFeeUncheckedUpdateManyWithoutStudentNestedInput
+  feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
+  studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
+  studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -2394,7 +2611,8 @@ export type StudentCreateWithoutLeaveRequestsInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionCreateNestedManyWithoutStudentInput
 }
 
@@ -2429,7 +2647,8 @@ export type StudentUncheckedCreateWithoutLeaveRequestsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutStudentInput
 }
 
@@ -2480,7 +2699,8 @@ export type StudentUpdateWithoutLeaveRequestsInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
 
@@ -2515,7 +2735,8 @@ export type StudentUncheckedUpdateWithoutLeaveRequestsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
 
@@ -2550,7 +2771,8 @@ export type StudentCreateWithoutHomeworkSubmissionsInput = {
   feeDiscounts?: Prisma.FeeDiscountCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutStudentInput
 }
 
@@ -2585,7 +2807,8 @@ export type StudentUncheckedCreateWithoutHomeworkSubmissionsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedCreateNestedManyWithoutStudentInput
   studentMarks?: Prisma.StudentMarkUncheckedCreateNestedManyWithoutStudentInput
   studentResults?: Prisma.StudentResultUncheckedCreateNestedManyWithoutStudentInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutStudentInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutStudentInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutStudentInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutStudentInput
 }
 
@@ -2636,7 +2859,8 @@ export type StudentUpdateWithoutHomeworkSubmissionsInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
 }
 
@@ -2671,7 +2895,8 @@ export type StudentUncheckedUpdateWithoutHomeworkSubmissionsInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
 }
 
@@ -2730,7 +2955,8 @@ export type StudentUpdateWithoutSchoolInput = {
   feeDiscounts?: Prisma.FeeDiscountUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUpdateManyWithoutStudentNestedInput
 }
@@ -2765,7 +2991,8 @@ export type StudentUncheckedUpdateWithoutSchoolInput = {
   feeDiscounts?: Prisma.FeeDiscountUncheckedUpdateManyWithoutStudentNestedInput
   studentMarks?: Prisma.StudentMarkUncheckedUpdateManyWithoutStudentNestedInput
   studentResults?: Prisma.StudentResultUncheckedUpdateManyWithoutStudentNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutStudentNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutStudentNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutStudentNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutStudentNestedInput
   homeworkSubmissions?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutStudentNestedInput
 }
@@ -2808,7 +3035,8 @@ export type StudentCountOutputType = {
   feeDiscounts: number
   studentMarks: number
   studentResults: number
-  bookIssues: number
+  libraryFines: number
+  booksBorrowed: number
   leaveRequests: number
   homeworkSubmissions: number
 }
@@ -2821,7 +3049,8 @@ export type StudentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   feeDiscounts?: boolean | StudentCountOutputTypeCountFeeDiscountsArgs
   studentMarks?: boolean | StudentCountOutputTypeCountStudentMarksArgs
   studentResults?: boolean | StudentCountOutputTypeCountStudentResultsArgs
-  bookIssues?: boolean | StudentCountOutputTypeCountBookIssuesArgs
+  libraryFines?: boolean | StudentCountOutputTypeCountLibraryFinesArgs
+  booksBorrowed?: boolean | StudentCountOutputTypeCountBooksBorrowedArgs
   leaveRequests?: boolean | StudentCountOutputTypeCountLeaveRequestsArgs
   homeworkSubmissions?: boolean | StudentCountOutputTypeCountHomeworkSubmissionsArgs
 }
@@ -2888,8 +3117,15 @@ export type StudentCountOutputTypeCountStudentResultsArgs<ExtArgs extends runtim
 /**
  * StudentCountOutputType without action
  */
-export type StudentCountOutputTypeCountBookIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BookIssueWhereInput
+export type StudentCountOutputTypeCountLibraryFinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LibraryFineWhereInput
+}
+
+/**
+ * StudentCountOutputType without action
+ */
+export type StudentCountOutputTypeCountBooksBorrowedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookBorrowedWhereInput
 }
 
 /**
@@ -2939,7 +3175,8 @@ export type StudentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   feeDiscounts?: boolean | Prisma.Student$feeDiscountsArgs<ExtArgs>
   studentMarks?: boolean | Prisma.Student$studentMarksArgs<ExtArgs>
   studentResults?: boolean | Prisma.Student$studentResultsArgs<ExtArgs>
-  bookIssues?: boolean | Prisma.Student$bookIssuesArgs<ExtArgs>
+  libraryFines?: boolean | Prisma.Student$libraryFinesArgs<ExtArgs>
+  booksBorrowed?: boolean | Prisma.Student$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Student$leaveRequestsArgs<ExtArgs>
   homeworkSubmissions?: boolean | Prisma.Student$homeworkSubmissionsArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
@@ -2983,7 +3220,8 @@ export type StudentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   feeDiscounts?: boolean | Prisma.Student$feeDiscountsArgs<ExtArgs>
   studentMarks?: boolean | Prisma.Student$studentMarksArgs<ExtArgs>
   studentResults?: boolean | Prisma.Student$studentResultsArgs<ExtArgs>
-  bookIssues?: boolean | Prisma.Student$bookIssuesArgs<ExtArgs>
+  libraryFines?: boolean | Prisma.Student$libraryFinesArgs<ExtArgs>
+  booksBorrowed?: boolean | Prisma.Student$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Student$leaveRequestsArgs<ExtArgs>
   homeworkSubmissions?: boolean | Prisma.Student$homeworkSubmissionsArgs<ExtArgs>
   _count?: boolean | Prisma.StudentCountOutputTypeDefaultArgs<ExtArgs>
@@ -3000,7 +3238,8 @@ export type $StudentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     feeDiscounts: Prisma.$FeeDiscountPayload<ExtArgs>[]
     studentMarks: Prisma.$StudentMarkPayload<ExtArgs>[]
     studentResults: Prisma.$StudentResultPayload<ExtArgs>[]
-    bookIssues: Prisma.$BookIssuePayload<ExtArgs>[]
+    libraryFines: Prisma.$LibraryFinePayload<ExtArgs>[]
+    booksBorrowed: Prisma.$BookBorrowedPayload<ExtArgs>[]
     leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
     homeworkSubmissions: Prisma.$HomeworkSubmissionPayload<ExtArgs>[]
   }
@@ -3376,7 +3615,8 @@ export interface Prisma__StudentClient<T, Null = never, ExtArgs extends runtime.
   feeDiscounts<T extends Prisma.Student$feeDiscountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$feeDiscountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeDiscountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   studentMarks<T extends Prisma.Student$studentMarksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$studentMarksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   studentResults<T extends Prisma.Student$studentResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$studentResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  bookIssues<T extends Prisma.Student$bookIssuesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$bookIssuesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookIssuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  libraryFines<T extends Prisma.Student$libraryFinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$libraryFinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LibraryFinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  booksBorrowed<T extends Prisma.Student$booksBorrowedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$booksBorrowedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookBorrowedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   leaveRequests<T extends Prisma.Student$leaveRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   homeworkSubmissions<T extends Prisma.Student$homeworkSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Student$homeworkSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HomeworkSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -3942,27 +4182,51 @@ export type Student$studentResultsArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
- * Student.bookIssues
+ * Student.libraryFines
  */
-export type Student$bookIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Student$libraryFinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the BookIssue
+   * Select specific fields to fetch from the LibraryFine
    */
-  select?: Prisma.BookIssueSelect<ExtArgs> | null
+  select?: Prisma.LibraryFineSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the BookIssue
+   * Omit specific fields from the LibraryFine
    */
-  omit?: Prisma.BookIssueOmit<ExtArgs> | null
+  omit?: Prisma.LibraryFineOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.BookIssueInclude<ExtArgs> | null
-  where?: Prisma.BookIssueWhereInput
-  orderBy?: Prisma.BookIssueOrderByWithRelationInput | Prisma.BookIssueOrderByWithRelationInput[]
-  cursor?: Prisma.BookIssueWhereUniqueInput
+  include?: Prisma.LibraryFineInclude<ExtArgs> | null
+  where?: Prisma.LibraryFineWhereInput
+  orderBy?: Prisma.LibraryFineOrderByWithRelationInput | Prisma.LibraryFineOrderByWithRelationInput[]
+  cursor?: Prisma.LibraryFineWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.BookIssueScalarFieldEnum | Prisma.BookIssueScalarFieldEnum[]
+  distinct?: Prisma.LibraryFineScalarFieldEnum | Prisma.LibraryFineScalarFieldEnum[]
+}
+
+/**
+ * Student.booksBorrowed
+ */
+export type Student$booksBorrowedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BookBorrowed
+   */
+  select?: Prisma.BookBorrowedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BookBorrowed
+   */
+  omit?: Prisma.BookBorrowedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookBorrowedInclude<ExtArgs> | null
+  where?: Prisma.BookBorrowedWhereInput
+  orderBy?: Prisma.BookBorrowedOrderByWithRelationInput | Prisma.BookBorrowedOrderByWithRelationInput[]
+  cursor?: Prisma.BookBorrowedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookBorrowedScalarFieldEnum | Prisma.BookBorrowedScalarFieldEnum[]
 }
 
 /**

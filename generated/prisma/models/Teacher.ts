@@ -369,7 +369,8 @@ export type TeacherWhereInput = {
   classAssignments?: Prisma.TeacherClassAssignmentListRelationFilter
   attendances?: Prisma.StaffAttendanceListRelationFilter
   teacherSalaries?: Prisma.TeacherSalaryListRelationFilter
-  bookIssues?: Prisma.BookIssueListRelationFilter
+  libraryFines?: Prisma.LibraryFineListRelationFilter
+  booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
   timetableEntries?: Prisma.TimetableEntryListRelationFilter
   homeworksAssigned?: Prisma.HomeworkListRelationFilter
@@ -406,7 +407,8 @@ export type TeacherOrderByWithRelationInput = {
   classAssignments?: Prisma.TeacherClassAssignmentOrderByRelationAggregateInput
   attendances?: Prisma.StaffAttendanceOrderByRelationAggregateInput
   teacherSalaries?: Prisma.TeacherSalaryOrderByRelationAggregateInput
-  bookIssues?: Prisma.BookIssueOrderByRelationAggregateInput
+  libraryFines?: Prisma.LibraryFineOrderByRelationAggregateInput
+  booksBorrowed?: Prisma.BookBorrowedOrderByRelationAggregateInput
   leaveRequests?: Prisma.LeaveRequestOrderByRelationAggregateInput
   timetableEntries?: Prisma.TimetableEntryOrderByRelationAggregateInput
   homeworksAssigned?: Prisma.HomeworkOrderByRelationAggregateInput
@@ -448,7 +450,8 @@ export type TeacherWhereUniqueInput = Prisma.AtLeast<{
   classAssignments?: Prisma.TeacherClassAssignmentListRelationFilter
   attendances?: Prisma.StaffAttendanceListRelationFilter
   teacherSalaries?: Prisma.TeacherSalaryListRelationFilter
-  bookIssues?: Prisma.BookIssueListRelationFilter
+  libraryFines?: Prisma.LibraryFineListRelationFilter
+  booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
   timetableEntries?: Prisma.TimetableEntryListRelationFilter
   homeworksAssigned?: Prisma.HomeworkListRelationFilter
@@ -546,7 +549,8 @@ export type TeacherCreateInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -582,7 +586,8 @@ export type TeacherUncheckedCreateInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -618,7 +623,8 @@ export type TeacherUpdateInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -654,7 +660,8 @@ export type TeacherUncheckedUpdateInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -965,20 +972,36 @@ export type TeacherUpdateOneRequiredWithoutTeacherSalariesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutTeacherSalariesInput, Prisma.TeacherUpdateWithoutTeacherSalariesInput>, Prisma.TeacherUncheckedUpdateWithoutTeacherSalariesInput>
 }
 
-export type TeacherCreateNestedOneWithoutBookIssuesInput = {
-  create?: Prisma.XOR<Prisma.TeacherCreateWithoutBookIssuesInput, Prisma.TeacherUncheckedCreateWithoutBookIssuesInput>
-  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutBookIssuesInput
+export type TeacherCreateNestedOneWithoutBooksBorrowedInput = {
+  create?: Prisma.XOR<Prisma.TeacherCreateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedCreateWithoutBooksBorrowedInput>
+  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutBooksBorrowedInput
   connect?: Prisma.TeacherWhereUniqueInput
 }
 
-export type TeacherUpdateOneWithoutBookIssuesNestedInput = {
-  create?: Prisma.XOR<Prisma.TeacherCreateWithoutBookIssuesInput, Prisma.TeacherUncheckedCreateWithoutBookIssuesInput>
-  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutBookIssuesInput
-  upsert?: Prisma.TeacherUpsertWithoutBookIssuesInput
+export type TeacherUpdateOneWithoutBooksBorrowedNestedInput = {
+  create?: Prisma.XOR<Prisma.TeacherCreateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedCreateWithoutBooksBorrowedInput>
+  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutBooksBorrowedInput
+  upsert?: Prisma.TeacherUpsertWithoutBooksBorrowedInput
   disconnect?: Prisma.TeacherWhereInput | boolean
   delete?: Prisma.TeacherWhereInput | boolean
   connect?: Prisma.TeacherWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutBookIssuesInput, Prisma.TeacherUpdateWithoutBookIssuesInput>, Prisma.TeacherUncheckedUpdateWithoutBookIssuesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutBooksBorrowedInput, Prisma.TeacherUpdateWithoutBooksBorrowedInput>, Prisma.TeacherUncheckedUpdateWithoutBooksBorrowedInput>
+}
+
+export type TeacherCreateNestedOneWithoutLibraryFinesInput = {
+  create?: Prisma.XOR<Prisma.TeacherCreateWithoutLibraryFinesInput, Prisma.TeacherUncheckedCreateWithoutLibraryFinesInput>
+  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutLibraryFinesInput
+  connect?: Prisma.TeacherWhereUniqueInput
+}
+
+export type TeacherUpdateOneWithoutLibraryFinesNestedInput = {
+  create?: Prisma.XOR<Prisma.TeacherCreateWithoutLibraryFinesInput, Prisma.TeacherUncheckedCreateWithoutLibraryFinesInput>
+  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutLibraryFinesInput
+  upsert?: Prisma.TeacherUpsertWithoutLibraryFinesInput
+  disconnect?: Prisma.TeacherWhereInput | boolean
+  delete?: Prisma.TeacherWhereInput | boolean
+  connect?: Prisma.TeacherWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutLibraryFinesInput, Prisma.TeacherUpdateWithoutLibraryFinesInput>, Prisma.TeacherUncheckedUpdateWithoutLibraryFinesInput>
 }
 
 export type TeacherCreateNestedOneWithoutLeaveRequestsInput = {
@@ -1071,7 +1094,8 @@ export type TeacherCreateWithoutSchoolInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -1106,7 +1130,8 @@ export type TeacherUncheckedCreateWithoutSchoolInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -1197,7 +1222,8 @@ export type TeacherCreateWithoutSubjectsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -1232,7 +1258,8 @@ export type TeacherUncheckedCreateWithoutSubjectsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -1283,7 +1310,8 @@ export type TeacherUpdateWithoutSubjectsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -1318,7 +1346,8 @@ export type TeacherUncheckedUpdateWithoutSubjectsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -1353,7 +1382,8 @@ export type TeacherCreateWithoutClassAssignmentsInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -1388,7 +1418,8 @@ export type TeacherUncheckedCreateWithoutClassAssignmentsInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -1439,7 +1470,8 @@ export type TeacherUpdateWithoutClassAssignmentsInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -1474,7 +1506,8 @@ export type TeacherUncheckedUpdateWithoutClassAssignmentsInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -1509,7 +1542,8 @@ export type TeacherCreateWithoutAttendancesInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -1544,7 +1578,8 @@ export type TeacherUncheckedCreateWithoutAttendancesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -1595,7 +1630,8 @@ export type TeacherUpdateWithoutAttendancesInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -1630,7 +1666,8 @@ export type TeacherUncheckedUpdateWithoutAttendancesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -1665,7 +1702,8 @@ export type TeacherCreateWithoutTeacherSalariesInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -1700,7 +1738,8 @@ export type TeacherUncheckedCreateWithoutTeacherSalariesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -1751,7 +1790,8 @@ export type TeacherUpdateWithoutTeacherSalariesInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -1786,14 +1826,15 @@ export type TeacherUncheckedUpdateWithoutTeacherSalariesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
 }
 
-export type TeacherCreateWithoutBookIssuesInput = {
+export type TeacherCreateWithoutBooksBorrowedInput = {
   id?: string
   employeeId: string
   firstName: string
@@ -1822,13 +1863,14 @@ export type TeacherCreateWithoutBookIssuesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
 }
 
-export type TeacherUncheckedCreateWithoutBookIssuesInput = {
+export type TeacherUncheckedCreateWithoutBooksBorrowedInput = {
   id?: string
   schoolId: string
   employeeId: string
@@ -1857,29 +1899,30 @@ export type TeacherUncheckedCreateWithoutBookIssuesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
 }
 
-export type TeacherCreateOrConnectWithoutBookIssuesInput = {
+export type TeacherCreateOrConnectWithoutBooksBorrowedInput = {
   where: Prisma.TeacherWhereUniqueInput
-  create: Prisma.XOR<Prisma.TeacherCreateWithoutBookIssuesInput, Prisma.TeacherUncheckedCreateWithoutBookIssuesInput>
+  create: Prisma.XOR<Prisma.TeacherCreateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedCreateWithoutBooksBorrowedInput>
 }
 
-export type TeacherUpsertWithoutBookIssuesInput = {
-  update: Prisma.XOR<Prisma.TeacherUpdateWithoutBookIssuesInput, Prisma.TeacherUncheckedUpdateWithoutBookIssuesInput>
-  create: Prisma.XOR<Prisma.TeacherCreateWithoutBookIssuesInput, Prisma.TeacherUncheckedCreateWithoutBookIssuesInput>
+export type TeacherUpsertWithoutBooksBorrowedInput = {
+  update: Prisma.XOR<Prisma.TeacherUpdateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedUpdateWithoutBooksBorrowedInput>
+  create: Prisma.XOR<Prisma.TeacherCreateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedCreateWithoutBooksBorrowedInput>
   where?: Prisma.TeacherWhereInput
 }
 
-export type TeacherUpdateToOneWithWhereWithoutBookIssuesInput = {
+export type TeacherUpdateToOneWithWhereWithoutBooksBorrowedInput = {
   where?: Prisma.TeacherWhereInput
-  data: Prisma.XOR<Prisma.TeacherUpdateWithoutBookIssuesInput, Prisma.TeacherUncheckedUpdateWithoutBookIssuesInput>
+  data: Prisma.XOR<Prisma.TeacherUpdateWithoutBooksBorrowedInput, Prisma.TeacherUncheckedUpdateWithoutBooksBorrowedInput>
 }
 
-export type TeacherUpdateWithoutBookIssuesInput = {
+export type TeacherUpdateWithoutBooksBorrowedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   employeeId?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1908,13 +1951,14 @@ export type TeacherUpdateWithoutBookIssuesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
 }
 
-export type TeacherUncheckedUpdateWithoutBookIssuesInput = {
+export type TeacherUncheckedUpdateWithoutBooksBorrowedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
   employeeId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1943,6 +1987,167 @@ export type TeacherUncheckedUpdateWithoutBookIssuesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
+  timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
+  homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
+  homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
+}
+
+export type TeacherCreateWithoutLibraryFinesInput = {
+  id?: string
+  employeeId: string
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  dateOfBirth: Date | string
+  gender: $Enums.Gender
+  address: string
+  city: string
+  state: string
+  pincode: string
+  qualification: string
+  specialization?: string | null
+  experience?: number
+  joiningDate: Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.TeacherStatus
+  password?: string | null
+  fcmToken?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  school: Prisma.SchoolCreateNestedOneWithoutTeachersInput
+  subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
+  classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
+  attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
+  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
+  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
+  timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
+  homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
+  homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
+}
+
+export type TeacherUncheckedCreateWithoutLibraryFinesInput = {
+  id?: string
+  schoolId: string
+  employeeId: string
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  dateOfBirth: Date | string
+  gender: $Enums.Gender
+  address: string
+  city: string
+  state: string
+  pincode: string
+  qualification: string
+  specialization?: string | null
+  experience?: number
+  joiningDate: Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.TeacherStatus
+  password?: string | null
+  fcmToken?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
+  classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
+  attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
+  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
+  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
+  timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
+  homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
+  homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
+}
+
+export type TeacherCreateOrConnectWithoutLibraryFinesInput = {
+  where: Prisma.TeacherWhereUniqueInput
+  create: Prisma.XOR<Prisma.TeacherCreateWithoutLibraryFinesInput, Prisma.TeacherUncheckedCreateWithoutLibraryFinesInput>
+}
+
+export type TeacherUpsertWithoutLibraryFinesInput = {
+  update: Prisma.XOR<Prisma.TeacherUpdateWithoutLibraryFinesInput, Prisma.TeacherUncheckedUpdateWithoutLibraryFinesInput>
+  create: Prisma.XOR<Prisma.TeacherCreateWithoutLibraryFinesInput, Prisma.TeacherUncheckedCreateWithoutLibraryFinesInput>
+  where?: Prisma.TeacherWhereInput
+}
+
+export type TeacherUpdateToOneWithWhereWithoutLibraryFinesInput = {
+  where?: Prisma.TeacherWhereInput
+  data: Prisma.XOR<Prisma.TeacherUpdateWithoutLibraryFinesInput, Prisma.TeacherUncheckedUpdateWithoutLibraryFinesInput>
+}
+
+export type TeacherUpdateWithoutLibraryFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  employeeId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  pincode?: Prisma.StringFieldUpdateOperationsInput | string
+  qualification?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.IntFieldUpdateOperationsInput | number
+  joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  school?: Prisma.SchoolUpdateOneRequiredWithoutTeachersNestedInput
+  subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
+  classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
+  attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
+  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
+  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
+  timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
+  homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
+  homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
+}
+
+export type TeacherUncheckedUpdateWithoutLibraryFinesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  employeeId?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  pincode?: Prisma.StringFieldUpdateOperationsInput | string
+  qualification?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experience?: Prisma.IntFieldUpdateOperationsInput | number
+  joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
+  classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
+  attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
+  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -1978,7 +2183,8 @@ export type TeacherCreateWithoutLeaveRequestsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
@@ -2013,7 +2219,8 @@ export type TeacherUncheckedCreateWithoutLeaveRequestsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
@@ -2064,7 +2271,8 @@ export type TeacherUpdateWithoutLeaveRequestsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
@@ -2099,7 +2307,8 @@ export type TeacherUncheckedUpdateWithoutLeaveRequestsInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
@@ -2134,7 +2343,8 @@ export type TeacherCreateWithoutTimetableEntriesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
@@ -2169,7 +2379,8 @@ export type TeacherUncheckedCreateWithoutTimetableEntriesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
@@ -2220,7 +2431,8 @@ export type TeacherUpdateWithoutTimetableEntriesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
@@ -2255,7 +2467,8 @@ export type TeacherUncheckedUpdateWithoutTimetableEntriesInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
@@ -2290,7 +2503,8 @@ export type TeacherCreateWithoutHomeworksAssignedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
@@ -2325,7 +2539,8 @@ export type TeacherUncheckedCreateWithoutHomeworksAssignedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
@@ -2376,7 +2591,8 @@ export type TeacherUpdateWithoutHomeworksAssignedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
@@ -2411,7 +2627,8 @@ export type TeacherUncheckedUpdateWithoutHomeworksAssignedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
@@ -2446,7 +2663,8 @@ export type TeacherCreateWithoutHomeworksGradedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
@@ -2481,7 +2699,8 @@ export type TeacherUncheckedCreateWithoutHomeworksGradedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
-  bookIssues?: Prisma.BookIssueUncheckedCreateNestedManyWithoutTeacherInput
+  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
   homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
@@ -2532,7 +2751,8 @@ export type TeacherUpdateWithoutHomeworksGradedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -2567,7 +2787,8 @@ export type TeacherUncheckedUpdateWithoutHomeworksGradedInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -2627,7 +2848,8 @@ export type TeacherUpdateWithoutSchoolInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
@@ -2662,7 +2884,8 @@ export type TeacherUncheckedUpdateWithoutSchoolInput = {
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  bookIssues?: Prisma.BookIssueUncheckedUpdateManyWithoutTeacherNestedInput
+  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
+  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
   homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
@@ -2705,7 +2928,8 @@ export type TeacherCountOutputType = {
   classAssignments: number
   attendances: number
   teacherSalaries: number
-  bookIssues: number
+  libraryFines: number
+  booksBorrowed: number
   leaveRequests: number
   timetableEntries: number
   homeworksAssigned: number
@@ -2717,7 +2941,8 @@ export type TeacherCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   classAssignments?: boolean | TeacherCountOutputTypeCountClassAssignmentsArgs
   attendances?: boolean | TeacherCountOutputTypeCountAttendancesArgs
   teacherSalaries?: boolean | TeacherCountOutputTypeCountTeacherSalariesArgs
-  bookIssues?: boolean | TeacherCountOutputTypeCountBookIssuesArgs
+  libraryFines?: boolean | TeacherCountOutputTypeCountLibraryFinesArgs
+  booksBorrowed?: boolean | TeacherCountOutputTypeCountBooksBorrowedArgs
   leaveRequests?: boolean | TeacherCountOutputTypeCountLeaveRequestsArgs
   timetableEntries?: boolean | TeacherCountOutputTypeCountTimetableEntriesArgs
   homeworksAssigned?: boolean | TeacherCountOutputTypeCountHomeworksAssignedArgs
@@ -2765,8 +2990,15 @@ export type TeacherCountOutputTypeCountTeacherSalariesArgs<ExtArgs extends runti
 /**
  * TeacherCountOutputType without action
  */
-export type TeacherCountOutputTypeCountBookIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BookIssueWhereInput
+export type TeacherCountOutputTypeCountLibraryFinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LibraryFineWhereInput
+}
+
+/**
+ * TeacherCountOutputType without action
+ */
+export type TeacherCountOutputTypeCountBooksBorrowedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookBorrowedWhereInput
 }
 
 /**
@@ -2828,7 +3060,8 @@ export type TeacherSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   classAssignments?: boolean | Prisma.Teacher$classAssignmentsArgs<ExtArgs>
   attendances?: boolean | Prisma.Teacher$attendancesArgs<ExtArgs>
   teacherSalaries?: boolean | Prisma.Teacher$teacherSalariesArgs<ExtArgs>
-  bookIssues?: boolean | Prisma.Teacher$bookIssuesArgs<ExtArgs>
+  libraryFines?: boolean | Prisma.Teacher$libraryFinesArgs<ExtArgs>
+  booksBorrowed?: boolean | Prisma.Teacher$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Teacher$leaveRequestsArgs<ExtArgs>
   timetableEntries?: boolean | Prisma.Teacher$timetableEntriesArgs<ExtArgs>
   homeworksAssigned?: boolean | Prisma.Teacher$homeworksAssignedArgs<ExtArgs>
@@ -2872,7 +3105,8 @@ export type TeacherInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   classAssignments?: boolean | Prisma.Teacher$classAssignmentsArgs<ExtArgs>
   attendances?: boolean | Prisma.Teacher$attendancesArgs<ExtArgs>
   teacherSalaries?: boolean | Prisma.Teacher$teacherSalariesArgs<ExtArgs>
-  bookIssues?: boolean | Prisma.Teacher$bookIssuesArgs<ExtArgs>
+  libraryFines?: boolean | Prisma.Teacher$libraryFinesArgs<ExtArgs>
+  booksBorrowed?: boolean | Prisma.Teacher$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Teacher$leaveRequestsArgs<ExtArgs>
   timetableEntries?: boolean | Prisma.Teacher$timetableEntriesArgs<ExtArgs>
   homeworksAssigned?: boolean | Prisma.Teacher$homeworksAssignedArgs<ExtArgs>
@@ -2888,7 +3122,8 @@ export type $TeacherPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     classAssignments: Prisma.$TeacherClassAssignmentPayload<ExtArgs>[]
     attendances: Prisma.$StaffAttendancePayload<ExtArgs>[]
     teacherSalaries: Prisma.$TeacherSalaryPayload<ExtArgs>[]
-    bookIssues: Prisma.$BookIssuePayload<ExtArgs>[]
+    libraryFines: Prisma.$LibraryFinePayload<ExtArgs>[]
+    booksBorrowed: Prisma.$BookBorrowedPayload<ExtArgs>[]
     leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
     timetableEntries: Prisma.$TimetableEntryPayload<ExtArgs>[]
     homeworksAssigned: Prisma.$HomeworkPayload<ExtArgs>[]
@@ -3264,7 +3499,8 @@ export interface Prisma__TeacherClient<T, Null = never, ExtArgs extends runtime.
   classAssignments<T extends Prisma.Teacher$classAssignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$classAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherClassAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   attendances<T extends Prisma.Teacher$attendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaffAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   teacherSalaries<T extends Prisma.Teacher$teacherSalariesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$teacherSalariesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherSalaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  bookIssues<T extends Prisma.Teacher$bookIssuesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$bookIssuesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookIssuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  libraryFines<T extends Prisma.Teacher$libraryFinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$libraryFinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LibraryFinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  booksBorrowed<T extends Prisma.Teacher$booksBorrowedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$booksBorrowedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookBorrowedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   leaveRequests<T extends Prisma.Teacher$leaveRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   timetableEntries<T extends Prisma.Teacher$timetableEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$timetableEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TimetableEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   homeworksAssigned<T extends Prisma.Teacher$homeworksAssignedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$homeworksAssignedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HomeworkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3761,27 +3997,51 @@ export type Teacher$teacherSalariesArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
- * Teacher.bookIssues
+ * Teacher.libraryFines
  */
-export type Teacher$bookIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Teacher$libraryFinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the BookIssue
+   * Select specific fields to fetch from the LibraryFine
    */
-  select?: Prisma.BookIssueSelect<ExtArgs> | null
+  select?: Prisma.LibraryFineSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the BookIssue
+   * Omit specific fields from the LibraryFine
    */
-  omit?: Prisma.BookIssueOmit<ExtArgs> | null
+  omit?: Prisma.LibraryFineOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.BookIssueInclude<ExtArgs> | null
-  where?: Prisma.BookIssueWhereInput
-  orderBy?: Prisma.BookIssueOrderByWithRelationInput | Prisma.BookIssueOrderByWithRelationInput[]
-  cursor?: Prisma.BookIssueWhereUniqueInput
+  include?: Prisma.LibraryFineInclude<ExtArgs> | null
+  where?: Prisma.LibraryFineWhereInput
+  orderBy?: Prisma.LibraryFineOrderByWithRelationInput | Prisma.LibraryFineOrderByWithRelationInput[]
+  cursor?: Prisma.LibraryFineWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.BookIssueScalarFieldEnum | Prisma.BookIssueScalarFieldEnum[]
+  distinct?: Prisma.LibraryFineScalarFieldEnum | Prisma.LibraryFineScalarFieldEnum[]
+}
+
+/**
+ * Teacher.booksBorrowed
+ */
+export type Teacher$booksBorrowedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BookBorrowed
+   */
+  select?: Prisma.BookBorrowedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BookBorrowed
+   */
+  omit?: Prisma.BookBorrowedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookBorrowedInclude<ExtArgs> | null
+  where?: Prisma.BookBorrowedWhereInput
+  orderBy?: Prisma.BookBorrowedOrderByWithRelationInput | Prisma.BookBorrowedOrderByWithRelationInput[]
+  cursor?: Prisma.BookBorrowedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookBorrowedScalarFieldEnum | Prisma.BookBorrowedScalarFieldEnum[]
 }
 
 /**

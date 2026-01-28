@@ -15,8 +15,13 @@ import { generateToken } from "../../../utils/jwt.util";
 export const teacherLogin = asyncHandler(async (req: Request, res: Response) => {
   const validatedData = teacherLoginSchema.parse(req.body);
 
-  const teacher = await prisma.teacher.findUnique({
-    where: { email: validatedData.email },
+  const teacher = await prisma.teacher.findFirst({
+    where: {
+      OR: [
+        { email: validatedData.email },
+        { employeeId: validatedData.email }
+      ]
+    },
     select: {
       id: true,
       schoolId: true,
@@ -56,7 +61,7 @@ export const teacherLogin = asyncHandler(async (req: Request, res: Response) => 
   // Mark attendance - check if already checked in today
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  
+
   const existingAttendance = await prisma.staffAttendance.findUnique({
     where: {
       teacherId_date: {
@@ -82,8 +87,8 @@ export const teacherLogin = asyncHandler(async (req: Request, res: Response) => 
     attendance = existingAttendance;
   }
 
-  const token = generateToken({ 
-    userId: teacher.id, 
+  const token = generateToken({
+    userId: teacher.id,
     userType: "teacher",
     email: teacher.email,
     schoolId: teacher.schoolId
@@ -91,7 +96,7 @@ export const teacherLogin = asyncHandler(async (req: Request, res: Response) => 
 
   const { password: _, ...teacherData } = teacher;
 
-  return SuccessResponse(res, "Login successful", { 
+  return SuccessResponse(res, "Login successful", {
     teacher: teacherData,
     token,
     role: "teacher",
@@ -118,7 +123,7 @@ export const teacherLogout = asyncHandler(async (req: Request, res: Response) =>
   // Find today's attendance record and update checkout time
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  
+
   const attendance = await prisma.staffAttendance.findUnique({
     where: {
       teacherId_date: {

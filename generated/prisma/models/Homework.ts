@@ -37,6 +37,7 @@ export type HomeworkSumAggregateOutputType = {
 export type HomeworkMinAggregateOutputType = {
   id: string | null
   schoolId: string | null
+  classId: string | null
   sectionId: string | null
   timetableEntryId: string | null
   assignedDate: Date | null
@@ -53,6 +54,7 @@ export type HomeworkMinAggregateOutputType = {
 export type HomeworkMaxAggregateOutputType = {
   id: string | null
   schoolId: string | null
+  classId: string | null
   sectionId: string | null
   timetableEntryId: string | null
   assignedDate: Date | null
@@ -69,6 +71,7 @@ export type HomeworkMaxAggregateOutputType = {
 export type HomeworkCountAggregateOutputType = {
   id: number
   schoolId: number
+  classId: number
   sectionId: number
   timetableEntryId: number
   assignedDate: number
@@ -96,6 +99,7 @@ export type HomeworkSumAggregateInputType = {
 export type HomeworkMinAggregateInputType = {
   id?: true
   schoolId?: true
+  classId?: true
   sectionId?: true
   timetableEntryId?: true
   assignedDate?: true
@@ -112,6 +116,7 @@ export type HomeworkMinAggregateInputType = {
 export type HomeworkMaxAggregateInputType = {
   id?: true
   schoolId?: true
+  classId?: true
   sectionId?: true
   timetableEntryId?: true
   assignedDate?: true
@@ -128,6 +133,7 @@ export type HomeworkMaxAggregateInputType = {
 export type HomeworkCountAggregateInputType = {
   id?: true
   schoolId?: true
+  classId?: true
   sectionId?: true
   timetableEntryId?: true
   assignedDate?: true
@@ -232,6 +238,7 @@ export type HomeworkGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type HomeworkGroupByOutputType = {
   id: string
   schoolId: string
+  classId: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date
@@ -272,6 +279,7 @@ export type HomeworkWhereInput = {
   NOT?: Prisma.HomeworkWhereInput | Prisma.HomeworkWhereInput[]
   id?: Prisma.StringFilter<"Homework"> | string
   schoolId?: Prisma.StringFilter<"Homework"> | string
+  classId?: Prisma.StringNullableFilter<"Homework"> | string | null
   sectionId?: Prisma.StringFilter<"Homework"> | string
   timetableEntryId?: Prisma.StringFilter<"Homework"> | string
   assignedDate?: Prisma.DateTimeFilter<"Homework"> | Date | string
@@ -294,6 +302,7 @@ export type HomeworkWhereInput = {
 export type HomeworkOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   schoolId?: Prisma.SortOrder
+  classId?: Prisma.SortOrderInput | Prisma.SortOrder
   sectionId?: Prisma.SortOrder
   timetableEntryId?: Prisma.SortOrder
   assignedDate?: Prisma.SortOrder
@@ -320,6 +329,7 @@ export type HomeworkWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.HomeworkWhereInput[]
   NOT?: Prisma.HomeworkWhereInput | Prisma.HomeworkWhereInput[]
   schoolId?: Prisma.StringFilter<"Homework"> | string
+  classId?: Prisma.StringNullableFilter<"Homework"> | string | null
   sectionId?: Prisma.StringFilter<"Homework"> | string
   timetableEntryId?: Prisma.StringFilter<"Homework"> | string
   assignedDate?: Prisma.DateTimeFilter<"Homework"> | Date | string
@@ -342,6 +352,7 @@ export type HomeworkWhereUniqueInput = Prisma.AtLeast<{
 export type HomeworkOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   schoolId?: Prisma.SortOrder
+  classId?: Prisma.SortOrderInput | Prisma.SortOrder
   sectionId?: Prisma.SortOrder
   timetableEntryId?: Prisma.SortOrder
   assignedDate?: Prisma.SortOrder
@@ -367,6 +378,7 @@ export type HomeworkScalarWhereWithAggregatesInput = {
   NOT?: Prisma.HomeworkScalarWhereWithAggregatesInput | Prisma.HomeworkScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Homework"> | string
   schoolId?: Prisma.StringWithAggregatesFilter<"Homework"> | string
+  classId?: Prisma.StringNullableWithAggregatesFilter<"Homework"> | string | null
   sectionId?: Prisma.StringWithAggregatesFilter<"Homework"> | string
   timetableEntryId?: Prisma.StringWithAggregatesFilter<"Homework"> | string
   assignedDate?: Prisma.DateTimeWithAggregatesFilter<"Homework"> | Date | string
@@ -383,6 +395,7 @@ export type HomeworkScalarWhereWithAggregatesInput = {
 
 export type HomeworkCreateInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -402,6 +415,7 @@ export type HomeworkCreateInput = {
 export type HomeworkUncheckedCreateInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -419,6 +433,7 @@ export type HomeworkUncheckedCreateInput = {
 
 export type HomeworkUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -438,6 +453,7 @@ export type HomeworkUpdateInput = {
 export type HomeworkUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -456,6 +472,7 @@ export type HomeworkUncheckedUpdateInput = {
 export type HomeworkCreateManyInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -472,6 +489,7 @@ export type HomeworkCreateManyInput = {
 
 export type HomeworkUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -486,6 +504,7 @@ export type HomeworkUpdateManyMutationInput = {
 export type HomeworkUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -519,6 +538,7 @@ export type HomeworkOrderByRelevanceInput = {
 export type HomeworkCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   schoolId?: Prisma.SortOrder
+  classId?: Prisma.SortOrder
   sectionId?: Prisma.SortOrder
   timetableEntryId?: Prisma.SortOrder
   assignedDate?: Prisma.SortOrder
@@ -540,6 +560,7 @@ export type HomeworkAvgOrderByAggregateInput = {
 export type HomeworkMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   schoolId?: Prisma.SortOrder
+  classId?: Prisma.SortOrder
   sectionId?: Prisma.SortOrder
   timetableEntryId?: Prisma.SortOrder
   assignedDate?: Prisma.SortOrder
@@ -556,6 +577,7 @@ export type HomeworkMaxOrderByAggregateInput = {
 export type HomeworkMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   schoolId?: Prisma.SortOrder
+  classId?: Prisma.SortOrder
   sectionId?: Prisma.SortOrder
   timetableEntryId?: Prisma.SortOrder
   assignedDate?: Prisma.SortOrder
@@ -762,6 +784,7 @@ export type HomeworkUpdateOneRequiredWithoutSubmissionsNestedInput = {
 
 export type HomeworkCreateWithoutSchoolInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -779,6 +802,7 @@ export type HomeworkCreateWithoutSchoolInput = {
 
 export type HomeworkUncheckedCreateWithoutSchoolInput = {
   id?: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -826,6 +850,7 @@ export type HomeworkScalarWhereInput = {
   NOT?: Prisma.HomeworkScalarWhereInput | Prisma.HomeworkScalarWhereInput[]
   id?: Prisma.StringFilter<"Homework"> | string
   schoolId?: Prisma.StringFilter<"Homework"> | string
+  classId?: Prisma.StringNullableFilter<"Homework"> | string | null
   sectionId?: Prisma.StringFilter<"Homework"> | string
   timetableEntryId?: Prisma.StringFilter<"Homework"> | string
   assignedDate?: Prisma.DateTimeFilter<"Homework"> | Date | string
@@ -842,6 +867,7 @@ export type HomeworkScalarWhereInput = {
 
 export type HomeworkCreateWithoutSectionInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -860,6 +886,7 @@ export type HomeworkCreateWithoutSectionInput = {
 export type HomeworkUncheckedCreateWithoutSectionInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   timetableEntryId: string
   assignedDate: Date | string
   title: string
@@ -902,6 +929,7 @@ export type HomeworkUpdateManyWithWhereWithoutSectionInput = {
 
 export type HomeworkCreateWithoutAssignedByUserInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -920,6 +948,7 @@ export type HomeworkCreateWithoutAssignedByUserInput = {
 export type HomeworkUncheckedCreateWithoutAssignedByUserInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -962,6 +991,7 @@ export type HomeworkUpdateManyWithWhereWithoutAssignedByUserInput = {
 
 export type HomeworkCreateWithoutTimetableEntryInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -980,6 +1010,7 @@ export type HomeworkCreateWithoutTimetableEntryInput = {
 export type HomeworkUncheckedCreateWithoutTimetableEntryInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   assignedDate: Date | string
   title: string
@@ -1022,6 +1053,7 @@ export type HomeworkUpdateManyWithWhereWithoutTimetableEntryInput = {
 
 export type HomeworkCreateWithoutSubmissionsInput = {
   id?: string
+  classId?: string | null
   assignedDate: Date | string
   title: string
   description: string
@@ -1040,6 +1072,7 @@ export type HomeworkCreateWithoutSubmissionsInput = {
 export type HomeworkUncheckedCreateWithoutSubmissionsInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -1072,6 +1105,7 @@ export type HomeworkUpdateToOneWithWhereWithoutSubmissionsInput = {
 
 export type HomeworkUpdateWithoutSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1090,6 +1124,7 @@ export type HomeworkUpdateWithoutSubmissionsInput = {
 export type HomeworkUncheckedUpdateWithoutSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1106,6 +1141,7 @@ export type HomeworkUncheckedUpdateWithoutSubmissionsInput = {
 
 export type HomeworkCreateManySchoolInput = {
   id?: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -1122,6 +1158,7 @@ export type HomeworkCreateManySchoolInput = {
 
 export type HomeworkUpdateWithoutSchoolInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1139,6 +1176,7 @@ export type HomeworkUpdateWithoutSchoolInput = {
 
 export type HomeworkUncheckedUpdateWithoutSchoolInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1156,6 +1194,7 @@ export type HomeworkUncheckedUpdateWithoutSchoolInput = {
 
 export type HomeworkUncheckedUpdateManyWithoutSchoolInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1173,6 +1212,7 @@ export type HomeworkUncheckedUpdateManyWithoutSchoolInput = {
 export type HomeworkCreateManySectionInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   timetableEntryId: string
   assignedDate: Date | string
   title: string
@@ -1188,6 +1228,7 @@ export type HomeworkCreateManySectionInput = {
 
 export type HomeworkUpdateWithoutSectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1206,6 +1247,7 @@ export type HomeworkUpdateWithoutSectionInput = {
 export type HomeworkUncheckedUpdateWithoutSectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1223,6 +1265,7 @@ export type HomeworkUncheckedUpdateWithoutSectionInput = {
 export type HomeworkUncheckedUpdateManyWithoutSectionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1239,6 +1282,7 @@ export type HomeworkUncheckedUpdateManyWithoutSectionInput = {
 export type HomeworkCreateManyAssignedByUserInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   timetableEntryId: string
   assignedDate: Date | string
@@ -1254,6 +1298,7 @@ export type HomeworkCreateManyAssignedByUserInput = {
 
 export type HomeworkUpdateWithoutAssignedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1272,6 +1317,7 @@ export type HomeworkUpdateWithoutAssignedByUserInput = {
 export type HomeworkUncheckedUpdateWithoutAssignedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1289,6 +1335,7 @@ export type HomeworkUncheckedUpdateWithoutAssignedByUserInput = {
 export type HomeworkUncheckedUpdateManyWithoutAssignedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   timetableEntryId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1305,6 +1352,7 @@ export type HomeworkUncheckedUpdateManyWithoutAssignedByUserInput = {
 export type HomeworkCreateManyTimetableEntryInput = {
   id?: string
   schoolId: string
+  classId?: string | null
   sectionId: string
   assignedDate: Date | string
   title: string
@@ -1320,6 +1368,7 @@ export type HomeworkCreateManyTimetableEntryInput = {
 
 export type HomeworkUpdateWithoutTimetableEntryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1338,6 +1387,7 @@ export type HomeworkUpdateWithoutTimetableEntryInput = {
 export type HomeworkUncheckedUpdateWithoutTimetableEntryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1355,6 +1405,7 @@ export type HomeworkUncheckedUpdateWithoutTimetableEntryInput = {
 export type HomeworkUncheckedUpdateManyWithoutTimetableEntryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   schoolId?: Prisma.StringFieldUpdateOperationsInput | string
+  classId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sectionId?: Prisma.StringFieldUpdateOperationsInput | string
   assignedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1402,6 +1453,7 @@ export type HomeworkCountOutputTypeCountSubmissionsArgs<ExtArgs extends runtime.
 export type HomeworkSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   schoolId?: boolean
+  classId?: boolean
   sectionId?: boolean
   timetableEntryId?: boolean
   assignedDate?: boolean
@@ -1427,6 +1479,7 @@ export type HomeworkSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type HomeworkSelectScalar = {
   id?: boolean
   schoolId?: boolean
+  classId?: boolean
   sectionId?: boolean
   timetableEntryId?: boolean
   assignedDate?: boolean
@@ -1441,7 +1494,7 @@ export type HomeworkSelectScalar = {
   updatedAt?: boolean
 }
 
-export type HomeworkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "sectionId" | "timetableEntryId" | "assignedDate" | "title" | "description" | "attachments" | "dueDate" | "maxMarks" | "assignedBy" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["homework"]>
+export type HomeworkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "classId" | "sectionId" | "timetableEntryId" | "assignedDate" | "title" | "description" | "attachments" | "dueDate" | "maxMarks" | "assignedBy" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["homework"]>
 export type HomeworkInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   school?: boolean | Prisma.SchoolDefaultArgs<ExtArgs>
   section?: boolean | Prisma.SectionDefaultArgs<ExtArgs>
@@ -1463,6 +1516,7 @@ export type $HomeworkPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     schoolId: string
+    classId: string | null
     sectionId: string
     timetableEntryId: string
     assignedDate: Date
@@ -1851,6 +1905,7 @@ export interface Prisma__HomeworkClient<T, Null = never, ExtArgs extends runtime
 export interface HomeworkFieldRefs {
   readonly id: Prisma.FieldRef<"Homework", 'String'>
   readonly schoolId: Prisma.FieldRef<"Homework", 'String'>
+  readonly classId: Prisma.FieldRef<"Homework", 'String'>
   readonly sectionId: Prisma.FieldRef<"Homework", 'String'>
   readonly timetableEntryId: Prisma.FieldRef<"Homework", 'String'>
   readonly assignedDate: Prisma.FieldRef<"Homework", 'DateTime'>

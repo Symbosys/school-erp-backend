@@ -433,7 +433,8 @@ model Teacher {
   classAssignments  TeacherClassAssignment[]
   attendances       StaffAttendance[]
   teacherSalaries   TeacherSalary[]
-  bookIssues        BookIssue[]
+  libraryFines      LibraryFine[]
+  booksBorrowed     BookBorrowed[]
   leaveRequests     LeaveRequest[]
   timetableEntries  TimetableEntry[]
   homeworksAssigned Homework[]               @relation("HomeworkAssignedBy")
@@ -521,7 +522,8 @@ model Student {
   feeDiscounts        FeeDiscount[]
   studentMarks        StudentMark[]
   studentResults      StudentResult[]
-  bookIssues          BookIssue[]
+  libraryFines        LibraryFine[]
+  booksBorrowed       BookBorrowed[]
   leaveRequests       LeaveRequest[]
   homeworkSubmissions HomeworkSubmission[]
 
@@ -1096,80 +1098,64 @@ model Book {
   coverImage      Json?
   totalCopies     Int      @default(1)
   availableCopies Int      @default(1)
+  stocks          Int?     @default(0)
   isActive        Boolean  @default(true)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
-  school   School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  category BookCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  copies   BookCopy[]
+  school        School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  category      BookCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  fines         LibraryFine[]
+  borrowedBooks BookBorrowed[]
 
   @@index([schoolId, categoryId])
   @@index([title])
   @@map("books")
 }
 
-// BookCopy - Individual physical copies
-model BookCopy {
-  id         String         @id @default(uuid())
-  bookId     String
-  copyNumber String         @db.VarChar(50) // e.g., "LIB-001"
-  condition  BookCondition  @default(GOOD)
-  location   String?        @db.VarChar(100) // Shelf/rack
-  status     BookCopyStatus @default(AVAILABLE)
-  isActive   Boolean        @default(true)
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-
-  book   Book        @relation(fields: [bookId], references: [id], onDelete: Cascade)
-  issues BookIssue[]
-
-  @@unique([bookId, copyNumber])
-  @@index([status])
-  @@map("book_copies")
-}
-
-// BookIssue - Borrowing records
-model BookIssue {
+model BookBorrowed {
   id         String          @id @default(uuid())
-  bookCopyId String
+  bookId     String
   studentId  String?
   teacherId  String?
-  issueDate  DateTime        @default(now())
+  borrowDate DateTime        @default(now())
   dueDate    DateTime
   returnDate DateTime?
   status     BookIssueStatus @default(ISSUED)
   remarks    String?         @db.Text
-  issuedBy   String?         @db.VarChar(100)
   createdAt  DateTime        @default(now())
   updatedAt  DateTime        @updatedAt
 
-  bookCopy BookCopy      @relation(fields: [bookCopyId], references: [id], onDelete: Cascade)
-  student  Student?      @relation(fields: [studentId], references: [id], onDelete: SetNull)
-  teacher  Teacher?      @relation(fields: [teacherId], references: [id], onDelete: SetNull)
-  fines    LibraryFine[]
+  book    Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  student Student? @relation(fields: [studentId], references: [id], onDelete: SetNull)
+  teacher Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
 
-  @@index([studentId, status])
-  @@index([teacherId, status])
-  @@index([dueDate, status])
-  @@map("book_issues")
+  @@index([bookId])
+  @@index([studentId])
+  @@index([teacherId])
+  @@map("books_borrowed")
 }
 
-// LibraryFine - Late return fines
 model LibraryFine {
-  id          String    @id @default(uuid())
-  bookIssueId String
-  amount      Decimal   @db.Decimal(10, 2)
-  reason      String    @db.VarChar(200)
-  isPaid      Boolean   @default(false)
-  paidDate    DateTime?
-  paidAmount  Decimal?  @db.Decimal(10, 2)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id         String    @id @default(uuid())
+  bookId     String?
+  studentId  String?
+  teacherId  String?
+  amount     Decimal   @db.Decimal(10, 2)
+  reason     String    @db.VarChar(200)
+  isPaid     Boolean   @default(false)
+  paidDate   DateTime?
+  paidAmount Decimal?  @db.Decimal(10, 2)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
-  bookIssue BookIssue @relation(fields: [bookIssueId], references: [id], onDelete: Cascade)
+  book    Book?    @relation(fields: [bookId], references: [id], onDelete: SetNull)
+  student Student? @relation(fields: [studentId], references: [id], onDelete: SetNull)
+  teacher Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
 
   @@index([isPaid])
+  @@index([studentId])
+  @@index([bookId])
   @@map("library_fines")
 }
 
@@ -1385,7 +1371,7 @@ model TimetableEntry {
 model Homework {
   id               String   @id @default(uuid())
   schoolId         String
-  classId          String
+  classId          String?
   sectionId        String // Explicit for easier querying
   timetableEntryId String
   assignedDate     DateTime @db.Date

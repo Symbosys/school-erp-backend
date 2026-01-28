@@ -421,8 +421,7 @@ export const ModelName = {
   GradeScale: 'GradeScale',
   BookCategory: 'BookCategory',
   Book: 'Book',
-  BookCopy: 'BookCopy',
-  BookIssue: 'BookIssue',
+  BookBorrowed: 'BookBorrowed',
   LibraryFine: 'LibraryFine',
   Holiday: 'Holiday',
   Notice: 'Notice',
@@ -447,7 +446,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "parentTeacherMeeting" | "pTMTarget" | "school" | "academicYear" | "class" | "section" | "subject" | "classSubject" | "teacher" | "teacherSubject" | "teacherClassAssignment" | "student" | "studentEnrollment" | "parent" | "studentParent" | "studentAttendance" | "staffAttendance" | "feeCategory" | "feeStructure" | "feeStructureItem" | "studentFee" | "studentFeeDetail" | "feePayment" | "feeDiscount" | "salaryComponent" | "salaryStructure" | "salaryStructureItem" | "teacherSalary" | "teacherSalaryDetail" | "salaryPayment" | "exam" | "examSubject" | "studentMark" | "studentResult" | "gradeScale" | "bookCategory" | "book" | "bookCopy" | "bookIssue" | "libraryFine" | "holiday" | "notice" | "leaveRequest" | "timeSlot" | "timetable" | "timetableEntry" | "homework" | "homeworkSubmission"
+    modelProps: "parentTeacherMeeting" | "pTMTarget" | "school" | "academicYear" | "class" | "section" | "subject" | "classSubject" | "teacher" | "teacherSubject" | "teacherClassAssignment" | "student" | "studentEnrollment" | "parent" | "studentParent" | "studentAttendance" | "staffAttendance" | "feeCategory" | "feeStructure" | "feeStructureItem" | "studentFee" | "studentFeeDetail" | "feePayment" | "feeDiscount" | "salaryComponent" | "salaryStructure" | "salaryStructureItem" | "teacherSalary" | "teacherSalaryDetail" | "salaryPayment" | "exam" | "examSubject" | "studentMark" | "studentResult" | "gradeScale" | "bookCategory" | "book" | "bookBorrowed" | "libraryFine" | "holiday" | "notice" | "leaveRequest" | "timeSlot" | "timetable" | "timetableEntry" | "homework" | "homeworkSubmission"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2893,135 +2892,69 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    BookCopy: {
-      payload: Prisma.$BookCopyPayload<ExtArgs>
-      fields: Prisma.BookCopyFieldRefs
+    BookBorrowed: {
+      payload: Prisma.$BookBorrowedPayload<ExtArgs>
+      fields: Prisma.BookBorrowedFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.BookCopyFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload> | null
+          args: Prisma.BookBorrowedFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.BookCopyFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         findFirst: {
-          args: Prisma.BookCopyFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload> | null
+          args: Prisma.BookBorrowedFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.BookCopyFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         findMany: {
-          args: Prisma.BookCopyFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>[]
+          args: Prisma.BookBorrowedFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>[]
         }
         create: {
-          args: Prisma.BookCopyCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         createMany: {
-          args: Prisma.BookCopyCreateManyArgs<ExtArgs>
+          args: Prisma.BookBorrowedCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         delete: {
-          args: Prisma.BookCopyDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         update: {
-          args: Prisma.BookCopyUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         deleteMany: {
-          args: Prisma.BookCopyDeleteManyArgs<ExtArgs>
+          args: Prisma.BookBorrowedDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.BookCopyUpdateManyArgs<ExtArgs>
+          args: Prisma.BookBorrowedUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         upsert: {
-          args: Prisma.BookCopyUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookCopyPayload>
+          args: Prisma.BookBorrowedUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookBorrowedPayload>
         }
         aggregate: {
-          args: Prisma.BookCopyAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBookCopy>
+          args: Prisma.BookBorrowedAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBookBorrowed>
         }
         groupBy: {
-          args: Prisma.BookCopyGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BookCopyGroupByOutputType>[]
+          args: Prisma.BookBorrowedGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BookBorrowedGroupByOutputType>[]
         }
         count: {
-          args: Prisma.BookCopyCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BookCopyCountAggregateOutputType> | number
-        }
-      }
-    }
-    BookIssue: {
-      payload: Prisma.$BookIssuePayload<ExtArgs>
-      fields: Prisma.BookIssueFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.BookIssueFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.BookIssueFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        findFirst: {
-          args: Prisma.BookIssueFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.BookIssueFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        findMany: {
-          args: Prisma.BookIssueFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>[]
-        }
-        create: {
-          args: Prisma.BookIssueCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        createMany: {
-          args: Prisma.BookIssueCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        delete: {
-          args: Prisma.BookIssueDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        update: {
-          args: Prisma.BookIssueUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        deleteMany: {
-          args: Prisma.BookIssueDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.BookIssueUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        upsert: {
-          args: Prisma.BookIssueUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BookIssuePayload>
-        }
-        aggregate: {
-          args: Prisma.BookIssueAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBookIssue>
-        }
-        groupBy: {
-          args: Prisma.BookIssueGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BookIssueGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.BookIssueCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BookIssueCountAggregateOutputType> | number
+          args: Prisma.BookBorrowedCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BookBorrowedCountAggregateOutputType> | number
         }
       }
     }
@@ -4278,6 +4211,7 @@ export const BookScalarFieldEnum = {
   coverImage: 'coverImage',
   totalCopies: 'totalCopies',
   availableCopies: 'availableCopies',
+  stocks: 'stocks',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -4286,42 +4220,28 @@ export const BookScalarFieldEnum = {
 export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
 
 
-export const BookCopyScalarFieldEnum = {
+export const BookBorrowedScalarFieldEnum = {
   id: 'id',
   bookId: 'bookId',
-  copyNumber: 'copyNumber',
-  condition: 'condition',
-  location: 'location',
-  status: 'status',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BookCopyScalarFieldEnum = (typeof BookCopyScalarFieldEnum)[keyof typeof BookCopyScalarFieldEnum]
-
-
-export const BookIssueScalarFieldEnum = {
-  id: 'id',
-  bookCopyId: 'bookCopyId',
   studentId: 'studentId',
   teacherId: 'teacherId',
-  issueDate: 'issueDate',
+  borrowDate: 'borrowDate',
   dueDate: 'dueDate',
   returnDate: 'returnDate',
   status: 'status',
   remarks: 'remarks',
-  issuedBy: 'issuedBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type BookIssueScalarFieldEnum = (typeof BookIssueScalarFieldEnum)[keyof typeof BookIssueScalarFieldEnum]
+export type BookBorrowedScalarFieldEnum = (typeof BookBorrowedScalarFieldEnum)[keyof typeof BookBorrowedScalarFieldEnum]
 
 
 export const LibraryFineScalarFieldEnum = {
   id: 'id',
-  bookIssueId: 'bookIssueId',
+  bookId: 'bookId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
   amount: 'amount',
   reason: 'reason',
   isPaid: 'isPaid',
@@ -4442,6 +4362,7 @@ export type TimetableEntryScalarFieldEnum = (typeof TimetableEntryScalarFieldEnu
 export const HomeworkScalarFieldEnum = {
   id: 'id',
   schoolId: 'schoolId',
+  classId: 'classId',
   sectionId: 'sectionId',
   timetableEntryId: 'timetableEntryId',
   assignedDate: 'assignedDate',
@@ -4947,31 +4868,22 @@ export const BookOrderByRelevanceFieldEnum = {
 export type BookOrderByRelevanceFieldEnum = (typeof BookOrderByRelevanceFieldEnum)[keyof typeof BookOrderByRelevanceFieldEnum]
 
 
-export const BookCopyOrderByRelevanceFieldEnum = {
+export const BookBorrowedOrderByRelevanceFieldEnum = {
   id: 'id',
   bookId: 'bookId',
-  copyNumber: 'copyNumber',
-  location: 'location'
-} as const
-
-export type BookCopyOrderByRelevanceFieldEnum = (typeof BookCopyOrderByRelevanceFieldEnum)[keyof typeof BookCopyOrderByRelevanceFieldEnum]
-
-
-export const BookIssueOrderByRelevanceFieldEnum = {
-  id: 'id',
-  bookCopyId: 'bookCopyId',
   studentId: 'studentId',
   teacherId: 'teacherId',
-  remarks: 'remarks',
-  issuedBy: 'issuedBy'
+  remarks: 'remarks'
 } as const
 
-export type BookIssueOrderByRelevanceFieldEnum = (typeof BookIssueOrderByRelevanceFieldEnum)[keyof typeof BookIssueOrderByRelevanceFieldEnum]
+export type BookBorrowedOrderByRelevanceFieldEnum = (typeof BookBorrowedOrderByRelevanceFieldEnum)[keyof typeof BookBorrowedOrderByRelevanceFieldEnum]
 
 
 export const LibraryFineOrderByRelevanceFieldEnum = {
   id: 'id',
-  bookIssueId: 'bookIssueId',
+  bookId: 'bookId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
   reason: 'reason'
 } as const
 
@@ -5051,6 +4963,7 @@ export type TimetableEntryOrderByRelevanceFieldEnum = (typeof TimetableEntryOrde
 export const HomeworkOrderByRelevanceFieldEnum = {
   id: 'id',
   schoolId: 'schoolId',
+  classId: 'classId',
   sectionId: 'sectionId',
   timetableEntryId: 'timetableEntryId',
   title: 'title',
@@ -5230,20 +5143,6 @@ export type EnumExamTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'ResultStatus'
  */
 export type EnumResultStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResultStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BookCondition'
- */
-export type EnumBookConditionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookCondition'>
-    
-
-
-/**
- * Reference to a field of type 'BookCopyStatus'
- */
-export type EnumBookCopyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookCopyStatus'>
     
 
 
@@ -5441,8 +5340,7 @@ export type GlobalOmitConfig = {
   gradeScale?: Prisma.GradeScaleOmit
   bookCategory?: Prisma.BookCategoryOmit
   book?: Prisma.BookOmit
-  bookCopy?: Prisma.BookCopyOmit
-  bookIssue?: Prisma.BookIssueOmit
+  bookBorrowed?: Prisma.BookBorrowedOmit
   libraryFine?: Prisma.LibraryFineOmit
   holiday?: Prisma.HolidayOmit
   notice?: Prisma.NoticeOmit

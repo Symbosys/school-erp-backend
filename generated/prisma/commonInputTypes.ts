@@ -562,40 +562,6 @@ export type EnumResultStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumResultStatusFilter<$PrismaModel>
 }
 
-export type EnumBookConditionFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCondition | Prisma.EnumBookConditionFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCondition[]
-  notIn?: $Enums.BookCondition[]
-  not?: Prisma.NestedEnumBookConditionFilter<$PrismaModel> | $Enums.BookCondition
-}
-
-export type EnumBookCopyStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCopyStatus | Prisma.EnumBookCopyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCopyStatus[]
-  notIn?: $Enums.BookCopyStatus[]
-  not?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel> | $Enums.BookCopyStatus
-}
-
-export type EnumBookConditionWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCondition | Prisma.EnumBookConditionFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCondition[]
-  notIn?: $Enums.BookCondition[]
-  not?: Prisma.NestedEnumBookConditionWithAggregatesFilter<$PrismaModel> | $Enums.BookCondition
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookConditionFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookConditionFilter<$PrismaModel>
-}
-
-export type EnumBookCopyStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCopyStatus | Prisma.EnumBookCopyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCopyStatus[]
-  notIn?: $Enums.BookCopyStatus[]
-  not?: Prisma.NestedEnumBookCopyStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookCopyStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel>
-}
-
 export type EnumBookIssueStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.BookIssueStatus | Prisma.EnumBookIssueStatusFieldRefInput<$PrismaModel>
   in?: $Enums.BookIssueStatus[]
@@ -1268,40 +1234,6 @@ export type NestedEnumResultStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumResultStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumResultStatusFilter<$PrismaModel>
-}
-
-export type NestedEnumBookConditionFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCondition | Prisma.EnumBookConditionFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCondition[]
-  notIn?: $Enums.BookCondition[]
-  not?: Prisma.NestedEnumBookConditionFilter<$PrismaModel> | $Enums.BookCondition
-}
-
-export type NestedEnumBookCopyStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCopyStatus | Prisma.EnumBookCopyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCopyStatus[]
-  notIn?: $Enums.BookCopyStatus[]
-  not?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel> | $Enums.BookCopyStatus
-}
-
-export type NestedEnumBookConditionWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCondition | Prisma.EnumBookConditionFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCondition[]
-  notIn?: $Enums.BookCondition[]
-  not?: Prisma.NestedEnumBookConditionWithAggregatesFilter<$PrismaModel> | $Enums.BookCondition
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookConditionFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookConditionFilter<$PrismaModel>
-}
-
-export type NestedEnumBookCopyStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BookCopyStatus | Prisma.EnumBookCopyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BookCopyStatus[]
-  notIn?: $Enums.BookCopyStatus[]
-  not?: Prisma.NestedEnumBookCopyStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookCopyStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBookCopyStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumBookIssueStatusFilter<$PrismaModel = never> = {

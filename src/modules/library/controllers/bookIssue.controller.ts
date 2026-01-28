@@ -4,7 +4,7 @@ import { prisma } from "../../../config/prisma";
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util";
 import { statusCode } from "../../../types/types";
 import {
-  issueBookSchema,
+  borrowBookSchema,
   returnBookSchema,
   createFineSchema,
   payFineSchema,
@@ -12,237 +12,183 @@ import {
 
 /**
  * @route   POST /api/library/issue
- * @desc    Issue book to student/teacher
+ * @desc    Borrow book (Record creation + Decrement stocks)
  * @access  Admin/School/Librarian
  */
 export const issueBook = asyncHandler(async (req: Request, res: Response) => {
-  const validatedData = issueBookSchema.parse(req.body);
+  const validatedData = borrowBookSchema.parse(req.body);
 
-  // Check book copy exists and is available
-  const bookCopy = await prisma.bookCopy.findUnique({
-    where: { id: validatedData.bookCopyId },
-    include: { book: true }
+  const book = await prisma.book.findUnique({
+    where: { id: validatedData.bookId }
   });
 
-  if (!bookCopy) throw new ErrorResponse("Book copy not found", statusCode.Not_Found);
+  if (!book) throw new ErrorResponse("Book not found", statusCode.Not_Found);
 
-  if (bookCopy.status !== "AVAILABLE") {
-    throw new ErrorResponse("Book copy is not available", statusCode.Bad_Request);
+  if (book.stocks !== null && book.stocks <= 0) {
+    throw new ErrorResponse("Book out of stock", statusCode.Bad_Request);
   }
 
   // Validate borrower
   if (validatedData.studentId) {
     const student = await prisma.student.findUnique({ where: { id: validatedData.studentId } });
     if (!student) throw new ErrorResponse("Student not found", statusCode.Not_Found);
-  }
-
-  if (validatedData.teacherId) {
+  } else if (validatedData.teacherId) {
     const teacher = await prisma.teacher.findUnique({ where: { id: validatedData.teacherId } });
     if (!teacher) throw new ErrorResponse("Teacher not found", statusCode.Not_Found);
   }
 
-  // Create issue record
-  const bookIssue = await prisma.bookIssue.create({
-    data: {
-      bookCopyId: validatedData.bookCopyId,
-      studentId: validatedData.studentId,
-      teacherId: validatedData.teacherId,
-      dueDate: new Date(validatedData.dueDate),
-      remarks: validatedData.remarks,
-      issuedBy: validatedData.issuedBy,
-      status: "ISSUED"
-    },
-    include: {
-      bookCopy: { include: { book: true } },
-      student: { select: { id: true, firstName: true, lastName: true } },
-      teacher: { select: { id: true, firstName: true, lastName: true } }
-    }
+  // Create Borrow Record and Update Stocks in a Transaction
+  const record = await prisma.$transaction(async (tx) => {
+    const borrowRecord = await tx.bookBorrowed.create({
+      data: {
+        bookId: validatedData.bookId,
+        studentId: validatedData.studentId,
+        teacherId: validatedData.teacherId,
+        dueDate: new Date(validatedData.dueDate),
+        remarks: validatedData.remarks,
+        status: "ISSUED"
+      },
+      include: {
+        book: { select: { title: true } },
+        student: { select: { firstName: true, lastName: true } },
+        teacher: { select: { firstName: true, lastName: true } }
+      }
+    });
+
+    await tx.book.update({
+      where: { id: validatedData.bookId },
+      data: {
+        stocks: book.stocks !== null ? { decrement: 1 } : null,
+        availableCopies: { decrement: 1 }
+      }
+    });
+
+    return borrowRecord;
   });
 
-  // Update book copy status
-  await prisma.bookCopy.update({
-    where: { id: validatedData.bookCopyId },
-    data: { status: "ISSUED" }
-  });
-
-  // Update available copies count
-  await prisma.book.update({
-    where: { id: bookCopy.bookId },
-    data: { availableCopies: { decrement: 1 } }
-  });
-
-  return SuccessResponse(res, "Book issued successfully", bookIssue, statusCode.Created);
+  return SuccessResponse(res, "Book borrowed successfully", record, statusCode.Created);
 });
 
 /**
  * @route   POST /api/library/return
- * @desc    Return book
+ * @desc    Return book (Record update + Increment stocks)
  * @access  Admin/School/Librarian
  */
 export const returnBook = asyncHandler(async (req: Request, res: Response) => {
   const validatedData = returnBookSchema.parse(req.body);
 
-  const bookIssue = await prisma.bookIssue.findUnique({
-    where: { id: validatedData.bookIssueId },
-    include: { bookCopy: true }
+  const borrowRecord = await prisma.bookBorrowed.findUnique({
+    where: { id: validatedData.borrowId },
+    include: { book: true }
   });
 
-  if (!bookIssue) throw new ErrorResponse("Book issue record not found", statusCode.Not_Found);
+  if (!borrowRecord) throw new ErrorResponse("Borrow record not found", statusCode.Not_Found);
+  if (borrowRecord.status === "RETURNED") throw new ErrorResponse("Book already returned", statusCode.Bad_Request);
 
-  if (bookIssue.status === "RETURNED") {
-    throw new ErrorResponse("Book already returned", statusCode.Bad_Request);
-  }
-
-  const returnDate = new Date();
-
-  // Check if overdue and calculate fine
-  let fine = null;
-  if (returnDate > bookIssue.dueDate) {
-    const overdueDays = Math.ceil((returnDate.getTime() - bookIssue.dueDate.getTime()) / (1000 * 60 * 60 * 24));
-    const finePerDay = 2; // ₹2 per day
-    const fineAmount = overdueDays * finePerDay;
-
-    fine = await prisma.libraryFine.create({
+  // Update Record and Stocks in a Transaction
+  const updatedRecord = await prisma.$transaction(async (tx) => {
+    const record = await tx.bookBorrowed.update({
+      where: { id: validatedData.borrowId },
       data: {
-        bookIssueId: validatedData.bookIssueId,
-        amount: fineAmount,
-        reason: `Late return - ${overdueDays} days overdue`
+        returnDate: new Date(),
+        status: "RETURNED",
+        remarks: validatedData.remarks
       }
     });
-  }
 
-  // Update issue record
-  const updatedIssue = await prisma.bookIssue.update({
-    where: { id: validatedData.bookIssueId },
-    data: {
-      returnDate,
-      status: "RETURNED",
-      remarks: validatedData.remarks
-    },
-    include: {
-      bookCopy: { include: { book: true } },
-      fines: true
-    }
+    await tx.book.update({
+      where: { id: borrowRecord.bookId },
+      data: {
+        stocks: borrowRecord.book.stocks !== null ? { increment: 1 } : null,
+        availableCopies: { increment: 1 }
+      }
+    });
+
+    return record;
   });
 
-  // Update book copy status
-  await prisma.bookCopy.update({
-    where: { id: bookIssue.bookCopyId },
-    data: { status: "AVAILABLE" }
-  });
-
-  // Update available copies count
-  await prisma.book.update({
-    where: { id: bookIssue.bookCopy.bookId },
-    data: { availableCopies: { increment: 1 } }
-  });
-
-  return SuccessResponse(res, "Book returned successfully", { ...updatedIssue, newFine: fine });
+  return SuccessResponse(res, "Book returned successfully", updatedRecord);
 });
 
 /**
  * @route   GET /api/library/issue/school/:schoolId
- * @desc    Get all book issues for a school
+ * @desc    Get all borrow records for a school
  * @access  Admin/School/Librarian
  */
-export const getIssuesBySchool = asyncHandler(async (req: Request, res: Response) => {
+export const getBorrowRecordsBySchool = asyncHandler(async (req: Request, res: Response) => {
   const { schoolId } = req.params;
-  const { status } = req.query;
+  const { status, page = 1, limit = 10 } = req.query;
 
   const where: any = {
-    bookCopy: { book: { schoolId: schoolId as string } }
+    book: { schoolId: schoolId as string }
   };
   if (status) where.status = status as string;
 
-  const issues = await prisma.bookIssue.findMany({
-    where,
-    include: {
-      bookCopy: { include: { book: { select: { title: true, author: true } } } },
-      student: { select: { id: true, firstName: true, lastName: true, admissionNumber: true } },
-      teacher: { select: { id: true, firstName: true, lastName: true, employeeId: true } },
-      fines: true
-    },
-    orderBy: { issueDate: "desc" }
-  });
+  const skip = (Number(page) - 1) * Number(limit);
 
-  return SuccessResponse(res, "Book issues retrieved successfully", issues);
+  const [records, totalRecords] = await Promise.all([
+    prisma.bookBorrowed.findMany({
+      where,
+      include: {
+        book: { select: { id: true, title: true, author: true } },
+        student: { select: { id: true, firstName: true, lastName: true, admissionNumber: true } },
+        teacher: { select: { id: true, firstName: true, lastName: true, employeeId: true } }
+      },
+      orderBy: { borrowDate: "desc" },
+      skip,
+      take: Number(limit),
+    }),
+    prisma.bookBorrowed.count({ where })
+  ]);
+
+  return SuccessResponse(res, "Borrow records retrieved successfully", {
+    records,
+    pagination: {
+      total: totalRecords,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalRecords / Number(limit)),
+      limit: Number(limit),
+      count: records.length
+    }
+  });
 });
 
 /**
  * @route   GET /api/library/issue/student/:studentId
- * @desc    Get student's book issues
+ * @desc    Get individual student's borrow history
  * @access  Admin/School/Student/Parent
  */
-export const getIssuesByStudent = asyncHandler(async (req: Request, res: Response) => {
+export const getBorrowHistoryByStudent = asyncHandler(async (req: Request, res: Response) => {
   const { studentId } = req.params;
 
-  const issues = await prisma.bookIssue.findMany({
+  const records = await prisma.bookBorrowed.findMany({
     where: { studentId: studentId as string },
     include: {
-      bookCopy: { include: { book: true } },
-      fines: true
+      book: { select: { id: true, title: true, author: true } }
     },
-    orderBy: { issueDate: "desc" }
+    orderBy: { borrowDate: "desc" }
   });
 
-  return SuccessResponse(res, "Student book issues retrieved successfully", issues);
+  return SuccessResponse(res, "Student borrow history retrieved successfully", records);
 });
 
 /**
  * @route   GET /api/library/issue/teacher/:teacherId
- * @desc    Get teacher's book issues
+ * @desc    Get individual teacher's borrow history
  * @access  Admin/School/Teacher
  */
-export const getIssuesByTeacher = asyncHandler(async (req: Request, res: Response) => {
+export const getBorrowHistoryByTeacher = asyncHandler(async (req: Request, res: Response) => {
   const { teacherId } = req.params;
 
-  const issues = await prisma.bookIssue.findMany({
+  const records = await prisma.bookBorrowed.findMany({
     where: { teacherId: teacherId as string },
     include: {
-      bookCopy: { include: { book: true } },
-      fines: true
+      book: { select: { id: true, title: true, author: true } }
     },
-    orderBy: { issueDate: "desc" }
+    orderBy: { borrowDate: "desc" }
   });
 
-  return SuccessResponse(res, "Teacher book issues retrieved successfully", issues);
-});
-
-/**
- * @route   GET /api/library/issue/overdue/:schoolId
- * @desc    Get overdue books
- * @access  Admin/School/Librarian
- */
-export const getOverdueBooks = asyncHandler(async (req: Request, res: Response) => {
-  const { schoolId } = req.params;
-
-  const today = new Date();
-
-  const overdueIssues = await prisma.bookIssue.findMany({
-    where: {
-      bookCopy: { book: { schoolId: schoolId as string } },
-      status: "ISSUED",
-      dueDate: { lt: today }
-    },
-    include: {
-      bookCopy: { include: { book: true } },
-      student: { select: { id: true, firstName: true, lastName: true } },
-      teacher: { select: { id: true, firstName: true, lastName: true } }
-    },
-    orderBy: { dueDate: "asc" }
-  });
-
-  // Update status to OVERDUE
-  for (const issue of overdueIssues) {
-    if (issue.status !== "OVERDUE") {
-      await prisma.bookIssue.update({
-        where: { id: issue.id },
-        data: { status: "OVERDUE" }
-      });
-    }
-  }
-
-  return SuccessResponse(res, "Overdue books retrieved successfully", overdueIssues);
+  return SuccessResponse(res, "Teacher borrow history retrieved successfully", records);
 });
 
 /**
@@ -253,12 +199,14 @@ export const getOverdueBooks = asyncHandler(async (req: Request, res: Response) 
 export const createFine = asyncHandler(async (req: Request, res: Response) => {
   const validatedData = createFineSchema.parse(req.body);
 
-  const bookIssue = await prisma.bookIssue.findUnique({ where: { id: validatedData.bookIssueId } });
-  if (!bookIssue) throw new ErrorResponse("Book issue not found", statusCode.Not_Found);
+  const book = await prisma.book.findUnique({ where: { id: validatedData.bookId } });
+  if (!book) throw new ErrorResponse("Book not found", statusCode.Not_Found);
 
   const fine = await prisma.libraryFine.create({
     data: {
-      bookIssueId: validatedData.bookIssueId,
+      bookId: validatedData.bookId,
+      studentId: validatedData.studentId,
+      teacherId: validatedData.teacherId,
       amount: validatedData.amount,
       reason: validatedData.reason
     }
@@ -295,29 +243,63 @@ export const payFine = asyncHandler(async (req: Request, res: Response) => {
 });
 
 /**
- * @route   GET /api/library/fine/unpaid/:schoolId
- * @desc    Get unpaid fines
+ * @route   GET /api/library/fine/unpaid/school/:schoolId
+ * @desc    Get unpaid fines for a school
  * @access  Admin/School/Librarian
  */
-export const getUnpaidFines = asyncHandler(async (req: Request, res: Response) => {
+export const getUnpaidFinesBySchool = asyncHandler(async (req: Request, res: Response) => {
   const { schoolId } = req.params;
 
   const fines = await prisma.libraryFine.findMany({
     where: {
       isPaid: false,
-      bookIssue: { bookCopy: { book: { schoolId: schoolId as string } } }
+      book: { schoolId: schoolId as string }
     },
     include: {
-      bookIssue: {
-        include: {
-          bookCopy: { include: { book: { select: { title: true } } } },
-          student: { select: { id: true, firstName: true, lastName: true } },
-          teacher: { select: { id: true, firstName: true, lastName: true } }
-        }
-      }
+      book: { select: { title: true } },
+      student: { select: { id: true, firstName: true, lastName: true, admissionNumber: true } },
+      teacher: { select: { id: true, firstName: true, lastName: true, employeeId: true } }
     },
     orderBy: { createdAt: "desc" }
   });
 
   return SuccessResponse(res, "Unpaid fines retrieved successfully", fines);
+});
+
+/**
+ * @route   GET /api/library/fine/student/:studentId
+ * @desc    Get student's fine history
+ * @access  Admin/School/Student/Parent
+ */
+export const getFinesByStudent = asyncHandler(async (req: Request, res: Response) => {
+  const { studentId } = req.params;
+
+  const fines = await prisma.libraryFine.findMany({
+    where: { studentId: studentId as string },
+    include: {
+      book: { select: { title: true } }
+    },
+    orderBy: { createdAt: "desc" }
+  });
+
+  return SuccessResponse(res, "Student fine history retrieved successfully", fines);
+});
+
+/**
+ * @route   GET /api/library/fine/teacher/:teacherId
+ * @desc    Get teacher's fine history
+ * @access  Admin/School/Teacher
+ */
+export const getFinesByTeacher = asyncHandler(async (req: Request, res: Response) => {
+  const { teacherId } = req.params;
+
+  const fines = await prisma.libraryFine.findMany({
+    where: { teacherId: teacherId as string },
+    include: {
+      book: { select: { title: true } }
+    },
+    orderBy: { createdAt: "desc" }
+  });
+
+  return SuccessResponse(res, "Teacher fine history retrieved successfully", fines);
 });

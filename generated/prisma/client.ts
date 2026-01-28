@@ -225,15 +225,10 @@ export type BookCategory = Prisma.BookCategoryModel
  */
 export type Book = Prisma.BookModel
 /**
- * Model BookCopy
+ * Model BookBorrowed
  * 
  */
-export type BookCopy = Prisma.BookCopyModel
-/**
- * Model BookIssue
- * 
- */
-export type BookIssue = Prisma.BookIssueModel
+export type BookBorrowed = Prisma.BookBorrowedModel
 /**
  * Model LibraryFine
  * 

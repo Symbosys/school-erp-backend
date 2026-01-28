@@ -38,7 +38,9 @@ export type LibraryFineSumAggregateOutputType = {
 
 export type LibraryFineMinAggregateOutputType = {
   id: string | null
-  bookIssueId: string | null
+  bookId: string | null
+  studentId: string | null
+  teacherId: string | null
   amount: runtime.Decimal | null
   reason: string | null
   isPaid: boolean | null
@@ -50,7 +52,9 @@ export type LibraryFineMinAggregateOutputType = {
 
 export type LibraryFineMaxAggregateOutputType = {
   id: string | null
-  bookIssueId: string | null
+  bookId: string | null
+  studentId: string | null
+  teacherId: string | null
   amount: runtime.Decimal | null
   reason: string | null
   isPaid: boolean | null
@@ -62,7 +66,9 @@ export type LibraryFineMaxAggregateOutputType = {
 
 export type LibraryFineCountAggregateOutputType = {
   id: number
-  bookIssueId: number
+  bookId: number
+  studentId: number
+  teacherId: number
   amount: number
   reason: number
   isPaid: number
@@ -86,7 +92,9 @@ export type LibraryFineSumAggregateInputType = {
 
 export type LibraryFineMinAggregateInputType = {
   id?: true
-  bookIssueId?: true
+  bookId?: true
+  studentId?: true
+  teacherId?: true
   amount?: true
   reason?: true
   isPaid?: true
@@ -98,7 +106,9 @@ export type LibraryFineMinAggregateInputType = {
 
 export type LibraryFineMaxAggregateInputType = {
   id?: true
-  bookIssueId?: true
+  bookId?: true
+  studentId?: true
+  teacherId?: true
   amount?: true
   reason?: true
   isPaid?: true
@@ -110,7 +120,9 @@ export type LibraryFineMaxAggregateInputType = {
 
 export type LibraryFineCountAggregateInputType = {
   id?: true
-  bookIssueId?: true
+  bookId?: true
+  studentId?: true
+  teacherId?: true
   amount?: true
   reason?: true
   isPaid?: true
@@ -209,7 +221,9 @@ export type LibraryFineGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 
 export type LibraryFineGroupByOutputType = {
   id: string
-  bookIssueId: string
+  bookId: string | null
+  studentId: string | null
+  teacherId: string | null
   amount: runtime.Decimal
   reason: string
   isPaid: boolean
@@ -244,7 +258,9 @@ export type LibraryFineWhereInput = {
   OR?: Prisma.LibraryFineWhereInput[]
   NOT?: Prisma.LibraryFineWhereInput | Prisma.LibraryFineWhereInput[]
   id?: Prisma.StringFilter<"LibraryFine"> | string
-  bookIssueId?: Prisma.StringFilter<"LibraryFine"> | string
+  bookId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  studentId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  teacherId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
   amount?: Prisma.DecimalFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFilter<"LibraryFine"> | string
   isPaid?: Prisma.BoolFilter<"LibraryFine"> | boolean
@@ -252,12 +268,16 @@ export type LibraryFineWhereInput = {
   paidAmount?: Prisma.DecimalNullableFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"LibraryFine"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"LibraryFine"> | Date | string
-  bookIssue?: Prisma.XOR<Prisma.BookIssueScalarRelationFilter, Prisma.BookIssueWhereInput>
+  book?: Prisma.XOR<Prisma.BookNullableScalarRelationFilter, Prisma.BookWhereInput> | null
+  student?: Prisma.XOR<Prisma.StudentNullableScalarRelationFilter, Prisma.StudentWhereInput> | null
+  teacher?: Prisma.XOR<Prisma.TeacherNullableScalarRelationFilter, Prisma.TeacherWhereInput> | null
 }
 
 export type LibraryFineOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  bookIssueId?: Prisma.SortOrder
+  bookId?: Prisma.SortOrderInput | Prisma.SortOrder
+  studentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  teacherId?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   isPaid?: Prisma.SortOrder
@@ -265,7 +285,9 @@ export type LibraryFineOrderByWithRelationInput = {
   paidAmount?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  bookIssue?: Prisma.BookIssueOrderByWithRelationInput
+  book?: Prisma.BookOrderByWithRelationInput
+  student?: Prisma.StudentOrderByWithRelationInput
+  teacher?: Prisma.TeacherOrderByWithRelationInput
   _relevance?: Prisma.LibraryFineOrderByRelevanceInput
 }
 
@@ -274,7 +296,9 @@ export type LibraryFineWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LibraryFineWhereInput | Prisma.LibraryFineWhereInput[]
   OR?: Prisma.LibraryFineWhereInput[]
   NOT?: Prisma.LibraryFineWhereInput | Prisma.LibraryFineWhereInput[]
-  bookIssueId?: Prisma.StringFilter<"LibraryFine"> | string
+  bookId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  studentId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  teacherId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
   amount?: Prisma.DecimalFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFilter<"LibraryFine"> | string
   isPaid?: Prisma.BoolFilter<"LibraryFine"> | boolean
@@ -282,12 +306,16 @@ export type LibraryFineWhereUniqueInput = Prisma.AtLeast<{
   paidAmount?: Prisma.DecimalNullableFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"LibraryFine"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"LibraryFine"> | Date | string
-  bookIssue?: Prisma.XOR<Prisma.BookIssueScalarRelationFilter, Prisma.BookIssueWhereInput>
+  book?: Prisma.XOR<Prisma.BookNullableScalarRelationFilter, Prisma.BookWhereInput> | null
+  student?: Prisma.XOR<Prisma.StudentNullableScalarRelationFilter, Prisma.StudentWhereInput> | null
+  teacher?: Prisma.XOR<Prisma.TeacherNullableScalarRelationFilter, Prisma.TeacherWhereInput> | null
 }, "id">
 
 export type LibraryFineOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  bookIssueId?: Prisma.SortOrder
+  bookId?: Prisma.SortOrderInput | Prisma.SortOrder
+  studentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  teacherId?: Prisma.SortOrderInput | Prisma.SortOrder
   amount?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   isPaid?: Prisma.SortOrder
@@ -307,7 +335,9 @@ export type LibraryFineScalarWhereWithAggregatesInput = {
   OR?: Prisma.LibraryFineScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LibraryFineScalarWhereWithAggregatesInput | Prisma.LibraryFineScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"LibraryFine"> | string
-  bookIssueId?: Prisma.StringWithAggregatesFilter<"LibraryFine"> | string
+  bookId?: Prisma.StringNullableWithAggregatesFilter<"LibraryFine"> | string | null
+  studentId?: Prisma.StringNullableWithAggregatesFilter<"LibraryFine"> | string | null
+  teacherId?: Prisma.StringNullableWithAggregatesFilter<"LibraryFine"> | string | null
   amount?: Prisma.DecimalWithAggregatesFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringWithAggregatesFilter<"LibraryFine"> | string
   isPaid?: Prisma.BoolWithAggregatesFilter<"LibraryFine"> | boolean
@@ -326,12 +356,16 @@ export type LibraryFineCreateInput = {
   paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  bookIssue: Prisma.BookIssueCreateNestedOneWithoutFinesInput
+  book?: Prisma.BookCreateNestedOneWithoutFinesInput
+  student?: Prisma.StudentCreateNestedOneWithoutLibraryFinesInput
+  teacher?: Prisma.TeacherCreateNestedOneWithoutLibraryFinesInput
 }
 
 export type LibraryFineUncheckedCreateInput = {
   id?: string
-  bookIssueId: string
+  bookId?: string | null
+  studentId?: string | null
+  teacherId?: string | null
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   reason: string
   isPaid?: boolean
@@ -350,12 +384,16 @@ export type LibraryFineUpdateInput = {
   paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  bookIssue?: Prisma.BookIssueUpdateOneRequiredWithoutFinesNestedInput
+  book?: Prisma.BookUpdateOneWithoutFinesNestedInput
+  student?: Prisma.StudentUpdateOneWithoutLibraryFinesNestedInput
+  teacher?: Prisma.TeacherUpdateOneWithoutLibraryFinesNestedInput
 }
 
 export type LibraryFineUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  bookIssueId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -367,7 +405,9 @@ export type LibraryFineUncheckedUpdateInput = {
 
 export type LibraryFineCreateManyInput = {
   id?: string
-  bookIssueId: string
+  bookId?: string | null
+  studentId?: string | null
+  teacherId?: string | null
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   reason: string
   isPaid?: boolean
@@ -390,7 +430,9 @@ export type LibraryFineUpdateManyMutationInput = {
 
 export type LibraryFineUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  bookIssueId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -418,7 +460,9 @@ export type LibraryFineOrderByRelevanceInput = {
 
 export type LibraryFineCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  bookIssueId?: Prisma.SortOrder
+  bookId?: Prisma.SortOrder
+  studentId?: Prisma.SortOrder
+  teacherId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   isPaid?: Prisma.SortOrder
@@ -435,7 +479,9 @@ export type LibraryFineAvgOrderByAggregateInput = {
 
 export type LibraryFineMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  bookIssueId?: Prisma.SortOrder
+  bookId?: Prisma.SortOrder
+  studentId?: Prisma.SortOrder
+  teacherId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   isPaid?: Prisma.SortOrder
@@ -447,7 +493,9 @@ export type LibraryFineMaxOrderByAggregateInput = {
 
 export type LibraryFineMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  bookIssueId?: Prisma.SortOrder
+  bookId?: Prisma.SortOrder
+  studentId?: Prisma.SortOrder
+  teacherId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   reason?: Prisma.SortOrder
   isPaid?: Prisma.SortOrder
@@ -462,50 +510,149 @@ export type LibraryFineSumOrderByAggregateInput = {
   paidAmount?: Prisma.SortOrder
 }
 
-export type LibraryFineCreateNestedManyWithoutBookIssueInput = {
-  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput> | Prisma.LibraryFineCreateWithoutBookIssueInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput[]
-  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput | Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput[]
-  createMany?: Prisma.LibraryFineCreateManyBookIssueInputEnvelope
+export type LibraryFineCreateNestedManyWithoutTeacherInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput> | Prisma.LibraryFineCreateWithoutTeacherInput[] | Prisma.LibraryFineUncheckedCreateWithoutTeacherInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutTeacherInput | Prisma.LibraryFineCreateOrConnectWithoutTeacherInput[]
+  createMany?: Prisma.LibraryFineCreateManyTeacherInputEnvelope
   connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
 }
 
-export type LibraryFineUncheckedCreateNestedManyWithoutBookIssueInput = {
-  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput> | Prisma.LibraryFineCreateWithoutBookIssueInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput[]
-  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput | Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput[]
-  createMany?: Prisma.LibraryFineCreateManyBookIssueInputEnvelope
+export type LibraryFineUncheckedCreateNestedManyWithoutTeacherInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput> | Prisma.LibraryFineCreateWithoutTeacherInput[] | Prisma.LibraryFineUncheckedCreateWithoutTeacherInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutTeacherInput | Prisma.LibraryFineCreateOrConnectWithoutTeacherInput[]
+  createMany?: Prisma.LibraryFineCreateManyTeacherInputEnvelope
   connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
 }
 
-export type LibraryFineUpdateManyWithoutBookIssueNestedInput = {
-  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput> | Prisma.LibraryFineCreateWithoutBookIssueInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput[]
-  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput | Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput[]
-  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookIssueInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookIssueInput[]
-  createMany?: Prisma.LibraryFineCreateManyBookIssueInputEnvelope
+export type LibraryFineUpdateManyWithoutTeacherNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput> | Prisma.LibraryFineCreateWithoutTeacherInput[] | Prisma.LibraryFineUncheckedCreateWithoutTeacherInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutTeacherInput | Prisma.LibraryFineCreateOrConnectWithoutTeacherInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutTeacherInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutTeacherInput[]
+  createMany?: Prisma.LibraryFineCreateManyTeacherInputEnvelope
   set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
-  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookIssueInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookIssueInput[]
-  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutBookIssueInput | Prisma.LibraryFineUpdateManyWithWhereWithoutBookIssueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutTeacherInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutTeacherInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutTeacherInput | Prisma.LibraryFineUpdateManyWithWhereWithoutTeacherInput[]
   deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
 }
 
-export type LibraryFineUncheckedUpdateManyWithoutBookIssueNestedInput = {
-  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput> | Prisma.LibraryFineCreateWithoutBookIssueInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput[]
-  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput | Prisma.LibraryFineCreateOrConnectWithoutBookIssueInput[]
-  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookIssueInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookIssueInput[]
-  createMany?: Prisma.LibraryFineCreateManyBookIssueInputEnvelope
+export type LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput> | Prisma.LibraryFineCreateWithoutTeacherInput[] | Prisma.LibraryFineUncheckedCreateWithoutTeacherInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutTeacherInput | Prisma.LibraryFineCreateOrConnectWithoutTeacherInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutTeacherInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutTeacherInput[]
+  createMany?: Prisma.LibraryFineCreateManyTeacherInputEnvelope
   set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
   connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
-  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookIssueInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookIssueInput[]
-  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutBookIssueInput | Prisma.LibraryFineUpdateManyWithWhereWithoutBookIssueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutTeacherInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutTeacherInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutTeacherInput | Prisma.LibraryFineUpdateManyWithWhereWithoutTeacherInput[]
   deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
 }
 
-export type LibraryFineCreateWithoutBookIssueInput = {
+export type LibraryFineCreateNestedManyWithoutStudentInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput> | Prisma.LibraryFineCreateWithoutStudentInput[] | Prisma.LibraryFineUncheckedCreateWithoutStudentInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutStudentInput | Prisma.LibraryFineCreateOrConnectWithoutStudentInput[]
+  createMany?: Prisma.LibraryFineCreateManyStudentInputEnvelope
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+}
+
+export type LibraryFineUncheckedCreateNestedManyWithoutStudentInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput> | Prisma.LibraryFineCreateWithoutStudentInput[] | Prisma.LibraryFineUncheckedCreateWithoutStudentInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutStudentInput | Prisma.LibraryFineCreateOrConnectWithoutStudentInput[]
+  createMany?: Prisma.LibraryFineCreateManyStudentInputEnvelope
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+}
+
+export type LibraryFineUpdateManyWithoutStudentNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput> | Prisma.LibraryFineCreateWithoutStudentInput[] | Prisma.LibraryFineUncheckedCreateWithoutStudentInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutStudentInput | Prisma.LibraryFineCreateOrConnectWithoutStudentInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutStudentInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutStudentInput[]
+  createMany?: Prisma.LibraryFineCreateManyStudentInputEnvelope
+  set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutStudentInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutStudentInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutStudentInput | Prisma.LibraryFineUpdateManyWithWhereWithoutStudentInput[]
+  deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
+}
+
+export type LibraryFineUncheckedUpdateManyWithoutStudentNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput> | Prisma.LibraryFineCreateWithoutStudentInput[] | Prisma.LibraryFineUncheckedCreateWithoutStudentInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutStudentInput | Prisma.LibraryFineCreateOrConnectWithoutStudentInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutStudentInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutStudentInput[]
+  createMany?: Prisma.LibraryFineCreateManyStudentInputEnvelope
+  set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutStudentInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutStudentInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutStudentInput | Prisma.LibraryFineUpdateManyWithWhereWithoutStudentInput[]
+  deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
+}
+
+export type LibraryFineCreateNestedManyWithoutBookInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput> | Prisma.LibraryFineCreateWithoutBookInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookInput | Prisma.LibraryFineCreateOrConnectWithoutBookInput[]
+  createMany?: Prisma.LibraryFineCreateManyBookInputEnvelope
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+}
+
+export type LibraryFineUncheckedCreateNestedManyWithoutBookInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput> | Prisma.LibraryFineCreateWithoutBookInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookInput | Prisma.LibraryFineCreateOrConnectWithoutBookInput[]
+  createMany?: Prisma.LibraryFineCreateManyBookInputEnvelope
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+}
+
+export type LibraryFineUpdateManyWithoutBookNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput> | Prisma.LibraryFineCreateWithoutBookInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookInput | Prisma.LibraryFineCreateOrConnectWithoutBookInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookInput[]
+  createMany?: Prisma.LibraryFineCreateManyBookInputEnvelope
+  set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutBookInput | Prisma.LibraryFineUpdateManyWithWhereWithoutBookInput[]
+  deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
+}
+
+export type LibraryFineUncheckedUpdateManyWithoutBookNestedInput = {
+  create?: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput> | Prisma.LibraryFineCreateWithoutBookInput[] | Prisma.LibraryFineUncheckedCreateWithoutBookInput[]
+  connectOrCreate?: Prisma.LibraryFineCreateOrConnectWithoutBookInput | Prisma.LibraryFineCreateOrConnectWithoutBookInput[]
+  upsert?: Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookInput | Prisma.LibraryFineUpsertWithWhereUniqueWithoutBookInput[]
+  createMany?: Prisma.LibraryFineCreateManyBookInputEnvelope
+  set?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  disconnect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  delete?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  connect?: Prisma.LibraryFineWhereUniqueInput | Prisma.LibraryFineWhereUniqueInput[]
+  update?: Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookInput | Prisma.LibraryFineUpdateWithWhereUniqueWithoutBookInput[]
+  updateMany?: Prisma.LibraryFineUpdateManyWithWhereWithoutBookInput | Prisma.LibraryFineUpdateManyWithWhereWithoutBookInput[]
+  deleteMany?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
+}
+
+export type LibraryFineCreateWithoutTeacherInput = {
   id?: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  book?: Prisma.BookCreateNestedOneWithoutFinesInput
+  student?: Prisma.StudentCreateNestedOneWithoutLibraryFinesInput
+}
+
+export type LibraryFineUncheckedCreateWithoutTeacherInput = {
+  id?: string
+  bookId?: string | null
+  studentId?: string | null
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   reason: string
   isPaid?: boolean
@@ -515,41 +662,30 @@ export type LibraryFineCreateWithoutBookIssueInput = {
   updatedAt?: Date | string
 }
 
-export type LibraryFineUncheckedCreateWithoutBookIssueInput = {
-  id?: string
-  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
-  reason: string
-  isPaid?: boolean
-  paidDate?: Date | string | null
-  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type LibraryFineCreateOrConnectWithoutBookIssueInput = {
+export type LibraryFineCreateOrConnectWithoutTeacherInput = {
   where: Prisma.LibraryFineWhereUniqueInput
-  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput>
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput>
 }
 
-export type LibraryFineCreateManyBookIssueInputEnvelope = {
-  data: Prisma.LibraryFineCreateManyBookIssueInput | Prisma.LibraryFineCreateManyBookIssueInput[]
+export type LibraryFineCreateManyTeacherInputEnvelope = {
+  data: Prisma.LibraryFineCreateManyTeacherInput | Prisma.LibraryFineCreateManyTeacherInput[]
   skipDuplicates?: boolean
 }
 
-export type LibraryFineUpsertWithWhereUniqueWithoutBookIssueInput = {
+export type LibraryFineUpsertWithWhereUniqueWithoutTeacherInput = {
   where: Prisma.LibraryFineWhereUniqueInput
-  update: Prisma.XOR<Prisma.LibraryFineUpdateWithoutBookIssueInput, Prisma.LibraryFineUncheckedUpdateWithoutBookIssueInput>
-  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookIssueInput, Prisma.LibraryFineUncheckedCreateWithoutBookIssueInput>
+  update: Prisma.XOR<Prisma.LibraryFineUpdateWithoutTeacherInput, Prisma.LibraryFineUncheckedUpdateWithoutTeacherInput>
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutTeacherInput, Prisma.LibraryFineUncheckedCreateWithoutTeacherInput>
 }
 
-export type LibraryFineUpdateWithWhereUniqueWithoutBookIssueInput = {
+export type LibraryFineUpdateWithWhereUniqueWithoutTeacherInput = {
   where: Prisma.LibraryFineWhereUniqueInput
-  data: Prisma.XOR<Prisma.LibraryFineUpdateWithoutBookIssueInput, Prisma.LibraryFineUncheckedUpdateWithoutBookIssueInput>
+  data: Prisma.XOR<Prisma.LibraryFineUpdateWithoutTeacherInput, Prisma.LibraryFineUncheckedUpdateWithoutTeacherInput>
 }
 
-export type LibraryFineUpdateManyWithWhereWithoutBookIssueInput = {
+export type LibraryFineUpdateManyWithWhereWithoutTeacherInput = {
   where: Prisma.LibraryFineScalarWhereInput
-  data: Prisma.XOR<Prisma.LibraryFineUpdateManyMutationInput, Prisma.LibraryFineUncheckedUpdateManyWithoutBookIssueInput>
+  data: Prisma.XOR<Prisma.LibraryFineUpdateManyMutationInput, Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherInput>
 }
 
 export type LibraryFineScalarWhereInput = {
@@ -557,7 +693,9 @@ export type LibraryFineScalarWhereInput = {
   OR?: Prisma.LibraryFineScalarWhereInput[]
   NOT?: Prisma.LibraryFineScalarWhereInput | Prisma.LibraryFineScalarWhereInput[]
   id?: Prisma.StringFilter<"LibraryFine"> | string
-  bookIssueId?: Prisma.StringFilter<"LibraryFine"> | string
+  bookId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  studentId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
+  teacherId?: Prisma.StringNullableFilter<"LibraryFine"> | string | null
   amount?: Prisma.DecimalFilter<"LibraryFine"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFilter<"LibraryFine"> | string
   isPaid?: Prisma.BoolFilter<"LibraryFine"> | boolean
@@ -567,8 +705,23 @@ export type LibraryFineScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"LibraryFine"> | Date | string
 }
 
-export type LibraryFineCreateManyBookIssueInput = {
+export type LibraryFineCreateWithoutStudentInput = {
   id?: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  book?: Prisma.BookCreateNestedOneWithoutFinesInput
+  teacher?: Prisma.TeacherCreateNestedOneWithoutLibraryFinesInput
+}
+
+export type LibraryFineUncheckedCreateWithoutStudentInput = {
+  id?: string
+  bookId?: string | null
+  teacherId?: string | null
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   reason: string
   isPaid?: boolean
@@ -578,8 +731,114 @@ export type LibraryFineCreateManyBookIssueInput = {
   updatedAt?: Date | string
 }
 
-export type LibraryFineUpdateWithoutBookIssueInput = {
+export type LibraryFineCreateOrConnectWithoutStudentInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput>
+}
+
+export type LibraryFineCreateManyStudentInputEnvelope = {
+  data: Prisma.LibraryFineCreateManyStudentInput | Prisma.LibraryFineCreateManyStudentInput[]
+  skipDuplicates?: boolean
+}
+
+export type LibraryFineUpsertWithWhereUniqueWithoutStudentInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  update: Prisma.XOR<Prisma.LibraryFineUpdateWithoutStudentInput, Prisma.LibraryFineUncheckedUpdateWithoutStudentInput>
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutStudentInput, Prisma.LibraryFineUncheckedCreateWithoutStudentInput>
+}
+
+export type LibraryFineUpdateWithWhereUniqueWithoutStudentInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  data: Prisma.XOR<Prisma.LibraryFineUpdateWithoutStudentInput, Prisma.LibraryFineUncheckedUpdateWithoutStudentInput>
+}
+
+export type LibraryFineUpdateManyWithWhereWithoutStudentInput = {
+  where: Prisma.LibraryFineScalarWhereInput
+  data: Prisma.XOR<Prisma.LibraryFineUpdateManyMutationInput, Prisma.LibraryFineUncheckedUpdateManyWithoutStudentInput>
+}
+
+export type LibraryFineCreateWithoutBookInput = {
+  id?: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  student?: Prisma.StudentCreateNestedOneWithoutLibraryFinesInput
+  teacher?: Prisma.TeacherCreateNestedOneWithoutLibraryFinesInput
+}
+
+export type LibraryFineUncheckedCreateWithoutBookInput = {
+  id?: string
+  studentId?: string | null
+  teacherId?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LibraryFineCreateOrConnectWithoutBookInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput>
+}
+
+export type LibraryFineCreateManyBookInputEnvelope = {
+  data: Prisma.LibraryFineCreateManyBookInput | Prisma.LibraryFineCreateManyBookInput[]
+  skipDuplicates?: boolean
+}
+
+export type LibraryFineUpsertWithWhereUniqueWithoutBookInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  update: Prisma.XOR<Prisma.LibraryFineUpdateWithoutBookInput, Prisma.LibraryFineUncheckedUpdateWithoutBookInput>
+  create: Prisma.XOR<Prisma.LibraryFineCreateWithoutBookInput, Prisma.LibraryFineUncheckedCreateWithoutBookInput>
+}
+
+export type LibraryFineUpdateWithWhereUniqueWithoutBookInput = {
+  where: Prisma.LibraryFineWhereUniqueInput
+  data: Prisma.XOR<Prisma.LibraryFineUpdateWithoutBookInput, Prisma.LibraryFineUncheckedUpdateWithoutBookInput>
+}
+
+export type LibraryFineUpdateManyWithWhereWithoutBookInput = {
+  where: Prisma.LibraryFineScalarWhereInput
+  data: Prisma.XOR<Prisma.LibraryFineUpdateManyMutationInput, Prisma.LibraryFineUncheckedUpdateManyWithoutBookInput>
+}
+
+export type LibraryFineCreateManyTeacherInput = {
+  id?: string
+  bookId?: string | null
+  studentId?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LibraryFineUpdateWithoutTeacherInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  book?: Prisma.BookUpdateOneWithoutFinesNestedInput
+  student?: Prisma.StudentUpdateOneWithoutLibraryFinesNestedInput
+}
+
+export type LibraryFineUncheckedUpdateWithoutTeacherInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -589,8 +848,10 @@ export type LibraryFineUpdateWithoutBookIssueInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type LibraryFineUncheckedUpdateWithoutBookIssueInput = {
+export type LibraryFineUncheckedUpdateManyWithoutTeacherInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -600,8 +861,101 @@ export type LibraryFineUncheckedUpdateWithoutBookIssueInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type LibraryFineUncheckedUpdateManyWithoutBookIssueInput = {
+export type LibraryFineCreateManyStudentInput = {
+  id?: string
+  bookId?: string | null
+  teacherId?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LibraryFineUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  book?: Prisma.BookUpdateOneWithoutFinesNestedInput
+  teacher?: Prisma.TeacherUpdateOneWithoutLibraryFinesNestedInput
+}
+
+export type LibraryFineUncheckedUpdateWithoutStudentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LibraryFineUncheckedUpdateManyWithoutStudentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LibraryFineCreateManyBookInput = {
+  id?: string
+  studentId?: string | null
+  teacherId?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason: string
+  isPaid?: boolean
+  paidDate?: Date | string | null
+  paidAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LibraryFineUpdateWithoutBookInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  student?: Prisma.StudentUpdateOneWithoutLibraryFinesNestedInput
+  teacher?: Prisma.TeacherUpdateOneWithoutLibraryFinesNestedInput
+}
+
+export type LibraryFineUncheckedUpdateWithoutBookInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paidDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LibraryFineUncheckedUpdateManyWithoutBookInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  studentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teacherId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -615,7 +969,9 @@ export type LibraryFineUncheckedUpdateManyWithoutBookIssueInput = {
 
 export type LibraryFineSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  bookIssueId?: boolean
+  bookId?: boolean
+  studentId?: boolean
+  teacherId?: boolean
   amount?: boolean
   reason?: boolean
   isPaid?: boolean
@@ -623,14 +979,18 @@ export type LibraryFineSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   paidAmount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  bookIssue?: boolean | Prisma.BookIssueDefaultArgs<ExtArgs>
+  book?: boolean | Prisma.LibraryFine$bookArgs<ExtArgs>
+  student?: boolean | Prisma.LibraryFine$studentArgs<ExtArgs>
+  teacher?: boolean | Prisma.LibraryFine$teacherArgs<ExtArgs>
 }, ExtArgs["result"]["libraryFine"]>
 
 
 
 export type LibraryFineSelectScalar = {
   id?: boolean
-  bookIssueId?: boolean
+  bookId?: boolean
+  studentId?: boolean
+  teacherId?: boolean
   amount?: boolean
   reason?: boolean
   isPaid?: boolean
@@ -640,19 +1000,25 @@ export type LibraryFineSelectScalar = {
   updatedAt?: boolean
 }
 
-export type LibraryFineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookIssueId" | "amount" | "reason" | "isPaid" | "paidDate" | "paidAmount" | "createdAt" | "updatedAt", ExtArgs["result"]["libraryFine"]>
+export type LibraryFineOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookId" | "studentId" | "teacherId" | "amount" | "reason" | "isPaid" | "paidDate" | "paidAmount" | "createdAt" | "updatedAt", ExtArgs["result"]["libraryFine"]>
 export type LibraryFineInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  bookIssue?: boolean | Prisma.BookIssueDefaultArgs<ExtArgs>
+  book?: boolean | Prisma.LibraryFine$bookArgs<ExtArgs>
+  student?: boolean | Prisma.LibraryFine$studentArgs<ExtArgs>
+  teacher?: boolean | Prisma.LibraryFine$teacherArgs<ExtArgs>
 }
 
 export type $LibraryFinePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "LibraryFine"
   objects: {
-    bookIssue: Prisma.$BookIssuePayload<ExtArgs>
+    book: Prisma.$BookPayload<ExtArgs> | null
+    student: Prisma.$StudentPayload<ExtArgs> | null
+    teacher: Prisma.$TeacherPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    bookIssueId: string
+    bookId: string | null
+    studentId: string | null
+    teacherId: string | null
     amount: runtime.Decimal
     reason: string
     isPaid: boolean
@@ -1000,7 +1366,9 @@ readonly fields: LibraryFineFieldRefs;
  */
 export interface Prisma__LibraryFineClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  bookIssue<T extends Prisma.BookIssueDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BookIssueDefaultArgs<ExtArgs>>): Prisma.Prisma__BookIssueClient<runtime.Types.Result.GetResult<Prisma.$BookIssuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  book<T extends Prisma.LibraryFine$bookArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LibraryFine$bookArgs<ExtArgs>>): Prisma.Prisma__BookClient<runtime.Types.Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  student<T extends Prisma.LibraryFine$studentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LibraryFine$studentArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  teacher<T extends Prisma.LibraryFine$teacherArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LibraryFine$teacherArgs<ExtArgs>>): Prisma.Prisma__TeacherClient<runtime.Types.Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1031,7 +1399,9 @@ export interface Prisma__LibraryFineClient<T, Null = never, ExtArgs extends runt
  */
 export interface LibraryFineFieldRefs {
   readonly id: Prisma.FieldRef<"LibraryFine", 'String'>
-  readonly bookIssueId: Prisma.FieldRef<"LibraryFine", 'String'>
+  readonly bookId: Prisma.FieldRef<"LibraryFine", 'String'>
+  readonly studentId: Prisma.FieldRef<"LibraryFine", 'String'>
+  readonly teacherId: Prisma.FieldRef<"LibraryFine", 'String'>
   readonly amount: Prisma.FieldRef<"LibraryFine", 'Decimal'>
   readonly reason: Prisma.FieldRef<"LibraryFine", 'String'>
   readonly isPaid: Prisma.FieldRef<"LibraryFine", 'Boolean'>
@@ -1379,6 +1749,63 @@ export type LibraryFineDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Limit how many LibraryFines to delete.
    */
   limit?: number
+}
+
+/**
+ * LibraryFine.book
+ */
+export type LibraryFine$bookArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Book
+   */
+  select?: Prisma.BookSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Book
+   */
+  omit?: Prisma.BookOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookInclude<ExtArgs> | null
+  where?: Prisma.BookWhereInput
+}
+
+/**
+ * LibraryFine.student
+ */
+export type LibraryFine$studentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Student
+   */
+  select?: Prisma.StudentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Student
+   */
+  omit?: Prisma.StudentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StudentInclude<ExtArgs> | null
+  where?: Prisma.StudentWhereInput
+}
+
+/**
+ * LibraryFine.teacher
+ */
+export type LibraryFine$teacherArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Teacher
+   */
+  select?: Prisma.TeacherSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Teacher
+   */
+  omit?: Prisma.TeacherOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeacherInclude<ExtArgs> | null
+  where?: Prisma.TeacherWhereInput
 }
 
 /**

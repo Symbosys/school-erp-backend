@@ -88,8 +88,7 @@ export const ModelName = {
   GradeScale: 'GradeScale',
   BookCategory: 'BookCategory',
   Book: 'Book',
-  BookCopy: 'BookCopy',
-  BookIssue: 'BookIssue',
+  BookBorrowed: 'BookBorrowed',
   LibraryFine: 'LibraryFine',
   Holiday: 'Holiday',
   Notice: 'Notice',
@@ -737,6 +736,7 @@ export const BookScalarFieldEnum = {
   coverImage: 'coverImage',
   totalCopies: 'totalCopies',
   availableCopies: 'availableCopies',
+  stocks: 'stocks',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -745,42 +745,28 @@ export const BookScalarFieldEnum = {
 export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
 
 
-export const BookCopyScalarFieldEnum = {
+export const BookBorrowedScalarFieldEnum = {
   id: 'id',
   bookId: 'bookId',
-  copyNumber: 'copyNumber',
-  condition: 'condition',
-  location: 'location',
-  status: 'status',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BookCopyScalarFieldEnum = (typeof BookCopyScalarFieldEnum)[keyof typeof BookCopyScalarFieldEnum]
-
-
-export const BookIssueScalarFieldEnum = {
-  id: 'id',
-  bookCopyId: 'bookCopyId',
   studentId: 'studentId',
   teacherId: 'teacherId',
-  issueDate: 'issueDate',
+  borrowDate: 'borrowDate',
   dueDate: 'dueDate',
   returnDate: 'returnDate',
   status: 'status',
   remarks: 'remarks',
-  issuedBy: 'issuedBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type BookIssueScalarFieldEnum = (typeof BookIssueScalarFieldEnum)[keyof typeof BookIssueScalarFieldEnum]
+export type BookBorrowedScalarFieldEnum = (typeof BookBorrowedScalarFieldEnum)[keyof typeof BookBorrowedScalarFieldEnum]
 
 
 export const LibraryFineScalarFieldEnum = {
   id: 'id',
-  bookIssueId: 'bookIssueId',
+  bookId: 'bookId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
   amount: 'amount',
   reason: 'reason',
   isPaid: 'isPaid',
@@ -901,6 +887,7 @@ export type TimetableEntryScalarFieldEnum = (typeof TimetableEntryScalarFieldEnu
 export const HomeworkScalarFieldEnum = {
   id: 'id',
   schoolId: 'schoolId',
+  classId: 'classId',
   sectionId: 'sectionId',
   timetableEntryId: 'timetableEntryId',
   assignedDate: 'assignedDate',
@@ -1406,31 +1393,22 @@ export const BookOrderByRelevanceFieldEnum = {
 export type BookOrderByRelevanceFieldEnum = (typeof BookOrderByRelevanceFieldEnum)[keyof typeof BookOrderByRelevanceFieldEnum]
 
 
-export const BookCopyOrderByRelevanceFieldEnum = {
+export const BookBorrowedOrderByRelevanceFieldEnum = {
   id: 'id',
   bookId: 'bookId',
-  copyNumber: 'copyNumber',
-  location: 'location'
-} as const
-
-export type BookCopyOrderByRelevanceFieldEnum = (typeof BookCopyOrderByRelevanceFieldEnum)[keyof typeof BookCopyOrderByRelevanceFieldEnum]
-
-
-export const BookIssueOrderByRelevanceFieldEnum = {
-  id: 'id',
-  bookCopyId: 'bookCopyId',
   studentId: 'studentId',
   teacherId: 'teacherId',
-  remarks: 'remarks',
-  issuedBy: 'issuedBy'
+  remarks: 'remarks'
 } as const
 
-export type BookIssueOrderByRelevanceFieldEnum = (typeof BookIssueOrderByRelevanceFieldEnum)[keyof typeof BookIssueOrderByRelevanceFieldEnum]
+export type BookBorrowedOrderByRelevanceFieldEnum = (typeof BookBorrowedOrderByRelevanceFieldEnum)[keyof typeof BookBorrowedOrderByRelevanceFieldEnum]
 
 
 export const LibraryFineOrderByRelevanceFieldEnum = {
   id: 'id',
-  bookIssueId: 'bookIssueId',
+  bookId: 'bookId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
   reason: 'reason'
 } as const
 
@@ -1510,6 +1488,7 @@ export type TimetableEntryOrderByRelevanceFieldEnum = (typeof TimetableEntryOrde
 export const HomeworkOrderByRelevanceFieldEnum = {
   id: 'id',
   schoolId: 'schoolId',
+  classId: 'classId',
   sectionId: 'sectionId',
   timetableEntryId: 'timetableEntryId',
   title: 'title',
