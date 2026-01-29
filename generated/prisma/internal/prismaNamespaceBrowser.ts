@@ -75,12 +75,6 @@ export const ModelName = {
   StudentFeeDetail: 'StudentFeeDetail',
   FeePayment: 'FeePayment',
   FeeDiscount: 'FeeDiscount',
-  SalaryComponent: 'SalaryComponent',
-  SalaryStructure: 'SalaryStructure',
-  SalaryStructureItem: 'SalaryStructureItem',
-  TeacherSalary: 'TeacherSalary',
-  TeacherSalaryDetail: 'TeacherSalaryDetail',
-  SalaryPayment: 'SalaryPayment',
   Exam: 'Exam',
   ExamSubject: 'ExamSubject',
   StudentMark: 'StudentMark',
@@ -263,6 +257,7 @@ export const TeacherScalarFieldEnum = {
   qualification: 'qualification',
   specialization: 'specialization',
   experience: 'experience',
+  monthlySalary: 'monthlySalary',
   joiningDate: 'joiningDate',
   profilePicture: 'profilePicture',
   status: 'status',
@@ -528,99 +523,6 @@ export const FeeDiscountScalarFieldEnum = {
 } as const
 
 export type FeeDiscountScalarFieldEnum = (typeof FeeDiscountScalarFieldEnum)[keyof typeof FeeDiscountScalarFieldEnum]
-
-
-export const SalaryComponentScalarFieldEnum = {
-  id: 'id',
-  schoolId: 'schoolId',
-  name: 'name',
-  type: 'type',
-  isPercentage: 'isPercentage',
-  defaultValue: 'defaultValue',
-  isTaxable: 'isTaxable',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SalaryComponentScalarFieldEnum = (typeof SalaryComponentScalarFieldEnum)[keyof typeof SalaryComponentScalarFieldEnum]
-
-
-export const SalaryStructureScalarFieldEnum = {
-  id: 'id',
-  schoolId: 'schoolId',
-  name: 'name',
-  description: 'description',
-  baseSalary: 'baseSalary',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SalaryStructureScalarFieldEnum = (typeof SalaryStructureScalarFieldEnum)[keyof typeof SalaryStructureScalarFieldEnum]
-
-
-export const SalaryStructureItemScalarFieldEnum = {
-  id: 'id',
-  salaryStructureId: 'salaryStructureId',
-  salaryComponentId: 'salaryComponentId',
-  amount: 'amount',
-  percentage: 'percentage',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SalaryStructureItemScalarFieldEnum = (typeof SalaryStructureItemScalarFieldEnum)[keyof typeof SalaryStructureItemScalarFieldEnum]
-
-
-export const TeacherSalaryScalarFieldEnum = {
-  id: 'id',
-  teacherId: 'teacherId',
-  salaryStructureId: 'salaryStructureId',
-  month: 'month',
-  year: 'year',
-  workingDays: 'workingDays',
-  presentDays: 'presentDays',
-  leaveDays: 'leaveDays',
-  grossEarnings: 'grossEarnings',
-  totalDeductions: 'totalDeductions',
-  netSalary: 'netSalary',
-  status: 'status',
-  processedAt: 'processedAt',
-  remarks: 'remarks',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type TeacherSalaryScalarFieldEnum = (typeof TeacherSalaryScalarFieldEnum)[keyof typeof TeacherSalaryScalarFieldEnum]
-
-
-export const TeacherSalaryDetailScalarFieldEnum = {
-  id: 'id',
-  teacherSalaryId: 'teacherSalaryId',
-  salaryComponentId: 'salaryComponentId',
-  type: 'type',
-  amount: 'amount',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type TeacherSalaryDetailScalarFieldEnum = (typeof TeacherSalaryDetailScalarFieldEnum)[keyof typeof TeacherSalaryDetailScalarFieldEnum]
-
-
-export const SalaryPaymentScalarFieldEnum = {
-  id: 'id',
-  teacherSalaryId: 'teacherSalaryId',
-  amount: 'amount',
-  paymentDate: 'paymentDate',
-  paymentMethod: 'paymentMethod',
-  transactionId: 'transactionId',
-  remarks: 'remarks',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SalaryPaymentScalarFieldEnum = (typeof SalaryPaymentScalarFieldEnum)[keyof typeof SalaryPaymentScalarFieldEnum]
 
 
 export const ExamScalarFieldEnum = {
@@ -1255,63 +1157,6 @@ export const FeeDiscountOrderByRelevanceFieldEnum = {
 } as const
 
 export type FeeDiscountOrderByRelevanceFieldEnum = (typeof FeeDiscountOrderByRelevanceFieldEnum)[keyof typeof FeeDiscountOrderByRelevanceFieldEnum]
-
-
-export const SalaryComponentOrderByRelevanceFieldEnum = {
-  id: 'id',
-  schoolId: 'schoolId',
-  name: 'name'
-} as const
-
-export type SalaryComponentOrderByRelevanceFieldEnum = (typeof SalaryComponentOrderByRelevanceFieldEnum)[keyof typeof SalaryComponentOrderByRelevanceFieldEnum]
-
-
-export const SalaryStructureOrderByRelevanceFieldEnum = {
-  id: 'id',
-  schoolId: 'schoolId',
-  name: 'name',
-  description: 'description'
-} as const
-
-export type SalaryStructureOrderByRelevanceFieldEnum = (typeof SalaryStructureOrderByRelevanceFieldEnum)[keyof typeof SalaryStructureOrderByRelevanceFieldEnum]
-
-
-export const SalaryStructureItemOrderByRelevanceFieldEnum = {
-  id: 'id',
-  salaryStructureId: 'salaryStructureId',
-  salaryComponentId: 'salaryComponentId'
-} as const
-
-export type SalaryStructureItemOrderByRelevanceFieldEnum = (typeof SalaryStructureItemOrderByRelevanceFieldEnum)[keyof typeof SalaryStructureItemOrderByRelevanceFieldEnum]
-
-
-export const TeacherSalaryOrderByRelevanceFieldEnum = {
-  id: 'id',
-  teacherId: 'teacherId',
-  salaryStructureId: 'salaryStructureId',
-  remarks: 'remarks'
-} as const
-
-export type TeacherSalaryOrderByRelevanceFieldEnum = (typeof TeacherSalaryOrderByRelevanceFieldEnum)[keyof typeof TeacherSalaryOrderByRelevanceFieldEnum]
-
-
-export const TeacherSalaryDetailOrderByRelevanceFieldEnum = {
-  id: 'id',
-  teacherSalaryId: 'teacherSalaryId',
-  salaryComponentId: 'salaryComponentId'
-} as const
-
-export type TeacherSalaryDetailOrderByRelevanceFieldEnum = (typeof TeacherSalaryDetailOrderByRelevanceFieldEnum)[keyof typeof TeacherSalaryDetailOrderByRelevanceFieldEnum]
-
-
-export const SalaryPaymentOrderByRelevanceFieldEnum = {
-  id: 'id',
-  teacherSalaryId: 'teacherSalaryId',
-  transactionId: 'transactionId',
-  remarks: 'remarks'
-} as const
-
-export type SalaryPaymentOrderByRelevanceFieldEnum = (typeof SalaryPaymentOrderByRelevanceFieldEnum)[keyof typeof SalaryPaymentOrderByRelevanceFieldEnum]
 
 
 export const ExamOrderByRelevanceFieldEnum = {

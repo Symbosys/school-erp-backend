@@ -56,3 +56,15 @@ export const updateTeacherAttendanceSchema = z.object({
 export type MarkTeacherAttendanceInput = z.infer<typeof markTeacherAttendanceSchema>;
 export type MarkBulkTeacherAttendanceInput = z.infer<typeof markBulkTeacherAttendanceSchema>;
 export type UpdateTeacherAttendanceInput = z.infer<typeof updateTeacherAttendanceSchema>;
+
+/**
+ * Zod Schema for Teacher Punch In/Out
+ */
+export const punchAttendanceSchema = z.object({
+  type: z.enum(["IN", "OUT"]),
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
+});
+
+export type PunchAttendanceInput = z.infer<typeof punchAttendanceSchema>;
+

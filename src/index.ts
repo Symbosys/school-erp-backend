@@ -32,10 +32,6 @@ import teacherRoutes from "./modules/teacher/routes/teacher.routes";
 import teacherSubjectRoutes from "./modules/teacher/routes/teacherSubject.routes";
 import teacherClassRoutes from "./modules/teacher/routes/teacherClass.routes";
 import teacherAttendanceRoutes from "./modules/teacher/routes/attendance.routes";
-import salaryComponentRoutes from "./modules/teacher/routes/salaryComponent.routes";
-import salaryStructureRoutes from "./modules/teacher/routes/salaryStructure.routes";
-import teacherSalaryRoutes from "./modules/teacher/routes/teacherSalary.routes";
-import salaryPaymentRoutes from "./modules/teacher/routes/salaryPayment.routes";
 import teacherAuthRoutes from "./modules/teacher/routes/teacher-auth.routes";
 
 /**
@@ -165,10 +161,6 @@ app.use("/api/teacher", teacherRoutes);
 app.use("/api/teacher/subject", teacherSubjectRoutes);
 app.use("/api/teacher/class-assignment", teacherClassRoutes);
 app.use("/api/teacher/attendance", teacherAttendanceRoutes);
-app.use("/api/teacher/salary/component", salaryComponentRoutes);
-app.use("/api/teacher/salary/structure", salaryStructureRoutes);
-app.use("/api/teacher/salary", teacherSalaryRoutes);
-app.use("/api/teacher/salary/payment", salaryPaymentRoutes);
 
 /**
  * API Routes - Student

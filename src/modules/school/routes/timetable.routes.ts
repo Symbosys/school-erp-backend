@@ -10,7 +10,9 @@ import {
   addTimetableEntry,
   updateTimetableEntry,
   deleteTimetableEntry,
+  getTeacherTimetable,
 } from "../controllers/timetable.controller";
+
 
 const router = Router();
 
@@ -47,6 +49,15 @@ router.get("/class/:classId", getClassTimetable);
  * @access  Admin/School
  */
 router.get("/section/:sectionId", getSectionTimetable);
+
+/**
+ * @route   GET /api/school/timetable/teacher/:teacherId
+ * @desc    Get timetable for teacher
+ * @query   academicYearId (required)
+ * @access  Teacher/Admin
+ */
+router.get("/teacher/:teacherId", getTeacherTimetable);
+
 
 /**
  * @route   GET /api/school/timetable/:id

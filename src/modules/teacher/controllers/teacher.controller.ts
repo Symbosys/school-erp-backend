@@ -98,6 +98,7 @@ export const onboardTeacher = asyncHandler(async (req: Request, res: Response) =
       qualification: validatedData.qualification,
       specialization: validatedData.specialization || null,
       experience: validatedData.experience,
+      monthlySalary: validatedData.monthlySalary || 0.00,
       joiningDate: new Date(validatedData.joiningDate),
       profilePicture: (profilePictureData || {}) as any,
       status: validatedData.status || "ACTIVE",
@@ -251,9 +252,10 @@ export const updateTeacher = asyncHandler(async (req: Request, res: Response) =>
   if (validatedData.experience !== undefined) updateData.experience = validatedData.experience;
   if (validatedData.joiningDate) updateData.joiningDate = new Date(validatedData.joiningDate);
   if (validatedData.status) updateData.status = validatedData.status;
+  if (validatedData.monthlySalary !== undefined) updateData.monthlySalary = validatedData.monthlySalary;
   if (validatedData.isActive !== undefined) updateData.isActive = validatedData.isActive;
   if (profilePictureData) updateData.profilePicture = profilePictureData;
-  if(validatedData.password) {
+  if (validatedData.password) {
     // hash password
     const hashedPassword = await bcrypt.hash(validatedData.password, 10);
     updateData.password = hashedPassword;
@@ -293,7 +295,7 @@ export const deleteTeacher = asyncHandler(async (req: Request, res: Response) =>
   }
 
   // Check if teacher has associated data
-  const hasData = 
+  const hasData =
     teacher._count.classAssignments > 0 ||
     teacher._count.subjects > 0 ||
     teacher._count.attendances > 0;

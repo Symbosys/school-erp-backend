@@ -28,10 +28,12 @@ export type AggregateTeacher = {
 
 export type TeacherAvgAggregateOutputType = {
   experience: number | null
+  monthlySalary: runtime.Decimal | null
 }
 
 export type TeacherSumAggregateOutputType = {
   experience: number | null
+  monthlySalary: runtime.Decimal | null
 }
 
 export type TeacherMinAggregateOutputType = {
@@ -51,6 +53,7 @@ export type TeacherMinAggregateOutputType = {
   qualification: string | null
   specialization: string | null
   experience: number | null
+  monthlySalary: runtime.Decimal | null
   joiningDate: Date | null
   status: $Enums.TeacherStatus | null
   password: string | null
@@ -77,6 +80,7 @@ export type TeacherMaxAggregateOutputType = {
   qualification: string | null
   specialization: string | null
   experience: number | null
+  monthlySalary: runtime.Decimal | null
   joiningDate: Date | null
   status: $Enums.TeacherStatus | null
   password: string | null
@@ -103,6 +107,7 @@ export type TeacherCountAggregateOutputType = {
   qualification: number
   specialization: number
   experience: number
+  monthlySalary: number
   joiningDate: number
   profilePicture: number
   status: number
@@ -117,10 +122,12 @@ export type TeacherCountAggregateOutputType = {
 
 export type TeacherAvgAggregateInputType = {
   experience?: true
+  monthlySalary?: true
 }
 
 export type TeacherSumAggregateInputType = {
   experience?: true
+  monthlySalary?: true
 }
 
 export type TeacherMinAggregateInputType = {
@@ -140,6 +147,7 @@ export type TeacherMinAggregateInputType = {
   qualification?: true
   specialization?: true
   experience?: true
+  monthlySalary?: true
   joiningDate?: true
   status?: true
   password?: true
@@ -166,6 +174,7 @@ export type TeacherMaxAggregateInputType = {
   qualification?: true
   specialization?: true
   experience?: true
+  monthlySalary?: true
   joiningDate?: true
   status?: true
   password?: true
@@ -192,6 +201,7 @@ export type TeacherCountAggregateInputType = {
   qualification?: true
   specialization?: true
   experience?: true
+  monthlySalary?: true
   joiningDate?: true
   profilePicture?: true
   status?: true
@@ -306,6 +316,7 @@ export type TeacherGroupByOutputType = {
   qualification: string
   specialization: string | null
   experience: number
+  monthlySalary: runtime.Decimal
   joiningDate: Date
   profilePicture: runtime.JsonValue | null
   status: $Enums.TeacherStatus
@@ -356,6 +367,7 @@ export type TeacherWhereInput = {
   qualification?: Prisma.StringFilter<"Teacher"> | string
   specialization?: Prisma.StringNullableFilter<"Teacher"> | string | null
   experience?: Prisma.IntFilter<"Teacher"> | number
+  monthlySalary?: Prisma.DecimalFilter<"Teacher"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFilter<"Teacher"> | Date | string
   profilePicture?: Prisma.JsonNullableFilter<"Teacher">
   status?: Prisma.EnumTeacherStatusFilter<"Teacher"> | $Enums.TeacherStatus
@@ -368,7 +380,6 @@ export type TeacherWhereInput = {
   subjects?: Prisma.TeacherSubjectListRelationFilter
   classAssignments?: Prisma.TeacherClassAssignmentListRelationFilter
   attendances?: Prisma.StaffAttendanceListRelationFilter
-  teacherSalaries?: Prisma.TeacherSalaryListRelationFilter
   libraryFines?: Prisma.LibraryFineListRelationFilter
   booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
@@ -394,6 +405,7 @@ export type TeacherOrderByWithRelationInput = {
   qualification?: Prisma.SortOrder
   specialization?: Prisma.SortOrderInput | Prisma.SortOrder
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -406,7 +418,6 @@ export type TeacherOrderByWithRelationInput = {
   subjects?: Prisma.TeacherSubjectOrderByRelationAggregateInput
   classAssignments?: Prisma.TeacherClassAssignmentOrderByRelationAggregateInput
   attendances?: Prisma.StaffAttendanceOrderByRelationAggregateInput
-  teacherSalaries?: Prisma.TeacherSalaryOrderByRelationAggregateInput
   libraryFines?: Prisma.LibraryFineOrderByRelationAggregateInput
   booksBorrowed?: Prisma.BookBorrowedOrderByRelationAggregateInput
   leaveRequests?: Prisma.LeaveRequestOrderByRelationAggregateInput
@@ -437,6 +448,7 @@ export type TeacherWhereUniqueInput = Prisma.AtLeast<{
   qualification?: Prisma.StringFilter<"Teacher"> | string
   specialization?: Prisma.StringNullableFilter<"Teacher"> | string | null
   experience?: Prisma.IntFilter<"Teacher"> | number
+  monthlySalary?: Prisma.DecimalFilter<"Teacher"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFilter<"Teacher"> | Date | string
   profilePicture?: Prisma.JsonNullableFilter<"Teacher">
   status?: Prisma.EnumTeacherStatusFilter<"Teacher"> | $Enums.TeacherStatus
@@ -449,7 +461,6 @@ export type TeacherWhereUniqueInput = Prisma.AtLeast<{
   subjects?: Prisma.TeacherSubjectListRelationFilter
   classAssignments?: Prisma.TeacherClassAssignmentListRelationFilter
   attendances?: Prisma.StaffAttendanceListRelationFilter
-  teacherSalaries?: Prisma.TeacherSalaryListRelationFilter
   libraryFines?: Prisma.LibraryFineListRelationFilter
   booksBorrowed?: Prisma.BookBorrowedListRelationFilter
   leaveRequests?: Prisma.LeaveRequestListRelationFilter
@@ -475,6 +486,7 @@ export type TeacherOrderByWithAggregationInput = {
   qualification?: Prisma.SortOrder
   specialization?: Prisma.SortOrderInput | Prisma.SortOrder
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -510,6 +522,7 @@ export type TeacherScalarWhereWithAggregatesInput = {
   qualification?: Prisma.StringWithAggregatesFilter<"Teacher"> | string
   specialization?: Prisma.StringNullableWithAggregatesFilter<"Teacher"> | string | null
   experience?: Prisma.IntWithAggregatesFilter<"Teacher"> | number
+  monthlySalary?: Prisma.DecimalWithAggregatesFilter<"Teacher"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeWithAggregatesFilter<"Teacher"> | Date | string
   profilePicture?: Prisma.JsonNullableWithAggregatesFilter<"Teacher">
   status?: Prisma.EnumTeacherStatusWithAggregatesFilter<"Teacher"> | $Enums.TeacherStatus
@@ -536,6 +549,7 @@ export type TeacherCreateInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -548,7 +562,6 @@ export type TeacherCreateInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -574,6 +587,7 @@ export type TeacherUncheckedCreateInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -585,7 +599,6 @@ export type TeacherUncheckedCreateInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -610,6 +623,7 @@ export type TeacherUpdateInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -622,7 +636,6 @@ export type TeacherUpdateInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -648,6 +661,7 @@ export type TeacherUncheckedUpdateInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -659,7 +673,6 @@ export type TeacherUncheckedUpdateInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -685,6 +698,7 @@ export type TeacherCreateManyInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -711,6 +725,7 @@ export type TeacherUpdateManyMutationInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -738,6 +753,7 @@ export type TeacherUncheckedUpdateManyInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -786,6 +802,7 @@ export type TeacherCountOrderByAggregateInput = {
   qualification?: Prisma.SortOrder
   specialization?: Prisma.SortOrder
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
   profilePicture?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -798,6 +815,7 @@ export type TeacherCountOrderByAggregateInput = {
 
 export type TeacherAvgOrderByAggregateInput = {
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
 }
 
 export type TeacherMaxOrderByAggregateInput = {
@@ -817,6 +835,7 @@ export type TeacherMaxOrderByAggregateInput = {
   qualification?: Prisma.SortOrder
   specialization?: Prisma.SortOrder
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -843,6 +862,7 @@ export type TeacherMinOrderByAggregateInput = {
   qualification?: Prisma.SortOrder
   specialization?: Prisma.SortOrder
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -854,6 +874,7 @@ export type TeacherMinOrderByAggregateInput = {
 
 export type TeacherSumOrderByAggregateInput = {
   experience?: Prisma.SortOrder
+  monthlySalary?: Prisma.SortOrder
 }
 
 export type TeacherScalarRelationFilter = {
@@ -912,6 +933,14 @@ export type EnumGenderFieldUpdateOperationsInput = {
   set?: $Enums.Gender
 }
 
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
 export type EnumTeacherStatusFieldUpdateOperationsInput = {
   set?: $Enums.TeacherStatus
 }
@@ -956,20 +985,6 @@ export type TeacherUpdateOneRequiredWithoutAttendancesNestedInput = {
   upsert?: Prisma.TeacherUpsertWithoutAttendancesInput
   connect?: Prisma.TeacherWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutAttendancesInput, Prisma.TeacherUpdateWithoutAttendancesInput>, Prisma.TeacherUncheckedUpdateWithoutAttendancesInput>
-}
-
-export type TeacherCreateNestedOneWithoutTeacherSalariesInput = {
-  create?: Prisma.XOR<Prisma.TeacherCreateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedCreateWithoutTeacherSalariesInput>
-  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutTeacherSalariesInput
-  connect?: Prisma.TeacherWhereUniqueInput
-}
-
-export type TeacherUpdateOneRequiredWithoutTeacherSalariesNestedInput = {
-  create?: Prisma.XOR<Prisma.TeacherCreateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedCreateWithoutTeacherSalariesInput>
-  connectOrCreate?: Prisma.TeacherCreateOrConnectWithoutTeacherSalariesInput
-  upsert?: Prisma.TeacherUpsertWithoutTeacherSalariesInput
-  connect?: Prisma.TeacherWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TeacherUpdateToOneWithWhereWithoutTeacherSalariesInput, Prisma.TeacherUpdateWithoutTeacherSalariesInput>, Prisma.TeacherUncheckedUpdateWithoutTeacherSalariesInput>
 }
 
 export type TeacherCreateNestedOneWithoutBooksBorrowedInput = {
@@ -1082,6 +1097,7 @@ export type TeacherCreateWithoutSchoolInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1093,7 +1109,6 @@ export type TeacherCreateWithoutSchoolInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -1118,6 +1133,7 @@ export type TeacherUncheckedCreateWithoutSchoolInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1129,7 +1145,6 @@ export type TeacherUncheckedCreateWithoutSchoolInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -1184,6 +1199,7 @@ export type TeacherScalarWhereInput = {
   qualification?: Prisma.StringFilter<"Teacher"> | string
   specialization?: Prisma.StringNullableFilter<"Teacher"> | string | null
   experience?: Prisma.IntFilter<"Teacher"> | number
+  monthlySalary?: Prisma.DecimalFilter<"Teacher"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFilter<"Teacher"> | Date | string
   profilePicture?: Prisma.JsonNullableFilter<"Teacher">
   status?: Prisma.EnumTeacherStatusFilter<"Teacher"> | $Enums.TeacherStatus
@@ -1210,6 +1226,7 @@ export type TeacherCreateWithoutSubjectsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1221,7 +1238,6 @@ export type TeacherCreateWithoutSubjectsInput = {
   school: Prisma.SchoolCreateNestedOneWithoutTeachersInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -1247,6 +1263,7 @@ export type TeacherUncheckedCreateWithoutSubjectsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1257,7 +1274,6 @@ export type TeacherUncheckedCreateWithoutSubjectsInput = {
   updatedAt?: Date | string
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -1298,6 +1314,7 @@ export type TeacherUpdateWithoutSubjectsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1309,7 +1326,6 @@ export type TeacherUpdateWithoutSubjectsInput = {
   school?: Prisma.SchoolUpdateOneRequiredWithoutTeachersNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -1335,6 +1351,7 @@ export type TeacherUncheckedUpdateWithoutSubjectsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1345,7 +1362,6 @@ export type TeacherUncheckedUpdateWithoutSubjectsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -1370,6 +1386,7 @@ export type TeacherCreateWithoutClassAssignmentsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1381,7 +1398,6 @@ export type TeacherCreateWithoutClassAssignmentsInput = {
   school: Prisma.SchoolCreateNestedOneWithoutTeachersInput
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -1407,6 +1423,7 @@ export type TeacherUncheckedCreateWithoutClassAssignmentsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1417,7 +1434,6 @@ export type TeacherUncheckedCreateWithoutClassAssignmentsInput = {
   updatedAt?: Date | string
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -1458,6 +1474,7 @@ export type TeacherUpdateWithoutClassAssignmentsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1469,7 +1486,6 @@ export type TeacherUpdateWithoutClassAssignmentsInput = {
   school?: Prisma.SchoolUpdateOneRequiredWithoutTeachersNestedInput
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -1495,6 +1511,7 @@ export type TeacherUncheckedUpdateWithoutClassAssignmentsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1505,7 +1522,6 @@ export type TeacherUncheckedUpdateWithoutClassAssignmentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -1530,6 +1546,7 @@ export type TeacherCreateWithoutAttendancesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1541,7 +1558,6 @@ export type TeacherCreateWithoutAttendancesInput = {
   school: Prisma.SchoolCreateNestedOneWithoutTeachersInput
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -1567,6 +1583,7 @@ export type TeacherUncheckedCreateWithoutAttendancesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1577,7 +1594,6 @@ export type TeacherUncheckedCreateWithoutAttendancesInput = {
   updatedAt?: Date | string
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -1618,6 +1634,7 @@ export type TeacherUpdateWithoutAttendancesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1629,7 +1646,6 @@ export type TeacherUpdateWithoutAttendancesInput = {
   school?: Prisma.SchoolUpdateOneRequiredWithoutTeachersNestedInput
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -1655,6 +1671,7 @@ export type TeacherUncheckedUpdateWithoutAttendancesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1665,167 +1682,6 @@ export type TeacherUncheckedUpdateWithoutAttendancesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
-  libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
-  booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
-  timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
-  homeworksAssigned?: Prisma.HomeworkUncheckedUpdateManyWithoutAssignedByUserNestedInput
-  homeworksGraded?: Prisma.HomeworkSubmissionUncheckedUpdateManyWithoutGradedByUserNestedInput
-}
-
-export type TeacherCreateWithoutTeacherSalariesInput = {
-  id?: string
-  employeeId: string
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  dateOfBirth: Date | string
-  gender: $Enums.Gender
-  address: string
-  city: string
-  state: string
-  pincode: string
-  qualification: string
-  specialization?: string | null
-  experience?: number
-  joiningDate: Date | string
-  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  status?: $Enums.TeacherStatus
-  password?: string | null
-  fcmToken?: string | null
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  school: Prisma.SchoolCreateNestedOneWithoutTeachersInput
-  subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
-  classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
-  attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
-  booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
-  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
-  timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
-  homeworksAssigned?: Prisma.HomeworkCreateNestedManyWithoutAssignedByUserInput
-  homeworksGraded?: Prisma.HomeworkSubmissionCreateNestedManyWithoutGradedByUserInput
-}
-
-export type TeacherUncheckedCreateWithoutTeacherSalariesInput = {
-  id?: string
-  schoolId: string
-  employeeId: string
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  dateOfBirth: Date | string
-  gender: $Enums.Gender
-  address: string
-  city: string
-  state: string
-  pincode: string
-  qualification: string
-  specialization?: string | null
-  experience?: number
-  joiningDate: Date | string
-  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  status?: $Enums.TeacherStatus
-  password?: string | null
-  fcmToken?: string | null
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
-  classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
-  attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
-  booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
-  timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
-  homeworksAssigned?: Prisma.HomeworkUncheckedCreateNestedManyWithoutAssignedByUserInput
-  homeworksGraded?: Prisma.HomeworkSubmissionUncheckedCreateNestedManyWithoutGradedByUserInput
-}
-
-export type TeacherCreateOrConnectWithoutTeacherSalariesInput = {
-  where: Prisma.TeacherWhereUniqueInput
-  create: Prisma.XOR<Prisma.TeacherCreateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedCreateWithoutTeacherSalariesInput>
-}
-
-export type TeacherUpsertWithoutTeacherSalariesInput = {
-  update: Prisma.XOR<Prisma.TeacherUpdateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedUpdateWithoutTeacherSalariesInput>
-  create: Prisma.XOR<Prisma.TeacherCreateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedCreateWithoutTeacherSalariesInput>
-  where?: Prisma.TeacherWhereInput
-}
-
-export type TeacherUpdateToOneWithWhereWithoutTeacherSalariesInput = {
-  where?: Prisma.TeacherWhereInput
-  data: Prisma.XOR<Prisma.TeacherUpdateWithoutTeacherSalariesInput, Prisma.TeacherUncheckedUpdateWithoutTeacherSalariesInput>
-}
-
-export type TeacherUpdateWithoutTeacherSalariesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  employeeId?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  qualification?: Prisma.StringFieldUpdateOperationsInput | string
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  experience?: Prisma.IntFieldUpdateOperationsInput | number
-  joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  school?: Prisma.SchoolUpdateOneRequiredWithoutTeachersNestedInput
-  subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
-  classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
-  attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
-  booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
-  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
-  timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
-  homeworksAssigned?: Prisma.HomeworkUpdateManyWithoutAssignedByUserNestedInput
-  homeworksGraded?: Prisma.HomeworkSubmissionUpdateManyWithoutGradedByUserNestedInput
-}
-
-export type TeacherUncheckedUpdateWithoutTeacherSalariesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  schoolId?: Prisma.StringFieldUpdateOperationsInput | string
-  employeeId?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  qualification?: Prisma.StringFieldUpdateOperationsInput | string
-  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  experience?: Prisma.IntFieldUpdateOperationsInput | number
-  joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
-  classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
-  attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -1850,6 +1706,7 @@ export type TeacherCreateWithoutBooksBorrowedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1862,7 +1719,6 @@ export type TeacherCreateWithoutBooksBorrowedInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
@@ -1887,6 +1743,7 @@ export type TeacherUncheckedCreateWithoutBooksBorrowedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -1898,7 +1755,6 @@ export type TeacherUncheckedCreateWithoutBooksBorrowedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
@@ -1938,6 +1794,7 @@ export type TeacherUpdateWithoutBooksBorrowedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1950,7 +1807,6 @@ export type TeacherUpdateWithoutBooksBorrowedInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
@@ -1975,6 +1831,7 @@ export type TeacherUncheckedUpdateWithoutBooksBorrowedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -1986,7 +1843,6 @@ export type TeacherUncheckedUpdateWithoutBooksBorrowedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2010,6 +1866,7 @@ export type TeacherCreateWithoutLibraryFinesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2022,7 +1879,6 @@ export type TeacherCreateWithoutLibraryFinesInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
@@ -2047,6 +1903,7 @@ export type TeacherUncheckedCreateWithoutLibraryFinesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2058,7 +1915,6 @@ export type TeacherUncheckedCreateWithoutLibraryFinesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
@@ -2098,6 +1954,7 @@ export type TeacherUpdateWithoutLibraryFinesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2110,7 +1967,6 @@ export type TeacherUpdateWithoutLibraryFinesInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
@@ -2135,6 +1991,7 @@ export type TeacherUncheckedUpdateWithoutLibraryFinesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2146,7 +2003,6 @@ export type TeacherUncheckedUpdateWithoutLibraryFinesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2170,6 +2026,7 @@ export type TeacherCreateWithoutLeaveRequestsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2182,7 +2039,6 @@ export type TeacherCreateWithoutLeaveRequestsInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryCreateNestedManyWithoutTeacherInput
@@ -2207,6 +2063,7 @@ export type TeacherUncheckedCreateWithoutLeaveRequestsInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2218,7 +2075,6 @@ export type TeacherUncheckedCreateWithoutLeaveRequestsInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   timetableEntries?: Prisma.TimetableEntryUncheckedCreateNestedManyWithoutTeacherInput
@@ -2258,6 +2114,7 @@ export type TeacherUpdateWithoutLeaveRequestsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2270,7 +2127,6 @@ export type TeacherUpdateWithoutLeaveRequestsInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUpdateManyWithoutTeacherNestedInput
@@ -2295,6 +2151,7 @@ export type TeacherUncheckedUpdateWithoutLeaveRequestsInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2306,7 +2163,6 @@ export type TeacherUncheckedUpdateWithoutLeaveRequestsInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   timetableEntries?: Prisma.TimetableEntryUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2330,6 +2186,7 @@ export type TeacherCreateWithoutTimetableEntriesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2342,7 +2199,6 @@ export type TeacherCreateWithoutTimetableEntriesInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -2367,6 +2223,7 @@ export type TeacherUncheckedCreateWithoutTimetableEntriesInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2378,7 +2235,6 @@ export type TeacherUncheckedCreateWithoutTimetableEntriesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -2418,6 +2274,7 @@ export type TeacherUpdateWithoutTimetableEntriesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2430,7 +2287,6 @@ export type TeacherUpdateWithoutTimetableEntriesInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -2455,6 +2311,7 @@ export type TeacherUncheckedUpdateWithoutTimetableEntriesInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2466,7 +2323,6 @@ export type TeacherUncheckedUpdateWithoutTimetableEntriesInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2490,6 +2346,7 @@ export type TeacherCreateWithoutHomeworksAssignedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2502,7 +2359,6 @@ export type TeacherCreateWithoutHomeworksAssignedInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -2527,6 +2383,7 @@ export type TeacherUncheckedCreateWithoutHomeworksAssignedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2538,7 +2395,6 @@ export type TeacherUncheckedCreateWithoutHomeworksAssignedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -2578,6 +2434,7 @@ export type TeacherUpdateWithoutHomeworksAssignedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2590,7 +2447,6 @@ export type TeacherUpdateWithoutHomeworksAssignedInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -2615,6 +2471,7 @@ export type TeacherUncheckedUpdateWithoutHomeworksAssignedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2626,7 +2483,6 @@ export type TeacherUncheckedUpdateWithoutHomeworksAssignedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2650,6 +2506,7 @@ export type TeacherCreateWithoutHomeworksGradedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2662,7 +2519,6 @@ export type TeacherCreateWithoutHomeworksGradedInput = {
   subjects?: Prisma.TeacherSubjectCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutTeacherInput
@@ -2687,6 +2543,7 @@ export type TeacherUncheckedCreateWithoutHomeworksGradedInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2698,7 +2555,6 @@ export type TeacherUncheckedCreateWithoutHomeworksGradedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedCreateNestedManyWithoutTeacherInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedCreateNestedManyWithoutTeacherInput
   attendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutTeacherInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedCreateNestedManyWithoutTeacherInput
   libraryFines?: Prisma.LibraryFineUncheckedCreateNestedManyWithoutTeacherInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedCreateNestedManyWithoutTeacherInput
   leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutTeacherInput
@@ -2738,6 +2594,7 @@ export type TeacherUpdateWithoutHomeworksGradedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2750,7 +2607,6 @@ export type TeacherUpdateWithoutHomeworksGradedInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -2775,6 +2631,7 @@ export type TeacherUncheckedUpdateWithoutHomeworksGradedInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2786,7 +2643,6 @@ export type TeacherUncheckedUpdateWithoutHomeworksGradedInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2810,6 +2666,7 @@ export type TeacherCreateManySchoolInput = {
   qualification: string
   specialization?: string | null
   experience?: number
+  monthlySalary?: runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate: Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.TeacherStatus
@@ -2836,6 +2693,7 @@ export type TeacherUpdateWithoutSchoolInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2847,7 +2705,6 @@ export type TeacherUpdateWithoutSchoolInput = {
   subjects?: Prisma.TeacherSubjectUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutTeacherNestedInput
@@ -2872,6 +2729,7 @@ export type TeacherUncheckedUpdateWithoutSchoolInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2883,7 +2741,6 @@ export type TeacherUncheckedUpdateWithoutSchoolInput = {
   subjects?: Prisma.TeacherSubjectUncheckedUpdateManyWithoutTeacherNestedInput
   classAssignments?: Prisma.TeacherClassAssignmentUncheckedUpdateManyWithoutTeacherNestedInput
   attendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutTeacherNestedInput
-  teacherSalaries?: Prisma.TeacherSalaryUncheckedUpdateManyWithoutTeacherNestedInput
   libraryFines?: Prisma.LibraryFineUncheckedUpdateManyWithoutTeacherNestedInput
   booksBorrowed?: Prisma.BookBorrowedUncheckedUpdateManyWithoutTeacherNestedInput
   leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutTeacherNestedInput
@@ -2908,6 +2765,7 @@ export type TeacherUncheckedUpdateManyWithoutSchoolInput = {
   qualification?: Prisma.StringFieldUpdateOperationsInput | string
   specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experience?: Prisma.IntFieldUpdateOperationsInput | number
+  monthlySalary?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   joiningDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profilePicture?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumTeacherStatusFieldUpdateOperationsInput | $Enums.TeacherStatus
@@ -2927,7 +2785,6 @@ export type TeacherCountOutputType = {
   subjects: number
   classAssignments: number
   attendances: number
-  teacherSalaries: number
   libraryFines: number
   booksBorrowed: number
   leaveRequests: number
@@ -2940,7 +2797,6 @@ export type TeacherCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   subjects?: boolean | TeacherCountOutputTypeCountSubjectsArgs
   classAssignments?: boolean | TeacherCountOutputTypeCountClassAssignmentsArgs
   attendances?: boolean | TeacherCountOutputTypeCountAttendancesArgs
-  teacherSalaries?: boolean | TeacherCountOutputTypeCountTeacherSalariesArgs
   libraryFines?: boolean | TeacherCountOutputTypeCountLibraryFinesArgs
   booksBorrowed?: boolean | TeacherCountOutputTypeCountBooksBorrowedArgs
   leaveRequests?: boolean | TeacherCountOutputTypeCountLeaveRequestsArgs
@@ -2978,13 +2834,6 @@ export type TeacherCountOutputTypeCountClassAssignmentsArgs<ExtArgs extends runt
  */
 export type TeacherCountOutputTypeCountAttendancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.StaffAttendanceWhereInput
-}
-
-/**
- * TeacherCountOutputType without action
- */
-export type TeacherCountOutputTypeCountTeacherSalariesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TeacherSalaryWhereInput
 }
 
 /**
@@ -3047,6 +2896,7 @@ export type TeacherSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   qualification?: boolean
   specialization?: boolean
   experience?: boolean
+  monthlySalary?: boolean
   joiningDate?: boolean
   profilePicture?: boolean
   status?: boolean
@@ -3059,7 +2909,6 @@ export type TeacherSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   subjects?: boolean | Prisma.Teacher$subjectsArgs<ExtArgs>
   classAssignments?: boolean | Prisma.Teacher$classAssignmentsArgs<ExtArgs>
   attendances?: boolean | Prisma.Teacher$attendancesArgs<ExtArgs>
-  teacherSalaries?: boolean | Prisma.Teacher$teacherSalariesArgs<ExtArgs>
   libraryFines?: boolean | Prisma.Teacher$libraryFinesArgs<ExtArgs>
   booksBorrowed?: boolean | Prisma.Teacher$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Teacher$leaveRequestsArgs<ExtArgs>
@@ -3088,6 +2937,7 @@ export type TeacherSelectScalar = {
   qualification?: boolean
   specialization?: boolean
   experience?: boolean
+  monthlySalary?: boolean
   joiningDate?: boolean
   profilePicture?: boolean
   status?: boolean
@@ -3098,13 +2948,12 @@ export type TeacherSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TeacherOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "employeeId" | "firstName" | "lastName" | "email" | "phone" | "dateOfBirth" | "gender" | "address" | "city" | "state" | "pincode" | "qualification" | "specialization" | "experience" | "joiningDate" | "profilePicture" | "status" | "password" | "fcmToken" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["teacher"]>
+export type TeacherOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "schoolId" | "employeeId" | "firstName" | "lastName" | "email" | "phone" | "dateOfBirth" | "gender" | "address" | "city" | "state" | "pincode" | "qualification" | "specialization" | "experience" | "monthlySalary" | "joiningDate" | "profilePicture" | "status" | "password" | "fcmToken" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["teacher"]>
 export type TeacherInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   school?: boolean | Prisma.SchoolDefaultArgs<ExtArgs>
   subjects?: boolean | Prisma.Teacher$subjectsArgs<ExtArgs>
   classAssignments?: boolean | Prisma.Teacher$classAssignmentsArgs<ExtArgs>
   attendances?: boolean | Prisma.Teacher$attendancesArgs<ExtArgs>
-  teacherSalaries?: boolean | Prisma.Teacher$teacherSalariesArgs<ExtArgs>
   libraryFines?: boolean | Prisma.Teacher$libraryFinesArgs<ExtArgs>
   booksBorrowed?: boolean | Prisma.Teacher$booksBorrowedArgs<ExtArgs>
   leaveRequests?: boolean | Prisma.Teacher$leaveRequestsArgs<ExtArgs>
@@ -3121,7 +2970,6 @@ export type $TeacherPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     subjects: Prisma.$TeacherSubjectPayload<ExtArgs>[]
     classAssignments: Prisma.$TeacherClassAssignmentPayload<ExtArgs>[]
     attendances: Prisma.$StaffAttendancePayload<ExtArgs>[]
-    teacherSalaries: Prisma.$TeacherSalaryPayload<ExtArgs>[]
     libraryFines: Prisma.$LibraryFinePayload<ExtArgs>[]
     booksBorrowed: Prisma.$BookBorrowedPayload<ExtArgs>[]
     leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
@@ -3146,6 +2994,7 @@ export type $TeacherPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     qualification: string
     specialization: string | null
     experience: number
+    monthlySalary: runtime.Decimal
     joiningDate: Date
     profilePicture: runtime.JsonValue | null
     status: $Enums.TeacherStatus
@@ -3498,7 +3347,6 @@ export interface Prisma__TeacherClient<T, Null = never, ExtArgs extends runtime.
   subjects<T extends Prisma.Teacher$subjectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherSubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   classAssignments<T extends Prisma.Teacher$classAssignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$classAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherClassAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   attendances<T extends Prisma.Teacher$attendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaffAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  teacherSalaries<T extends Prisma.Teacher$teacherSalariesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$teacherSalariesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeacherSalaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   libraryFines<T extends Prisma.Teacher$libraryFinesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$libraryFinesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LibraryFinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   booksBorrowed<T extends Prisma.Teacher$booksBorrowedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$booksBorrowedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookBorrowedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   leaveRequests<T extends Prisma.Teacher$leaveRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Teacher$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3550,6 +3398,7 @@ export interface TeacherFieldRefs {
   readonly qualification: Prisma.FieldRef<"Teacher", 'String'>
   readonly specialization: Prisma.FieldRef<"Teacher", 'String'>
   readonly experience: Prisma.FieldRef<"Teacher", 'Int'>
+  readonly monthlySalary: Prisma.FieldRef<"Teacher", 'Decimal'>
   readonly joiningDate: Prisma.FieldRef<"Teacher", 'DateTime'>
   readonly profilePicture: Prisma.FieldRef<"Teacher", 'Json'>
   readonly status: Prisma.FieldRef<"Teacher", 'TeacherStatus'>
@@ -3970,30 +3819,6 @@ export type Teacher$attendancesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.StaffAttendanceScalarFieldEnum | Prisma.StaffAttendanceScalarFieldEnum[]
-}
-
-/**
- * Teacher.teacherSalaries
- */
-export type Teacher$teacherSalariesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the TeacherSalary
-   */
-  select?: Prisma.TeacherSalarySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the TeacherSalary
-   */
-  omit?: Prisma.TeacherSalaryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.TeacherSalaryInclude<ExtArgs> | null
-  where?: Prisma.TeacherSalaryWhereInput
-  orderBy?: Prisma.TeacherSalaryOrderByWithRelationInput | Prisma.TeacherSalaryOrderByWithRelationInput[]
-  cursor?: Prisma.TeacherSalaryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.TeacherSalaryScalarFieldEnum | Prisma.TeacherSalaryScalarFieldEnum[]
 }
 
 /**

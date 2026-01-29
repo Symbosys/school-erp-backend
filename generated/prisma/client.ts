@@ -160,36 +160,6 @@ export type FeePayment = Prisma.FeePaymentModel
  */
 export type FeeDiscount = Prisma.FeeDiscountModel
 /**
- * Model SalaryComponent
- * 
- */
-export type SalaryComponent = Prisma.SalaryComponentModel
-/**
- * Model SalaryStructure
- * 
- */
-export type SalaryStructure = Prisma.SalaryStructureModel
-/**
- * Model SalaryStructureItem
- * 
- */
-export type SalaryStructureItem = Prisma.SalaryStructureItemModel
-/**
- * Model TeacherSalary
- * 
- */
-export type TeacherSalary = Prisma.TeacherSalaryModel
-/**
- * Model TeacherSalaryDetail
- * 
- */
-export type TeacherSalaryDetail = Prisma.TeacherSalaryDetailModel
-/**
- * Model SalaryPayment
- * 
- */
-export type SalaryPayment = Prisma.SalaryPaymentModel
-/**
  * Model Exam
  * 
  */

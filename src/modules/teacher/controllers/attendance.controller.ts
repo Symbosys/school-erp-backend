@@ -6,6 +6,7 @@ import { statusCode } from "../../../types/types";
 import {
   markBulkTeacherAttendanceSchema,
   updateTeacherAttendanceSchema,
+  punchAttendanceSchema,
 } from "../validation/attendance.validation";
 
 /**
@@ -246,7 +247,7 @@ export const getAttendanceByTeacher = asyncHandler(async (req: Request, res: Res
  * @access  Admin/School
  */
 export const updateTeacherAttendance = asyncHandler(async (req: Request, res: Response) => {
-  const { id } = req. params;
+  const { id } = req.params;
   const validatedData = updateTeacherAttendanceSchema.parse(req.body);
 
   const existing = await prisma.staffAttendance.findUnique({ where: { id: id as string } });
@@ -255,7 +256,7 @@ export const updateTeacherAttendance = asyncHandler(async (req: Request, res: Re
   const updateData: any = {};
   if (validatedData.status) updateData.status = validatedData.status;
   if (validatedData.remarks !== undefined) updateData.remarks = validatedData.remarks;
-  
+
   if (validatedData.checkInTime !== undefined) {
     updateData.checkInTime = validatedData.checkInTime ? new Date(validatedData.checkInTime) : null;
   }
@@ -270,3 +271,86 @@ export const updateTeacherAttendance = asyncHandler(async (req: Request, res: Re
 
   return SuccessResponse(res, "Attendance updated successfully", update);
 });
+
+
+/**
+ * @route   POST /api/teacher/attendance/punch
+ * @desc    Teacher Punch In/Out
+ * @access  Teacher
+ */
+export const punchAttendance = asyncHandler(async (req: Request, res: Response) => {
+  const teacherPayload = (req as any).teacher;
+  if (!teacherPayload) {
+    throw new ErrorResponse("Teacher not found in request", statusCode.Unauthorized);
+  }
+
+  const validatedData = punchAttendanceSchema.parse(req.body);
+  const { type } = validatedData;
+  const teacherId = teacherPayload.userId;
+  const schoolId = teacherPayload.schoolId;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Check if attendance already exists for today
+  let attendance = await prisma.staffAttendance.findUnique({
+    where: {
+      teacherId_date: {
+        teacherId,
+        date: today,
+      },
+    },
+  });
+
+  if (type === "IN") {
+    if (attendance && attendance.checkInTime) {
+      throw new ErrorResponse("Already punched in for today", statusCode.Bad_Request);
+    }
+
+    attendance = await prisma.staffAttendance.upsert({
+      where: {
+        teacherId_date: {
+          teacherId,
+          date: today,
+        },
+      },
+      update: {
+        checkInTime: new Date(),
+        status: "PRESENT", // Auto-mark as PRESENT on punch in
+      },
+      create: {
+        teacherId,
+        schoolId,
+        date: today,
+        checkInTime: new Date(),
+        status: "PRESENT",
+      },
+    });
+  } else {
+    // Punch OUT
+    if (!attendance || !attendance.checkInTime) {
+      throw new ErrorResponse("Cannot punch out without punching in", statusCode.Bad_Request);
+    }
+
+    if (attendance.checkOutTime) {
+      throw new ErrorResponse("Already punched out for today", statusCode.Bad_Request);
+    }
+
+    attendance = await prisma.staffAttendance.update({
+      where: {
+        id: attendance.id,
+      },
+      data: {
+        checkOutTime: new Date(),
+      },
+    });
+  }
+
+  return SuccessResponse(
+    res,
+    `Punched ${type} successfully`,
+    attendance,
+    statusCode.Created
+  );
+});
+

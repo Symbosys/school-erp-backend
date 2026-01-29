@@ -48,14 +48,14 @@ export const createTimetable = asyncHandler(async (req: Request, res: Response) 
       effectiveTo: validatedData.effectiveTo ? new Date(validatedData.effectiveTo) : null,
       entries: validatedData.entries
         ? {
-            create: validatedData.entries.map((entry) => ({
-              timeSlotId: entry.timeSlotId,
-              dayOfWeek: entry.dayOfWeek,
-              subjectId: entry.subjectId,
-              teacherId: entry.teacherId,
-              roomNumber: entry.roomNumber,
-            })),
-          }
+          create: validatedData.entries.map((entry) => ({
+            timeSlotId: entry.timeSlotId,
+            dayOfWeek: entry.dayOfWeek,
+            subjectId: entry.subjectId,
+            teacherId: entry.teacherId,
+            roomNumber: entry.roomNumber,
+          })),
+        }
         : undefined,
     },
     include: {
@@ -104,14 +104,14 @@ export const createSectionOverride = asyncHandler(async (req: Request, res: Resp
       effectiveTo: validatedData.effectiveTo ? new Date(validatedData.effectiveTo) : null,
       entries: validatedData.entries
         ? {
-            create: validatedData.entries.map((entry) => ({
-              timeSlotId: entry.timeSlotId,
-              dayOfWeek: entry.dayOfWeek,
-              subjectId: entry.subjectId,
-              teacherId: entry.teacherId,
-              roomNumber: entry.roomNumber,
-            })),
-          }
+          create: validatedData.entries.map((entry) => ({
+            timeSlotId: entry.timeSlotId,
+            dayOfWeek: entry.dayOfWeek,
+            subjectId: entry.subjectId,
+            teacherId: entry.teacherId,
+            roomNumber: entry.roomNumber,
+          })),
+        }
         : undefined,
     },
     include: {
@@ -250,6 +250,46 @@ export const getTimetableById = asyncHandler(async (req: Request, res: Response)
 
   return SuccessResponse(res, "Timetable retrieved successfully", timetable);
 });
+
+/**
+ * @route   GET /api/school/timetable/teacher/:teacherId
+ * @desc    Get timetable entries for a specific teacher
+ * @query   academicYearId (required)
+ * @access  Teacher/Admin
+ */
+export const getTeacherTimetable = asyncHandler(async (req: Request, res: Response) => {
+  const { teacherId } = req.params;
+  const { academicYearId } = req.query;
+
+  if (!academicYearId) throw new ErrorResponse("Academic Year ID is required", statusCode.Bad_Request);
+
+  const entries = await prisma.timetableEntry.findMany({
+    where: {
+      teacherId: teacherId as string,
+      timetable: {
+        academicYearId: academicYearId as string,
+        isActive: true,
+      },
+    },
+    include: {
+      timeSlot: true,
+      subject: { select: { id: true, name: true, code: true } },
+      timetable: {
+        include: {
+          class: { select: { id: true, name: true } },
+          section: { select: { id: true, name: true } },
+        },
+      },
+    },
+    orderBy: [
+      { dayOfWeek: "asc" },
+      { timeSlot: { slotOrder: "asc" } },
+    ],
+  });
+
+  return SuccessResponse(res, "Teacher timetable retrieved successfully", entries);
+});
+
 
 /**
  * @route   PUT /api/school/timetable/:id

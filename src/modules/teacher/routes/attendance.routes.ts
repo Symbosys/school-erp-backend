@@ -4,7 +4,9 @@ import {
   getTeacherAttendanceBySchool,
   getAttendanceByTeacher,
   updateTeacherAttendance,
+  punchAttendance,
 } from "../controllers/attendance.controller";
+import { authenticateTeacher } from "../middlewares/teacher-auth.middleware";
 
 const router = Router();
 
@@ -35,5 +37,12 @@ router.get("/teacher/:teacherId", getAttendanceByTeacher);
  * @access  Admin/School
  */
 router.put("/:id", updateTeacherAttendance);
+
+/**
+ * @route   POST /api/teacher/attendance/punch
+ * @desc    Teacher Punch In/Out
+ * @access  Teacher
+ */
+router.post("/punch", authenticateTeacher, punchAttendance);
 
 export default router;

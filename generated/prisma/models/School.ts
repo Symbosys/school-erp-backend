@@ -371,8 +371,6 @@ export type SchoolWhereInput = {
   staffAttendances?: Prisma.StaffAttendanceListRelationFilter
   feeCategories?: Prisma.FeeCategoryListRelationFilter
   feeStructures?: Prisma.FeeStructureListRelationFilter
-  salaryComponents?: Prisma.SalaryComponentListRelationFilter
-  salaryStructures?: Prisma.SalaryStructureListRelationFilter
   exams?: Prisma.ExamListRelationFilter
   gradeScales?: Prisma.GradeScaleListRelationFilter
   bookCategories?: Prisma.BookCategoryListRelationFilter
@@ -421,8 +419,6 @@ export type SchoolOrderByWithRelationInput = {
   staffAttendances?: Prisma.StaffAttendanceOrderByRelationAggregateInput
   feeCategories?: Prisma.FeeCategoryOrderByRelationAggregateInput
   feeStructures?: Prisma.FeeStructureOrderByRelationAggregateInput
-  salaryComponents?: Prisma.SalaryComponentOrderByRelationAggregateInput
-  salaryStructures?: Prisma.SalaryStructureOrderByRelationAggregateInput
   exams?: Prisma.ExamOrderByRelationAggregateInput
   gradeScales?: Prisma.GradeScaleOrderByRelationAggregateInput
   bookCategories?: Prisma.BookCategoryOrderByRelationAggregateInput
@@ -475,8 +471,6 @@ export type SchoolWhereUniqueInput = Prisma.AtLeast<{
   staffAttendances?: Prisma.StaffAttendanceListRelationFilter
   feeCategories?: Prisma.FeeCategoryListRelationFilter
   feeStructures?: Prisma.FeeStructureListRelationFilter
-  salaryComponents?: Prisma.SalaryComponentListRelationFilter
-  salaryStructures?: Prisma.SalaryStructureListRelationFilter
   exams?: Prisma.ExamListRelationFilter
   gradeScales?: Prisma.GradeScaleListRelationFilter
   bookCategories?: Prisma.BookCategoryListRelationFilter
@@ -585,8 +579,6 @@ export type SchoolCreateInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -635,8 +627,6 @@ export type SchoolUncheckedCreateInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -685,8 +675,6 @@ export type SchoolUpdateInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -735,8 +723,6 @@ export type SchoolUncheckedUpdateInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -1113,34 +1099,6 @@ export type SchoolUpdateOneRequiredWithoutFeeStructuresNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SchoolUpdateToOneWithWhereWithoutFeeStructuresInput, Prisma.SchoolUpdateWithoutFeeStructuresInput>, Prisma.SchoolUncheckedUpdateWithoutFeeStructuresInput>
 }
 
-export type SchoolCreateNestedOneWithoutSalaryComponentsInput = {
-  create?: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedCreateWithoutSalaryComponentsInput>
-  connectOrCreate?: Prisma.SchoolCreateOrConnectWithoutSalaryComponentsInput
-  connect?: Prisma.SchoolWhereUniqueInput
-}
-
-export type SchoolUpdateOneRequiredWithoutSalaryComponentsNestedInput = {
-  create?: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedCreateWithoutSalaryComponentsInput>
-  connectOrCreate?: Prisma.SchoolCreateOrConnectWithoutSalaryComponentsInput
-  upsert?: Prisma.SchoolUpsertWithoutSalaryComponentsInput
-  connect?: Prisma.SchoolWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SchoolUpdateToOneWithWhereWithoutSalaryComponentsInput, Prisma.SchoolUpdateWithoutSalaryComponentsInput>, Prisma.SchoolUncheckedUpdateWithoutSalaryComponentsInput>
-}
-
-export type SchoolCreateNestedOneWithoutSalaryStructuresInput = {
-  create?: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedCreateWithoutSalaryStructuresInput>
-  connectOrCreate?: Prisma.SchoolCreateOrConnectWithoutSalaryStructuresInput
-  connect?: Prisma.SchoolWhereUniqueInput
-}
-
-export type SchoolUpdateOneRequiredWithoutSalaryStructuresNestedInput = {
-  create?: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedCreateWithoutSalaryStructuresInput>
-  connectOrCreate?: Prisma.SchoolCreateOrConnectWithoutSalaryStructuresInput
-  upsert?: Prisma.SchoolUpsertWithoutSalaryStructuresInput
-  connect?: Prisma.SchoolWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SchoolUpdateToOneWithWhereWithoutSalaryStructuresInput, Prisma.SchoolUpdateWithoutSalaryStructuresInput>, Prisma.SchoolUncheckedUpdateWithoutSalaryStructuresInput>
-}
-
 export type SchoolCreateNestedOneWithoutExamsInput = {
   create?: Prisma.XOR<Prisma.SchoolCreateWithoutExamsInput, Prisma.SchoolUncheckedCreateWithoutExamsInput>
   connectOrCreate?: Prisma.SchoolCreateOrConnectWithoutExamsInput
@@ -1316,8 +1274,6 @@ export type SchoolCreateWithoutParentTeacherMeetingsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -1365,8 +1321,6 @@ export type SchoolUncheckedCreateWithoutParentTeacherMeetingsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -1430,8 +1384,6 @@ export type SchoolUpdateWithoutParentTeacherMeetingsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -1479,8 +1431,6 @@ export type SchoolUncheckedUpdateWithoutParentTeacherMeetingsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -1527,8 +1477,6 @@ export type SchoolCreateWithoutAcademicYearsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -1576,8 +1524,6 @@ export type SchoolUncheckedCreateWithoutAcademicYearsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -1641,8 +1587,6 @@ export type SchoolUpdateWithoutAcademicYearsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -1690,8 +1634,6 @@ export type SchoolUncheckedUpdateWithoutAcademicYearsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -1739,8 +1681,6 @@ export type SchoolCreateWithoutClassesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -1788,8 +1728,6 @@ export type SchoolUncheckedCreateWithoutClassesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -1853,8 +1791,6 @@ export type SchoolUpdateWithoutClassesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -1902,8 +1838,6 @@ export type SchoolUncheckedUpdateWithoutClassesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -1951,8 +1885,6 @@ export type SchoolCreateWithoutSectionsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -2000,8 +1932,6 @@ export type SchoolUncheckedCreateWithoutSectionsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -2065,8 +1995,6 @@ export type SchoolUpdateWithoutSectionsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -2114,8 +2042,6 @@ export type SchoolUncheckedUpdateWithoutSectionsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -2163,8 +2089,6 @@ export type SchoolCreateWithoutSubjectsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -2212,8 +2136,6 @@ export type SchoolUncheckedCreateWithoutSubjectsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -2277,8 +2199,6 @@ export type SchoolUpdateWithoutSubjectsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -2326,8 +2246,6 @@ export type SchoolUncheckedUpdateWithoutSubjectsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -2375,8 +2293,6 @@ export type SchoolCreateWithoutTeachersInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -2424,8 +2340,6 @@ export type SchoolUncheckedCreateWithoutTeachersInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -2489,8 +2403,6 @@ export type SchoolUpdateWithoutTeachersInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -2538,8 +2450,6 @@ export type SchoolUncheckedUpdateWithoutTeachersInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -2587,8 +2497,6 @@ export type SchoolCreateWithoutStudentsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -2636,8 +2544,6 @@ export type SchoolUncheckedCreateWithoutStudentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -2701,8 +2607,6 @@ export type SchoolUpdateWithoutStudentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -2750,8 +2654,6 @@ export type SchoolUncheckedUpdateWithoutStudentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -2799,8 +2701,6 @@ export type SchoolCreateWithoutParentsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -2848,8 +2748,6 @@ export type SchoolUncheckedCreateWithoutParentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -2913,8 +2811,6 @@ export type SchoolUpdateWithoutParentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -2962,8 +2858,6 @@ export type SchoolUncheckedUpdateWithoutParentsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -3011,8 +2905,6 @@ export type SchoolCreateWithoutStudentAttendancesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -3060,8 +2952,6 @@ export type SchoolUncheckedCreateWithoutStudentAttendancesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -3125,8 +3015,6 @@ export type SchoolUpdateWithoutStudentAttendancesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -3174,8 +3062,6 @@ export type SchoolUncheckedUpdateWithoutStudentAttendancesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -3223,8 +3109,6 @@ export type SchoolCreateWithoutStaffAttendancesInput = {
   studentAttendances?: Prisma.StudentAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -3272,8 +3156,6 @@ export type SchoolUncheckedCreateWithoutStaffAttendancesInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -3337,8 +3219,6 @@ export type SchoolUpdateWithoutStaffAttendancesInput = {
   studentAttendances?: Prisma.StudentAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -3386,8 +3266,6 @@ export type SchoolUncheckedUpdateWithoutStaffAttendancesInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -3435,8 +3313,6 @@ export type SchoolCreateWithoutFeeCategoriesInput = {
   studentAttendances?: Prisma.StudentAttendanceCreateNestedManyWithoutSchoolInput
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -3484,8 +3360,6 @@ export type SchoolUncheckedCreateWithoutFeeCategoriesInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -3549,8 +3423,6 @@ export type SchoolUpdateWithoutFeeCategoriesInput = {
   studentAttendances?: Prisma.StudentAttendanceUpdateManyWithoutSchoolNestedInput
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -3598,8 +3470,6 @@ export type SchoolUncheckedUpdateWithoutFeeCategoriesInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -3647,8 +3517,6 @@ export type SchoolCreateWithoutFeeStructuresInput = {
   studentAttendances?: Prisma.StudentAttendanceCreateNestedManyWithoutSchoolInput
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -3696,8 +3564,6 @@ export type SchoolUncheckedCreateWithoutFeeStructuresInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -3761,8 +3627,6 @@ export type SchoolUpdateWithoutFeeStructuresInput = {
   studentAttendances?: Prisma.StudentAttendanceUpdateManyWithoutSchoolNestedInput
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -3810,432 +3674,6 @@ export type SchoolUncheckedUpdateWithoutFeeStructuresInput = {
   studentAttendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
-  gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
-  bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
-  books?: Prisma.BookUncheckedUpdateManyWithoutSchoolNestedInput
-  holidays?: Prisma.HolidayUncheckedUpdateManyWithoutSchoolNestedInput
-  notices?: Prisma.NoticeUncheckedUpdateManyWithoutSchoolNestedInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutSchoolNestedInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUncheckedUpdateManyWithoutSchoolNestedInput
-  timeSlots?: Prisma.TimeSlotUncheckedUpdateManyWithoutSchoolNestedInput
-  timetables?: Prisma.TimetableUncheckedUpdateManyWithoutSchoolNestedInput
-  homework?: Prisma.HomeworkUncheckedUpdateManyWithoutSchoolNestedInput
-}
-
-export type SchoolCreateWithoutSalaryComponentsInput = {
-  id?: string
-  name: string
-  code: string
-  email: string
-  phone: string
-  address: string
-  city: string
-  state: string
-  country: string
-  pincode: string
-  establishedDate: Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: string | null
-  password?: string | null
-  subscriptionStatus?: $Enums.SubscriptionStatus
-  subscriptionPlan?: $Enums.SubscriptionPlan
-  subscriptionStart?: Date | string | null
-  subscriptionEnd?: Date | string | null
-  maxStudents?: number
-  maxTeachers?: number
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutSchoolInput
-  classes?: Prisma.ClassCreateNestedManyWithoutSchoolInput
-  sections?: Prisma.SectionCreateNestedManyWithoutSchoolInput
-  subjects?: Prisma.SubjectCreateNestedManyWithoutSchoolInput
-  teachers?: Prisma.TeacherCreateNestedManyWithoutSchoolInput
-  students?: Prisma.StudentCreateNestedManyWithoutSchoolInput
-  parents?: Prisma.ParentCreateNestedManyWithoutSchoolInput
-  studentAttendances?: Prisma.StudentAttendanceCreateNestedManyWithoutSchoolInput
-  staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
-  feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
-  feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
-  exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
-  gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
-  bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
-  books?: Prisma.BookCreateNestedManyWithoutSchoolInput
-  holidays?: Prisma.HolidayCreateNestedManyWithoutSchoolInput
-  notices?: Prisma.NoticeCreateNestedManyWithoutSchoolInput
-  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutSchoolInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingCreateNestedManyWithoutSchoolInput
-  timeSlots?: Prisma.TimeSlotCreateNestedManyWithoutSchoolInput
-  timetables?: Prisma.TimetableCreateNestedManyWithoutSchoolInput
-  homework?: Prisma.HomeworkCreateNestedManyWithoutSchoolInput
-}
-
-export type SchoolUncheckedCreateWithoutSalaryComponentsInput = {
-  id?: string
-  name: string
-  code: string
-  email: string
-  phone: string
-  address: string
-  city: string
-  state: string
-  country: string
-  pincode: string
-  establishedDate: Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: string | null
-  password?: string | null
-  subscriptionStatus?: $Enums.SubscriptionStatus
-  subscriptionPlan?: $Enums.SubscriptionPlan
-  subscriptionStart?: Date | string | null
-  subscriptionEnd?: Date | string | null
-  maxStudents?: number
-  maxTeachers?: number
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutSchoolInput
-  classes?: Prisma.ClassUncheckedCreateNestedManyWithoutSchoolInput
-  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutSchoolInput
-  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutSchoolInput
-  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutSchoolInput
-  students?: Prisma.StudentUncheckedCreateNestedManyWithoutSchoolInput
-  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutSchoolInput
-  studentAttendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutSchoolInput
-  staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
-  feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
-  feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
-  exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
-  gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
-  bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
-  books?: Prisma.BookUncheckedCreateNestedManyWithoutSchoolInput
-  holidays?: Prisma.HolidayUncheckedCreateNestedManyWithoutSchoolInput
-  notices?: Prisma.NoticeUncheckedCreateNestedManyWithoutSchoolInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutSchoolInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUncheckedCreateNestedManyWithoutSchoolInput
-  timeSlots?: Prisma.TimeSlotUncheckedCreateNestedManyWithoutSchoolInput
-  timetables?: Prisma.TimetableUncheckedCreateNestedManyWithoutSchoolInput
-  homework?: Prisma.HomeworkUncheckedCreateNestedManyWithoutSchoolInput
-}
-
-export type SchoolCreateOrConnectWithoutSalaryComponentsInput = {
-  where: Prisma.SchoolWhereUniqueInput
-  create: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedCreateWithoutSalaryComponentsInput>
-}
-
-export type SchoolUpsertWithoutSalaryComponentsInput = {
-  update: Prisma.XOR<Prisma.SchoolUpdateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedUpdateWithoutSalaryComponentsInput>
-  create: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedCreateWithoutSalaryComponentsInput>
-  where?: Prisma.SchoolWhereInput
-}
-
-export type SchoolUpdateToOneWithWhereWithoutSalaryComponentsInput = {
-  where?: Prisma.SchoolWhereInput
-  data: Prisma.XOR<Prisma.SchoolUpdateWithoutSalaryComponentsInput, Prisma.SchoolUncheckedUpdateWithoutSalaryComponentsInput>
-}
-
-export type SchoolUpdateWithoutSalaryComponentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  establishedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subscriptionStatus?: Prisma.EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
-  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
-  subscriptionStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscriptionEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  maxStudents?: Prisma.IntFieldUpdateOperationsInput | number
-  maxTeachers?: Prisma.IntFieldUpdateOperationsInput | number
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  academicYears?: Prisma.AcademicYearUpdateManyWithoutSchoolNestedInput
-  classes?: Prisma.ClassUpdateManyWithoutSchoolNestedInput
-  sections?: Prisma.SectionUpdateManyWithoutSchoolNestedInput
-  subjects?: Prisma.SubjectUpdateManyWithoutSchoolNestedInput
-  teachers?: Prisma.TeacherUpdateManyWithoutSchoolNestedInput
-  students?: Prisma.StudentUpdateManyWithoutSchoolNestedInput
-  parents?: Prisma.ParentUpdateManyWithoutSchoolNestedInput
-  studentAttendances?: Prisma.StudentAttendanceUpdateManyWithoutSchoolNestedInput
-  staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
-  feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
-  feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
-  exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
-  gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
-  bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
-  books?: Prisma.BookUpdateManyWithoutSchoolNestedInput
-  holidays?: Prisma.HolidayUpdateManyWithoutSchoolNestedInput
-  notices?: Prisma.NoticeUpdateManyWithoutSchoolNestedInput
-  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutSchoolNestedInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUpdateManyWithoutSchoolNestedInput
-  timeSlots?: Prisma.TimeSlotUpdateManyWithoutSchoolNestedInput
-  timetables?: Prisma.TimetableUpdateManyWithoutSchoolNestedInput
-  homework?: Prisma.HomeworkUpdateManyWithoutSchoolNestedInput
-}
-
-export type SchoolUncheckedUpdateWithoutSalaryComponentsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  establishedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subscriptionStatus?: Prisma.EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
-  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
-  subscriptionStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscriptionEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  maxStudents?: Prisma.IntFieldUpdateOperationsInput | number
-  maxTeachers?: Prisma.IntFieldUpdateOperationsInput | number
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutSchoolNestedInput
-  classes?: Prisma.ClassUncheckedUpdateManyWithoutSchoolNestedInput
-  sections?: Prisma.SectionUncheckedUpdateManyWithoutSchoolNestedInput
-  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutSchoolNestedInput
-  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutSchoolNestedInput
-  students?: Prisma.StudentUncheckedUpdateManyWithoutSchoolNestedInput
-  parents?: Prisma.ParentUncheckedUpdateManyWithoutSchoolNestedInput
-  studentAttendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
-  staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
-  feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
-  feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
-  gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
-  bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
-  books?: Prisma.BookUncheckedUpdateManyWithoutSchoolNestedInput
-  holidays?: Prisma.HolidayUncheckedUpdateManyWithoutSchoolNestedInput
-  notices?: Prisma.NoticeUncheckedUpdateManyWithoutSchoolNestedInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedUpdateManyWithoutSchoolNestedInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUncheckedUpdateManyWithoutSchoolNestedInput
-  timeSlots?: Prisma.TimeSlotUncheckedUpdateManyWithoutSchoolNestedInput
-  timetables?: Prisma.TimetableUncheckedUpdateManyWithoutSchoolNestedInput
-  homework?: Prisma.HomeworkUncheckedUpdateManyWithoutSchoolNestedInput
-}
-
-export type SchoolCreateWithoutSalaryStructuresInput = {
-  id?: string
-  name: string
-  code: string
-  email: string
-  phone: string
-  address: string
-  city: string
-  state: string
-  country: string
-  pincode: string
-  establishedDate: Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: string | null
-  password?: string | null
-  subscriptionStatus?: $Enums.SubscriptionStatus
-  subscriptionPlan?: $Enums.SubscriptionPlan
-  subscriptionStart?: Date | string | null
-  subscriptionEnd?: Date | string | null
-  maxStudents?: number
-  maxTeachers?: number
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  academicYears?: Prisma.AcademicYearCreateNestedManyWithoutSchoolInput
-  classes?: Prisma.ClassCreateNestedManyWithoutSchoolInput
-  sections?: Prisma.SectionCreateNestedManyWithoutSchoolInput
-  subjects?: Prisma.SubjectCreateNestedManyWithoutSchoolInput
-  teachers?: Prisma.TeacherCreateNestedManyWithoutSchoolInput
-  students?: Prisma.StudentCreateNestedManyWithoutSchoolInput
-  parents?: Prisma.ParentCreateNestedManyWithoutSchoolInput
-  studentAttendances?: Prisma.StudentAttendanceCreateNestedManyWithoutSchoolInput
-  staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
-  feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
-  feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
-  gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
-  bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
-  books?: Prisma.BookCreateNestedManyWithoutSchoolInput
-  holidays?: Prisma.HolidayCreateNestedManyWithoutSchoolInput
-  notices?: Prisma.NoticeCreateNestedManyWithoutSchoolInput
-  leaveRequests?: Prisma.LeaveRequestCreateNestedManyWithoutSchoolInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingCreateNestedManyWithoutSchoolInput
-  timeSlots?: Prisma.TimeSlotCreateNestedManyWithoutSchoolInput
-  timetables?: Prisma.TimetableCreateNestedManyWithoutSchoolInput
-  homework?: Prisma.HomeworkCreateNestedManyWithoutSchoolInput
-}
-
-export type SchoolUncheckedCreateWithoutSalaryStructuresInput = {
-  id?: string
-  name: string
-  code: string
-  email: string
-  phone: string
-  address: string
-  city: string
-  state: string
-  country: string
-  pincode: string
-  establishedDate: Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: string | null
-  password?: string | null
-  subscriptionStatus?: $Enums.SubscriptionStatus
-  subscriptionPlan?: $Enums.SubscriptionPlan
-  subscriptionStart?: Date | string | null
-  subscriptionEnd?: Date | string | null
-  maxStudents?: number
-  maxTeachers?: number
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  academicYears?: Prisma.AcademicYearUncheckedCreateNestedManyWithoutSchoolInput
-  classes?: Prisma.ClassUncheckedCreateNestedManyWithoutSchoolInput
-  sections?: Prisma.SectionUncheckedCreateNestedManyWithoutSchoolInput
-  subjects?: Prisma.SubjectUncheckedCreateNestedManyWithoutSchoolInput
-  teachers?: Prisma.TeacherUncheckedCreateNestedManyWithoutSchoolInput
-  students?: Prisma.StudentUncheckedCreateNestedManyWithoutSchoolInput
-  parents?: Prisma.ParentUncheckedCreateNestedManyWithoutSchoolInput
-  studentAttendances?: Prisma.StudentAttendanceUncheckedCreateNestedManyWithoutSchoolInput
-  staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
-  feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
-  feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
-  gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
-  bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
-  books?: Prisma.BookUncheckedCreateNestedManyWithoutSchoolInput
-  holidays?: Prisma.HolidayUncheckedCreateNestedManyWithoutSchoolInput
-  notices?: Prisma.NoticeUncheckedCreateNestedManyWithoutSchoolInput
-  leaveRequests?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutSchoolInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUncheckedCreateNestedManyWithoutSchoolInput
-  timeSlots?: Prisma.TimeSlotUncheckedCreateNestedManyWithoutSchoolInput
-  timetables?: Prisma.TimetableUncheckedCreateNestedManyWithoutSchoolInput
-  homework?: Prisma.HomeworkUncheckedCreateNestedManyWithoutSchoolInput
-}
-
-export type SchoolCreateOrConnectWithoutSalaryStructuresInput = {
-  where: Prisma.SchoolWhereUniqueInput
-  create: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedCreateWithoutSalaryStructuresInput>
-}
-
-export type SchoolUpsertWithoutSalaryStructuresInput = {
-  update: Prisma.XOR<Prisma.SchoolUpdateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedUpdateWithoutSalaryStructuresInput>
-  create: Prisma.XOR<Prisma.SchoolCreateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedCreateWithoutSalaryStructuresInput>
-  where?: Prisma.SchoolWhereInput
-}
-
-export type SchoolUpdateToOneWithWhereWithoutSalaryStructuresInput = {
-  where?: Prisma.SchoolWhereInput
-  data: Prisma.XOR<Prisma.SchoolUpdateWithoutSalaryStructuresInput, Prisma.SchoolUncheckedUpdateWithoutSalaryStructuresInput>
-}
-
-export type SchoolUpdateWithoutSalaryStructuresInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  establishedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subscriptionStatus?: Prisma.EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
-  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
-  subscriptionStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscriptionEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  maxStudents?: Prisma.IntFieldUpdateOperationsInput | number
-  maxTeachers?: Prisma.IntFieldUpdateOperationsInput | number
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  academicYears?: Prisma.AcademicYearUpdateManyWithoutSchoolNestedInput
-  classes?: Prisma.ClassUpdateManyWithoutSchoolNestedInput
-  sections?: Prisma.SectionUpdateManyWithoutSchoolNestedInput
-  subjects?: Prisma.SubjectUpdateManyWithoutSchoolNestedInput
-  teachers?: Prisma.TeacherUpdateManyWithoutSchoolNestedInput
-  students?: Prisma.StudentUpdateManyWithoutSchoolNestedInput
-  parents?: Prisma.ParentUpdateManyWithoutSchoolNestedInput
-  studentAttendances?: Prisma.StudentAttendanceUpdateManyWithoutSchoolNestedInput
-  staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
-  feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
-  feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
-  gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
-  bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
-  books?: Prisma.BookUpdateManyWithoutSchoolNestedInput
-  holidays?: Prisma.HolidayUpdateManyWithoutSchoolNestedInput
-  notices?: Prisma.NoticeUpdateManyWithoutSchoolNestedInput
-  leaveRequests?: Prisma.LeaveRequestUpdateManyWithoutSchoolNestedInput
-  parentTeacherMeetings?: Prisma.ParentTeacherMeetingUpdateManyWithoutSchoolNestedInput
-  timeSlots?: Prisma.TimeSlotUpdateManyWithoutSchoolNestedInput
-  timetables?: Prisma.TimetableUpdateManyWithoutSchoolNestedInput
-  homework?: Prisma.HomeworkUpdateManyWithoutSchoolNestedInput
-}
-
-export type SchoolUncheckedUpdateWithoutSalaryStructuresInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.StringFieldUpdateOperationsInput | string
-  address?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  pincode?: Prisma.StringFieldUpdateOperationsInput | string
-  establishedDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  logoUrl?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subscriptionStatus?: Prisma.EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
-  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
-  subscriptionStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscriptionEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  maxStudents?: Prisma.IntFieldUpdateOperationsInput | number
-  maxTeachers?: Prisma.IntFieldUpdateOperationsInput | number
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  academicYears?: Prisma.AcademicYearUncheckedUpdateManyWithoutSchoolNestedInput
-  classes?: Prisma.ClassUncheckedUpdateManyWithoutSchoolNestedInput
-  sections?: Prisma.SectionUncheckedUpdateManyWithoutSchoolNestedInput
-  subjects?: Prisma.SubjectUncheckedUpdateManyWithoutSchoolNestedInput
-  teachers?: Prisma.TeacherUncheckedUpdateManyWithoutSchoolNestedInput
-  students?: Prisma.StudentUncheckedUpdateManyWithoutSchoolNestedInput
-  parents?: Prisma.ParentUncheckedUpdateManyWithoutSchoolNestedInput
-  studentAttendances?: Prisma.StudentAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
-  staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
-  feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
-  feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -4284,8 +3722,6 @@ export type SchoolCreateWithoutExamsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookCreateNestedManyWithoutSchoolInput
@@ -4333,8 +3769,6 @@ export type SchoolUncheckedCreateWithoutExamsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutSchoolInput
@@ -4398,8 +3832,6 @@ export type SchoolUpdateWithoutExamsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUpdateManyWithoutSchoolNestedInput
@@ -4447,8 +3879,6 @@ export type SchoolUncheckedUpdateWithoutExamsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutSchoolNestedInput
@@ -4496,8 +3926,6 @@ export type SchoolCreateWithoutGradeScalesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookCreateNestedManyWithoutSchoolInput
@@ -4545,8 +3973,6 @@ export type SchoolUncheckedCreateWithoutGradeScalesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutSchoolInput
@@ -4610,8 +4036,6 @@ export type SchoolUpdateWithoutGradeScalesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUpdateManyWithoutSchoolNestedInput
@@ -4659,8 +4083,6 @@ export type SchoolUncheckedUpdateWithoutGradeScalesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutSchoolNestedInput
@@ -4708,8 +4130,6 @@ export type SchoolCreateWithoutBookCategoriesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookCreateNestedManyWithoutSchoolInput
@@ -4757,8 +4177,6 @@ export type SchoolUncheckedCreateWithoutBookCategoriesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   books?: Prisma.BookUncheckedCreateNestedManyWithoutSchoolInput
@@ -4822,8 +4240,6 @@ export type SchoolUpdateWithoutBookCategoriesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUpdateManyWithoutSchoolNestedInput
@@ -4871,8 +4287,6 @@ export type SchoolUncheckedUpdateWithoutBookCategoriesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   books?: Prisma.BookUncheckedUpdateManyWithoutSchoolNestedInput
@@ -4920,8 +4334,6 @@ export type SchoolCreateWithoutBooksInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -4969,8 +4381,6 @@ export type SchoolUncheckedCreateWithoutBooksInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -5034,8 +4444,6 @@ export type SchoolUpdateWithoutBooksInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -5083,8 +4491,6 @@ export type SchoolUncheckedUpdateWithoutBooksInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -5132,8 +4538,6 @@ export type SchoolCreateWithoutHolidaysInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -5181,8 +4585,6 @@ export type SchoolUncheckedCreateWithoutHolidaysInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -5246,8 +4648,6 @@ export type SchoolUpdateWithoutHolidaysInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -5295,8 +4695,6 @@ export type SchoolUncheckedUpdateWithoutHolidaysInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -5344,8 +4742,6 @@ export type SchoolCreateWithoutNoticesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -5393,8 +4789,6 @@ export type SchoolUncheckedCreateWithoutNoticesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -5458,8 +4852,6 @@ export type SchoolUpdateWithoutNoticesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -5507,8 +4899,6 @@ export type SchoolUncheckedUpdateWithoutNoticesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -5556,8 +4946,6 @@ export type SchoolCreateWithoutLeaveRequestsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -5605,8 +4993,6 @@ export type SchoolUncheckedCreateWithoutLeaveRequestsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -5670,8 +5056,6 @@ export type SchoolUpdateWithoutLeaveRequestsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -5719,8 +5103,6 @@ export type SchoolUncheckedUpdateWithoutLeaveRequestsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -5768,8 +5150,6 @@ export type SchoolCreateWithoutTimeSlotsInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -5817,8 +5197,6 @@ export type SchoolUncheckedCreateWithoutTimeSlotsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -5882,8 +5260,6 @@ export type SchoolUpdateWithoutTimeSlotsInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -5931,8 +5307,6 @@ export type SchoolUncheckedUpdateWithoutTimeSlotsInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -5980,8 +5354,6 @@ export type SchoolCreateWithoutTimetablesInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -6029,8 +5401,6 @@ export type SchoolUncheckedCreateWithoutTimetablesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -6094,8 +5464,6 @@ export type SchoolUpdateWithoutTimetablesInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -6143,8 +5511,6 @@ export type SchoolUncheckedUpdateWithoutTimetablesInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -6192,8 +5558,6 @@ export type SchoolCreateWithoutHomeworkInput = {
   staffAttendances?: Prisma.StaffAttendanceCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryCreateNestedManyWithoutSchoolInput
@@ -6241,8 +5605,6 @@ export type SchoolUncheckedCreateWithoutHomeworkInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedCreateNestedManyWithoutSchoolInput
   feeCategories?: Prisma.FeeCategoryUncheckedCreateNestedManyWithoutSchoolInput
   feeStructures?: Prisma.FeeStructureUncheckedCreateNestedManyWithoutSchoolInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedCreateNestedManyWithoutSchoolInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedCreateNestedManyWithoutSchoolInput
   exams?: Prisma.ExamUncheckedCreateNestedManyWithoutSchoolInput
   gradeScales?: Prisma.GradeScaleUncheckedCreateNestedManyWithoutSchoolInput
   bookCategories?: Prisma.BookCategoryUncheckedCreateNestedManyWithoutSchoolInput
@@ -6306,8 +5668,6 @@ export type SchoolUpdateWithoutHomeworkInput = {
   staffAttendances?: Prisma.StaffAttendanceUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUpdateManyWithoutSchoolNestedInput
@@ -6355,8 +5715,6 @@ export type SchoolUncheckedUpdateWithoutHomeworkInput = {
   staffAttendances?: Prisma.StaffAttendanceUncheckedUpdateManyWithoutSchoolNestedInput
   feeCategories?: Prisma.FeeCategoryUncheckedUpdateManyWithoutSchoolNestedInput
   feeStructures?: Prisma.FeeStructureUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryComponents?: Prisma.SalaryComponentUncheckedUpdateManyWithoutSchoolNestedInput
-  salaryStructures?: Prisma.SalaryStructureUncheckedUpdateManyWithoutSchoolNestedInput
   exams?: Prisma.ExamUncheckedUpdateManyWithoutSchoolNestedInput
   gradeScales?: Prisma.GradeScaleUncheckedUpdateManyWithoutSchoolNestedInput
   bookCategories?: Prisma.BookCategoryUncheckedUpdateManyWithoutSchoolNestedInput
@@ -6386,8 +5744,6 @@ export type SchoolCountOutputType = {
   staffAttendances: number
   feeCategories: number
   feeStructures: number
-  salaryComponents: number
-  salaryStructures: number
   exams: number
   gradeScales: number
   bookCategories: number
@@ -6413,8 +5769,6 @@ export type SchoolCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   staffAttendances?: boolean | SchoolCountOutputTypeCountStaffAttendancesArgs
   feeCategories?: boolean | SchoolCountOutputTypeCountFeeCategoriesArgs
   feeStructures?: boolean | SchoolCountOutputTypeCountFeeStructuresArgs
-  salaryComponents?: boolean | SchoolCountOutputTypeCountSalaryComponentsArgs
-  salaryStructures?: boolean | SchoolCountOutputTypeCountSalaryStructuresArgs
   exams?: boolean | SchoolCountOutputTypeCountExamsArgs
   gradeScales?: boolean | SchoolCountOutputTypeCountGradeScalesArgs
   bookCategories?: boolean | SchoolCountOutputTypeCountBookCategoriesArgs
@@ -6513,20 +5867,6 @@ export type SchoolCountOutputTypeCountFeeCategoriesArgs<ExtArgs extends runtime.
  */
 export type SchoolCountOutputTypeCountFeeStructuresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.FeeStructureWhereInput
-}
-
-/**
- * SchoolCountOutputType without action
- */
-export type SchoolCountOutputTypeCountSalaryComponentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SalaryComponentWhereInput
-}
-
-/**
- * SchoolCountOutputType without action
- */
-export type SchoolCountOutputTypeCountSalaryStructuresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SalaryStructureWhereInput
 }
 
 /**
@@ -6642,8 +5982,6 @@ export type SchoolSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   staffAttendances?: boolean | Prisma.School$staffAttendancesArgs<ExtArgs>
   feeCategories?: boolean | Prisma.School$feeCategoriesArgs<ExtArgs>
   feeStructures?: boolean | Prisma.School$feeStructuresArgs<ExtArgs>
-  salaryComponents?: boolean | Prisma.School$salaryComponentsArgs<ExtArgs>
-  salaryStructures?: boolean | Prisma.School$salaryStructuresArgs<ExtArgs>
   exams?: boolean | Prisma.School$examsArgs<ExtArgs>
   gradeScales?: boolean | Prisma.School$gradeScalesArgs<ExtArgs>
   bookCategories?: boolean | Prisma.School$bookCategoriesArgs<ExtArgs>
@@ -6699,8 +6037,6 @@ export type SchoolInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   staffAttendances?: boolean | Prisma.School$staffAttendancesArgs<ExtArgs>
   feeCategories?: boolean | Prisma.School$feeCategoriesArgs<ExtArgs>
   feeStructures?: boolean | Prisma.School$feeStructuresArgs<ExtArgs>
-  salaryComponents?: boolean | Prisma.School$salaryComponentsArgs<ExtArgs>
-  salaryStructures?: boolean | Prisma.School$salaryStructuresArgs<ExtArgs>
   exams?: boolean | Prisma.School$examsArgs<ExtArgs>
   gradeScales?: boolean | Prisma.School$gradeScalesArgs<ExtArgs>
   bookCategories?: boolean | Prisma.School$bookCategoriesArgs<ExtArgs>
@@ -6729,8 +6065,6 @@ export type $SchoolPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     staffAttendances: Prisma.$StaffAttendancePayload<ExtArgs>[]
     feeCategories: Prisma.$FeeCategoryPayload<ExtArgs>[]
     feeStructures: Prisma.$FeeStructurePayload<ExtArgs>[]
-    salaryComponents: Prisma.$SalaryComponentPayload<ExtArgs>[]
-    salaryStructures: Prisma.$SalaryStructurePayload<ExtArgs>[]
     exams: Prisma.$ExamPayload<ExtArgs>[]
     gradeScales: Prisma.$GradeScalePayload<ExtArgs>[]
     bookCategories: Prisma.$BookCategoryPayload<ExtArgs>[]
@@ -7118,8 +6452,6 @@ export interface Prisma__SchoolClient<T, Null = never, ExtArgs extends runtime.T
   staffAttendances<T extends Prisma.School$staffAttendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$staffAttendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaffAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   feeCategories<T extends Prisma.School$feeCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$feeCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   feeStructures<T extends Prisma.School$feeStructuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$feeStructuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeeStructurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  salaryComponents<T extends Prisma.School$salaryComponentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$salaryComponentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalaryComponentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  salaryStructures<T extends Prisma.School$salaryStructuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$salaryStructuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalaryStructurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   exams<T extends Prisma.School$examsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$examsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gradeScales<T extends Prisma.School$gradeScalesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$gradeScalesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GradeScalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookCategories<T extends Prisma.School$bookCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$bookCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7787,54 +7119,6 @@ export type School$feeStructuresArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.FeeStructureScalarFieldEnum | Prisma.FeeStructureScalarFieldEnum[]
-}
-
-/**
- * School.salaryComponents
- */
-export type School$salaryComponentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SalaryComponent
-   */
-  select?: Prisma.SalaryComponentSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SalaryComponent
-   */
-  omit?: Prisma.SalaryComponentOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SalaryComponentInclude<ExtArgs> | null
-  where?: Prisma.SalaryComponentWhereInput
-  orderBy?: Prisma.SalaryComponentOrderByWithRelationInput | Prisma.SalaryComponentOrderByWithRelationInput[]
-  cursor?: Prisma.SalaryComponentWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SalaryComponentScalarFieldEnum | Prisma.SalaryComponentScalarFieldEnum[]
-}
-
-/**
- * School.salaryStructures
- */
-export type School$salaryStructuresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SalaryStructure
-   */
-  select?: Prisma.SalaryStructureSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SalaryStructure
-   */
-  omit?: Prisma.SalaryStructureOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SalaryStructureInclude<ExtArgs> | null
-  where?: Prisma.SalaryStructureWhereInput
-  orderBy?: Prisma.SalaryStructureOrderByWithRelationInput | Prisma.SalaryStructureOrderByWithRelationInput[]
-  cursor?: Prisma.SalaryStructureWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SalaryStructureScalarFieldEnum | Prisma.SalaryStructureScalarFieldEnum[]
 }
 
 /**

@@ -25,6 +25,7 @@ export const onboardTeacherSchema = z.object({
     message: "Invalid joining date format",
   }),
   status: z.enum(["ACTIVE", "INACTIVE", "ON_LEAVE", "TERMINATED"]).optional(),
+  monthlySalary: z.string().transform((val) => parseFloat(val)).or(z.number()).pipe(z.number().min(0, "Salary cannot be negative")).optional(),
   isActive: z.boolean().optional(),
 });
 
@@ -48,6 +49,7 @@ export const updateTeacherSchema = z.object({
   experience: z.string().transform((val) => parseInt(val, 10)).or(z.number()).pipe(z.number().int().min(0, "Experience cannot be negative")).optional(),
   joiningDate: z.string().optional(),
   status: z.enum(["ACTIVE", "INACTIVE", "ON_LEAVE", "TERMINATED"]).optional(),
+  monthlySalary: z.string().transform((val) => parseFloat(val)).or(z.number()).pipe(z.number().min(0, "Salary cannot be negative")).optional(),
   isActive: z.boolean().optional(),
 });
 

@@ -89,18 +89,6 @@ enum DiscountType {
   FIXED
 }
 
-enum SalaryComponentType {
-  EARNING
-  DEDUCTION
-}
-
-enum SalaryStatus {
-  PENDING
-  PROCESSED
-  PAID
-  HOLD
-}
-
 enum ExamType {
   UNIT_TEST
   MID_TERM
@@ -263,8 +251,6 @@ model School {
   staffAttendances      StaffAttendance[]
   feeCategories         FeeCategory[]
   feeStructures         FeeStructure[]
-  salaryComponents      SalaryComponent[]
-  salaryStructures      SalaryStructure[]
   exams                 Exam[]
   gradeScales           GradeScale[]
   bookCategories        BookCategory[]
@@ -416,6 +402,7 @@ model Teacher {
   qualification  String        @db.VarChar(255)
   specialization String?       @db.VarChar(255)
   experience     Int           @default(0)
+  monthlySalary  Decimal       @default(0.00) @db.Decimal(10, 2)
   joiningDate    DateTime      @db.Date
   profilePicture Json?
   status         TeacherStatus @default(ACTIVE)
@@ -432,7 +419,6 @@ model Teacher {
   subjects          TeacherSubject[]
   classAssignments  TeacherClassAssignment[]
   attendances       StaffAttendance[]
-  teacherSalaries   TeacherSalary[]
   libraryFines      LibraryFine[]
   booksBorrowed     BookBorrowed[]
   leaveRequests     LeaveRequest[]
@@ -815,133 +801,6 @@ model FeeDiscount {
 
   @@index([studentId, academicYearId])
   @@map("fee_discounts")
-}
-
-// ============================================
-// SALARY MANAGEMENT MODELS
-// ============================================
-
-// SalaryComponent - Types of earnings and deductions
-model SalaryComponent {
-  id           String              @id @default(uuid())
-  schoolId     String
-  name         String              @db.VarChar(100) // e.g., "Basic Salary", "HRA", "PF Deduction"
-  type         SalaryComponentType // EARNING or DEDUCTION
-  isPercentage Boolean             @default(false) // Is value a % of basic?
-  defaultValue Decimal             @default(0) @db.Decimal(12, 2) // Default amount or %
-  isTaxable    Boolean             @default(true) // Include in tax calculation?
-  isActive     Boolean             @default(true)
-  createdAt    DateTime            @default(now())
-  updatedAt    DateTime            @updatedAt
-
-  school               School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  salaryStructureItems SalaryStructureItem[]
-  teacherSalaryDetails TeacherSalaryDetail[]
-
-  @@unique([schoolId, name])
-  @@index([schoolId, type])
-  @@map("salary_components")
-}
-
-// SalaryStructure - Salary package template
-model SalaryStructure {
-  id          String   @id @default(uuid())
-  schoolId    String
-  name        String   @db.VarChar(200) // e.g., "Senior Teacher Package"
-  description String?  @db.Text
-  baseSalary  Decimal  @db.Decimal(12, 2) // Base/gross salary
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  school          School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  items           SalaryStructureItem[]
-  teacherSalaries TeacherSalary[]
-
-  @@unique([schoolId, name])
-  @@index([schoolId])
-  @@map("salary_structures")
-}
-
-// SalaryStructureItem - Component breakdown within a structure
-model SalaryStructureItem {
-  id                String   @id @default(uuid())
-  salaryStructureId String
-  salaryComponentId String
-  amount            Decimal  @db.Decimal(12, 2) // Fixed amount
-  percentage        Decimal? @db.Decimal(5, 2) // % of base if applicable
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  salaryStructure SalaryStructure @relation(fields: [salaryStructureId], references: [id], onDelete: Cascade)
-  salaryComponent SalaryComponent @relation(fields: [salaryComponentId], references: [id], onDelete: Cascade)
-
-  @@unique([salaryStructureId, salaryComponentId])
-  @@map("salary_structure_items")
-}
-
-// TeacherSalary - Monthly salary record for a teacher
-model TeacherSalary {
-  id                String       @id @default(uuid())
-  teacherId         String
-  salaryStructureId String
-  month             Int // Month (1-12)
-  year              Int // Year
-  workingDays       Int          @default(0) // Total working days in month
-  presentDays       Int          @default(0) // Days present (from attendance)
-  leaveDays         Int          @default(0) // Leave days taken
-  grossEarnings     Decimal      @db.Decimal(12, 2) // Total earnings
-  totalDeductions   Decimal      @db.Decimal(12, 2) // Total deductions
-  netSalary         Decimal      @db.Decimal(12, 2) // Net payable
-  status            SalaryStatus @default(PENDING)
-  processedAt       DateTime?
-  remarks           String?      @db.Text
-  createdAt         DateTime     @default(now())
-  updatedAt         DateTime     @updatedAt
-
-  teacher         Teacher               @relation(fields: [teacherId], references: [id], onDelete: Cascade)
-  salaryStructure SalaryStructure       @relation(fields: [salaryStructureId], references: [id], onDelete: Cascade)
-  details         TeacherSalaryDetail[]
-  payments        SalaryPayment[]
-
-  @@unique([teacherId, month, year])
-  @@index([month, year, status])
-  @@map("teacher_salaries")
-}
-
-// TeacherSalaryDetail - Itemized components for monthly salary
-model TeacherSalaryDetail {
-  id                String              @id @default(uuid())
-  teacherSalaryId   String
-  salaryComponentId String
-  type              SalaryComponentType // EARNING or DEDUCTION
-  amount            Decimal             @db.Decimal(12, 2)
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-
-  teacherSalary   TeacherSalary   @relation(fields: [teacherSalaryId], references: [id], onDelete: Cascade)
-  salaryComponent SalaryComponent @relation(fields: [salaryComponentId], references: [id], onDelete: Cascade)
-
-  @@unique([teacherSalaryId, salaryComponentId])
-  @@map("teacher_salary_details")
-}
-
-// SalaryPayment - Payment disbursement records
-model SalaryPayment {
-  id              String        @id @default(uuid())
-  teacherSalaryId String
-  amount          Decimal       @db.Decimal(12, 2)
-  paymentDate     DateTime      @default(now())
-  paymentMethod   PaymentMethod
-  transactionId   String?       @db.VarChar(100) // Bank reference
-  remarks         String?       @db.Text
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-
-  teacherSalary TeacherSalary @relation(fields: [teacherSalaryId], references: [id], onDelete: Cascade)
-
-  @@index([paymentDate])
-  @@map("salary_payments")
 }
 
 // ============================================

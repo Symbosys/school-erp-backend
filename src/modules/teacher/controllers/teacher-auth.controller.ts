@@ -185,8 +185,31 @@ export const getTeacherProfile = asyncHandler(async (req: Request, res: Response
     throw new ErrorResponse("Teacher not found", statusCode.Not_Found);
   }
 
-  return SuccessResponse(res, "Profile retrieved successfully", teacher);
+  // Get today's attendance
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const attendance = await prisma.staffAttendance.findUnique({
+    where: {
+      teacherId_date: {
+        teacherId: teacher.id,
+        date: today
+      }
+    },
+    select: {
+      date: true,
+      status: true,
+      checkInTime: true,
+      checkOutTime: true,
+    }
+  });
+
+  return SuccessResponse(res, "Profile retrieved successfully", {
+    ...teacher,
+    todayAttendance: attendance || null
+  });
 });
+
 
 /**
  * @route   PUT /api/auth/teacher/fcm-token

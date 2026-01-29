@@ -180,9 +180,31 @@ export const getAttendanceBySection = asyncHandler(async (req: Request, res: Res
     }
   });
 
+  // Get unique markedBy values that look like UUIDs
+  const teacherIds = Array.from(new Set(
+    attendanceRecords
+      .map(a => a.markedBy)
+      .filter(id => id && id.length === 36)
+  )) as string[];
+
+  const teachers = await prisma.teacher.findMany({
+    where: { id: { in: teacherIds } },
+    select: { id: true, firstName: true, lastName: true }
+  });
+
+  const teacherMap = new Map(teachers.map(t => [t.id, `${t.firstName} ${t.lastName}`]));
+
+  // Re-map attendance records to include teacher name
+  const processedAttendance = attendanceRecords.map(record => ({
+    ...record,
+    markedBy: (record.markedBy && teacherMap.has(record.markedBy))
+      ? teacherMap.get(record.markedBy)
+      : record.markedBy
+  }));
+
   // Map attendance to students
   const result = students.map(enrollment => {
-    const attendance = attendanceRecords.find(a => a.studentId === enrollment.studentId);
+    const attendance = processedAttendance.find(a => a.studentId === enrollment.studentId);
     return {
       student: enrollment.student,
       rollNumber: enrollment.rollNumber,
@@ -225,7 +247,30 @@ export const getAttendanceByStudent = asyncHandler(async (req: Request, res: Res
     orderBy: { date: 'desc' }
   });
 
-  return SuccessResponse(res, "Student attendance retrieved successfully", attendance);
+  // Get unique markedBy values that look like UUIDs
+  const teacherIds = Array.from(new Set(
+    attendance
+      .map(a => a.markedBy)
+      .filter(id => id && id.length === 36)
+  )) as string[];
+
+  // Fetch teacher names
+  const teachers = await prisma.teacher.findMany({
+    where: { id: { in: teacherIds } },
+    select: { id: true, firstName: true, lastName: true }
+  });
+
+  const teacherMap = new Map(teachers.map(t => [t.id, `${t.firstName} ${t.lastName}`]));
+
+  // Re-map attendance records to include teacher name
+  const result = attendance.map(record => ({
+    ...record,
+    markedBy: (record.markedBy && teacherMap.has(record.markedBy))
+      ? teacherMap.get(record.markedBy)
+      : record.markedBy
+  }));
+
+  return SuccessResponse(res, "Student attendance retrieved successfully", result);
 });
 
 /**

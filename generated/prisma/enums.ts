@@ -114,24 +114,6 @@ export const DiscountType = {
 export type DiscountType = (typeof DiscountType)[keyof typeof DiscountType]
 
 
-export const SalaryComponentType = {
-  EARNING: 'EARNING',
-  DEDUCTION: 'DEDUCTION'
-} as const
-
-export type SalaryComponentType = (typeof SalaryComponentType)[keyof typeof SalaryComponentType]
-
-
-export const SalaryStatus = {
-  PENDING: 'PENDING',
-  PROCESSED: 'PROCESSED',
-  PAID: 'PAID',
-  HOLD: 'HOLD'
-} as const
-
-export type SalaryStatus = (typeof SalaryStatus)[keyof typeof SalaryStatus]
-
-
 export const ExamType = {
   UNIT_TEST: 'UNIT_TEST',
   MID_TERM: 'MID_TERM',
