@@ -11,23 +11,6 @@ import { protectLeaveRoutes } from "../middleware/leave.middleware";
 
 const router = Router();
 
-// Apply authentication to all leave routes
-router.use(protectLeaveRoutes);
-
-/**
- * @route   POST /api/common/leave
- * @desc    Apply for leave
- * @access  Student/Teacher
- */
-router.post("/", Upload.single("attachment"), applyLeave);
-
-/**
- * @route   GET /api/common/leave/my-leaves
- * @desc    Get my leaves
- * @access  Student/Teacher
- */
-router.get("/my-leaves", getMyLeaves);
-
 /**
  * @route   GET /api/common/leave/school/:schoolId
  * @desc    Get all leaves (Admin)
@@ -48,5 +31,23 @@ router.patch("/:id/status", updateLeaveStatus);
  * @access  Owner/Admin
  */
 router.delete("/:id", deleteLeave);
+
+
+// Apply authentication to all leave routes
+router.use(protectLeaveRoutes);
+
+/**
+ * @route   POST /api/common/leave
+ * @desc    Apply for leave
+ * @access  Student/Teacher
+ */
+router.post("/", Upload.single("attachment"), applyLeave);
+
+/**
+ * @route   GET /api/common/leave/my-leaves
+ * @desc    Get my leaves
+ * @access  Student/Teacher
+ */
+router.get("/my-leaves", getMyLeaves);
 
 export default router;
