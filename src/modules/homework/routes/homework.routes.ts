@@ -9,6 +9,7 @@ import {
   submitHomework,
   getSubmissions,
   gradeSubmission,
+  deleteSubmission,
 } from "../controllers/homework.controller";
 
 const router = Router();
@@ -85,5 +86,12 @@ router.get("/:id/submissions", getSubmissions);
  * @access  Teacher
  */
 router.put("/submission/:id/grade", gradeSubmission);
+
+/**
+ * @route   DELETE /api/homework/submission/:id
+ * @desc    Delete a submission
+ * @access  Teacher/Admin
+ */
+router.delete("/submission/:id", deleteSubmission);
 
 export default router;

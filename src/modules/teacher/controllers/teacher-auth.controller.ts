@@ -34,6 +34,7 @@ export const teacherLogin = asyncHandler(async (req: Request, res: Response) => 
       password: true,
       status: true,
       isActive: true,
+      monthlySalary: true,
     }
   });
 
@@ -177,6 +178,7 @@ export const getTeacherProfile = asyncHandler(async (req: Request, res: Response
       joiningDate: true,
       profilePicture: true,
       status: true,
+      monthlySalary: true,
       createdAt: true,
     }
   });

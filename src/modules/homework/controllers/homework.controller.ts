@@ -336,3 +336,16 @@ export const gradeSubmission = asyncHandler(async (req: Request, res: Response) 
 
   return SuccessResponse(res, "Homework graded successfully", submission);
 });
+
+/**
+ * @route   DELETE /api/homework/submission/:id
+ * @desc    Delete a submission
+ * @access  Teacher/Admin
+ */
+export const deleteSubmission = asyncHandler(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await prisma.homeworkSubmission.delete({ where: { id: id as string } });
+
+  return SuccessResponse(res, "Submission removed successfully", null);
+});
