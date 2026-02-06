@@ -100,19 +100,29 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [ENV.FRONTEND_URL, ENV.FRONTEND_URL1, "http://localhost:3000", "http://localhost:5173", "http://localhost:5174"].filter(Boolean) as string[],
+    origin: [
+      ENV.FRONTEND_URL,
+      ENV.FRONTEND_URL1,
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://aqua-pigeon-484468.hostingersite.com",
+    ].filter(Boolean) as string[],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
-  })
+  }),
 );
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 3000,
-    message: { status: 429, message: "Too many requests, please try again later" },
+    message: {
+      status: 429,
+      message: "Too many requests, please try again later",
+    },
     standardHeaders: true,
     legacyHeaders: false,
-  })
+  }),
 );
 
 /**
@@ -128,7 +138,7 @@ app.get("/", (_, res) => {
 
 /**
  * Dashboard Routes
-*/
+ */
 // app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
