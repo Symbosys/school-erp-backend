@@ -20,8 +20,7 @@ export const authenticateSchool = asyncHandler(async (req, _res, next) => {
     : undefined;
 
   // Extract token from cookies
-  const cookies = parseCookies(req.headers.cookie);
-  const tokenFromCookie = cookies["school_token"]; 
+  const tokenFromCookie = (req as any).cookies?.[COOKIE_NAME] || parseCookies(req.headers.cookie)[COOKIE_NAME]; 
   
   // Choose the available token
   const token = tokenFromHeader || tokenFromCookie;

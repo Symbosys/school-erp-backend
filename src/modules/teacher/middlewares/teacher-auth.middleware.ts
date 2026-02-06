@@ -29,7 +29,7 @@ export const authenticateTeacher = async (
 
     const decoded = verifyToken(token);
     
-    if (decoded instanceof Error) {
+    if (!decoded) {
       throw new ErrorResponse("Invalid or expired token", statusCode.Unauthorized);
     }
     

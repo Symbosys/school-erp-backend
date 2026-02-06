@@ -4,6 +4,6 @@ import { getSchoolStats } from "../controllers/dashboard.controller";
 
 const router = Router();
 
-router.get("/stats", authenticateSchool, getSchoolStats);
+router.get("/stats/:id", getSchoolStats);
 
 export default router;

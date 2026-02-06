@@ -100,7 +100,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [ENV.FRONTEND_URL, ENV.FRONTEND_URL1, "http://localhost:3000", "http://localhost:5173", "http://localhost:5174"].filter(Boolean) as string[],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })

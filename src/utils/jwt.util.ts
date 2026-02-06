@@ -13,6 +13,6 @@ export const verifyToken = (token: string) => {
   try {
     return jwt.verify(token, SECRET_KEY || "");
   } catch (error) {
-    return error;
+    return null;
   }
 };

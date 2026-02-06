@@ -6,7 +6,7 @@ import { SuccessResponse } from "../../../utils/response.util";
 
 
 export const getSchoolStats = asyncHandler(async (req, res) => {
-    const schoolId = req.school.id;
+    const schoolId = String(req.params.id);
 
     const now = new Date();
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
