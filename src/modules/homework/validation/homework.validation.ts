@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { HomeworkSubmissionStatus } from "../../../../generated/prisma/enums";
+import { HomeworkSubmissionStatus } from "../../../generated/prisma/client";
 
 // Create Homework
 export const createHomeworkSchema = z.object({
@@ -39,3 +39,5 @@ export const gradeSubmissionSchema = z.object({
   gradedBy: z.string().uuid("Invalid teacher ID"),
   status: z.nativeEnum(HomeworkSubmissionStatus).optional(),
 });
+
+

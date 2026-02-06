@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { DayOfWeek } from "../../../../generated/prisma/enums";
+import { DayOfWeek } from "../../../generated/prisma/client";
 
 // Timetable Entry Schema (used within timetable creation)
 const timetableEntrySchema = z.object({
@@ -63,3 +63,5 @@ export const bulkAddEntriesSchema = z.object({
   timetableId: z.string().uuid("Invalid timetable ID"),
   entries: z.array(timetableEntrySchema).min(1, "At least one entry is required"),
 });
+
+

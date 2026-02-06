@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import { Readable } from "stream";
-import ENV from "./env.ts";
+import ENV from "./env";
 
 // Validate required environment variables
 if (!ENV.cloud_name || !ENV.cloud_api_key || !ENV.cloud_api_secret) {

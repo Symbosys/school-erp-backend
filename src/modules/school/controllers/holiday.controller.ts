@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { HolidayType } from "../../../../generated/prisma/enums";
+import { HolidayType } from "../../../generated/prisma/client";
 import { asyncHandler } from "../../../middlewares/error.middleware";
 import { prisma } from "../../../config/prisma";
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util";
@@ -340,3 +340,5 @@ export const bulkCreateHolidays = asyncHandler(async (req: Request, res: Respons
     statusCode.Created
   );
 });
+
+

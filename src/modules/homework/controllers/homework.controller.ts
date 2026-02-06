@@ -3,7 +3,7 @@ import { asyncHandler } from "../../../middlewares/error.middleware";
 import { prisma } from "../../../config/prisma";
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util";
 import { statusCode } from "../../../types/types";
-import { HomeworkSubmissionStatus } from "../../../../generated/prisma/enums";
+import { HomeworkSubmissionStatus } from "../../../generated/prisma/client";
 import {
   createHomeworkSchema,
   updateHomeworkSchema,
@@ -349,3 +349,5 @@ export const deleteSubmission = asyncHandler(async (req: Request, res: Response)
 
   return SuccessResponse(res, "Submission removed successfully", null);
 });
+
+

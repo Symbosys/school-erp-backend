@@ -5,7 +5,6 @@ import { uploadToCloudinary, deleteFromCloudinary } from "../../../config/cloudi
 import { ErrorResponse, SuccessResponse } from "../../../utils/response.util";
 import { statusCode } from "../../../types/types";
 import { applyLeaveSchema, updateLeaveStatusSchema } from "../validator/leave.validation";
-import type { Prisma } from "../../../../generated/prisma";
 
 /**
  * @route   POST /api/common/leave (or similar)

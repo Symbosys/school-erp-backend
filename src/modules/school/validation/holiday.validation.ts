@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { HolidayType } from "../../../../generated/prisma/enums";
+import { HolidayType } from "../../../generated/prisma/client";
 
 // Create Holiday
 export const createHolidaySchema = z.object({
@@ -32,3 +32,5 @@ export const bulkCreateHolidaysSchema = z.object({
     })
   ).min(1, "At least one holiday is required"),
 });
+
+

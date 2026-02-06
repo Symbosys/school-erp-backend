@@ -1,13 +1,12 @@
 {
   "name": "backend",
   "module": "index.ts",
-  "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run src/index.ts",
+    "start": "node public/index.js",
     "dev": "bun --watch run src/index.ts",
     "build": "tsc -b",
-    "postinstall": "bunx prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
